@@ -1,1 +1,25 @@
-/* CSS declarations go here */
+body {
+  padding: 70px;
+}
+.fa-search {
+  color: white;
+}
+.navbar {
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 19px;
+  color: #333;
+}
+.navbar-left {
+
+}
+.navbar-right {
+  font-size: 22px;
+  padding-right: 14px;
+}
+#navbar-buttons {
+  padding: 6px 10px;
+  font-size: 14px;
+}

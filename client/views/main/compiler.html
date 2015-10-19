@@ -1,14 +1,36 @@
 <head>
-  <title>compiler</title>
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+  	<div class="navbar-header">
+  		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+  		<span class="sr-only">Toggle navigation</span>
+  		<span class="icon-bar"></span>
+  		<span class="icon-bar"></span>
+  		<span class="icon-bar"></span>
+  		</button>
+  		<a class="navbar-brand" rel="home" href="#">Compiler</a>
+  	</div>
+
+  	<div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-left">
+    			<li><a href="#">About Us</a></li>
+          <li><a href="#">Find a Tutor</a></li>
+    		</ul>
+  		<div class="nav navbar-nav navbar-right">
+          <button type="button" class="btn btn-default btn-xs-small navbar-btn" id="navbar-buttons">Sign Up</button>
+          <button type="button" class="btn btn-default btn-xs-small navbar-btn" id="navbar-buttons"><i class="fa fa-sign-in"></i> Login</button>
+          <i class="fa fa-search"></i>
+  		</div>
+  </div>
+</div>
 </head>
 
 <body>
   <h1>Welcome to Meteor!</h1>
-
-  {{> hello}}
 </body>
 
 <template name="hello">
   <button>Click Me</button>
   <p>You've pressed the button {{counter}} times.</p>
+  <i class="fa fa-search"></i>
 </template>
