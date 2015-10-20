@@ -32,3 +32,25 @@ body {
   font-size: 48px;
   font-weight: bold;
 }
+.title {
+  padding-bottom: 20px;
+}
+.how {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+}
+.how h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.how p {
+  text-align: justify;
+}
+.find {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+.find p {
+  text-align: justify;
+}
