@@ -54,3 +54,27 @@ body {
 .find p {
   text-align: justify;
 }
+.circle {
+  color: #FFFFFF;
+  border-radius: 100px;
+  display: inline-block;
+  margin: 0 17px;
+  padding: 15px;
+}
+#github {
+  background-color: black;
+}
+#google {
+  background-color: red;
+}
+.center {
+  text-align: center;
+  padding-top: 20px;
+}
+.login-buttons {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+.or {
+  padding-bottom: 40px;
+}
