@@ -27,7 +27,13 @@
 </head>
 
 <body>
-{{>loginButtons}}
+      {{#if currentUser}}
+        {{> userDashboard}}
+    {{else}}
+        {{> register}}
+        {{> login}}
+    {{/if}}
+
   <div class="jumbotron">
     <div class="container">
       <h1>Get your questions answered!</h1>
@@ -182,3 +188,29 @@
   </div>
 
 </body>
+
+<template name="login">
+     <form id="login-form" action="action">
+      <div>
+        <input type="text" id="login-username" />
+        <input type="password" id="login-password" />
+        <input type="submit" id="login-button" value="Sign in" />
+     </div>
+   </form>
+</template>
+
+<template name="register">
+   <form id="register-form" action="action">
+      <div>
+       <input type="text" id="account-username" />
+       <input type="password" id="account-password" />
+       <input type="email" id="account-email" />
+       <input type="submit" id="create-account" value="Create an Account" />
+     </div>
+   </form> 
+   </template>
+
+   <template name="userDashboard">
+    <p>Logged in as {{currentUser.username}} </p> 
+    <p><a href="#" class="logout">Logout</a></p>
+</template>
