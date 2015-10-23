@@ -17,7 +17,7 @@ body {
   font-size: 22px;
   padding-right: 14px;
 }
-#navbar-buttons {
+.navbar-buttons {
   padding: 6px 10px;
   font-size: 14px;
 }
@@ -53,4 +53,36 @@ body {
 }
 .find p {
   text-align: justify;
+}
+.circle {
+  color: #FFFFFF;
+  border-radius: 100px;
+  display: inline-block;
+  margin: 0 17px;
+  padding: 15px;
+}
+#github {
+  background-color: black;
+}
+#google {
+  background-color: red;
+}
+.center {
+  text-align: center;
+  padding-top: 20px;
+}
+.login-buttons {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+.or {
+  padding-bottom: 40px;
+}
+#register-form .form-control{
+  background-color: rgba(0, 0, 0, 0.09);
+  box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.09) inset;
+}
+#login-form .form-control{
+  background-color: rgba(0, 0, 0, 0.09);
+  box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.09) inset;
 }
