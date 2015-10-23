@@ -5,9 +5,9 @@ if (Meteor.isClient) {
     'submit #login-form' : function(e, t){
       e.preventDefault();
       // retrieve the input field values
-      var username = t.find('#login-username').value
-        , password = t.find('#login-password').value;
-        //todo trim and add validation
+      var username = t.find('#login-username').value.trim()
+        , password = t.find('#login-password').value.trim();
+        //todo add validation
         Meteor.loginWithPassword(username, password, function(err){
         if (err){
           window.alert("Account Login Failed");
@@ -24,9 +24,10 @@ if (Meteor.isClient) {
     'submit #register-form' : function(e, t) {
       e.preventDefault();
       var email = t.find('#account-email').value
-        , password = t.find('#account-password').value
-        , username = t.find('#account-username').value;
+        , password = t.find('#account-password').value.trim()
+        , username = t.find('#account-username').value.trim();
         //todo add validation
+
       Accounts.createUser({username: username,  password : password, email: email}, function(err){
           if (err) {
             window.alert("Account Creation Failed");
