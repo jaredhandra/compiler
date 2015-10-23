@@ -78,3 +78,11 @@ body {
 .or {
   padding-bottom: 40px;
 }
+#register-form .form-control{
+  background-color: rgba(0, 0, 0, 0.09);
+  box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.09) inset;
+}
+#login-form .form-control{
+  background-color: rgba(0, 0, 0, 0.09);
+  box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.09) inset;
+}
