@@ -10,7 +10,7 @@ if (Meteor.isClient) {
         //todo add validation
         Meteor.loginWithPassword(username, password, function(err){
         if (err){
-          window.alert("Account Login Failed");
+          window.alert(err.reason);
         }
         else{
 
@@ -30,7 +30,7 @@ if (Meteor.isClient) {
 
       Accounts.createUser({username: username,  password : password, email: email}, function(err){
           if (err) {
-            window.alert("Account Creation Failed");
+            window.alert(err.reason);
           } else {
             window.alert("Thanks For Registering " + username);
           }
