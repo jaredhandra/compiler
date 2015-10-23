@@ -2,13 +2,13 @@
     'submit #login-form' : function(e, t){
       e.preventDefault();
       // retrieve the input field values
-      var username = t.find('#login-username').value
-        , password = t.find('#login-password').value;
+      var username = t.find('#login-username').value.trim()
+        , password = t.find('#login-password').value.trim();
         //todo trim and add validation
         Meteor.loginWithPassword(username, password, function(err){
         if (err){
           //todo change to message on login page rather than alert
-          window.alert("Account Login Failed");
+          window.alert(err.reason);
         }
         else{
           document.getElementById("login-form").reset();
