@@ -25,3 +25,5 @@ accounts-base
 accounts-github
 service-configuration
 autopublish
+aldeed:autoform
+aldeed:collection2
