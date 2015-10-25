@@ -23,6 +23,7 @@ body {
 }
 .jumbotron {
   max-height: 100%;
+  background-image: url("images/jumbo.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
   height: 500px;
@@ -31,6 +32,8 @@ body {
 .jumbotron h1 {
   font-size: 48px;
   font-weight: bold;
+  color: white;
+  margin-top: 80px;
 }
 .title {
   padding-bottom: 20px;
