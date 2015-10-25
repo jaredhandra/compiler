@@ -55,6 +55,7 @@ body {
   text-align: justify;
 }
 .circle {
+  background-color: #EEEEEE;
   color: #FFFFFF;
   border-radius: 100px;
   display: inline-block;
@@ -62,10 +63,18 @@ body {
   padding: 15px;
 }
 #github {
-  background-color: black;
+  background-color: #403A3A;
+}
+#github:hover {
+  background-color: #4D4D4d;
+  color: white;
 }
 #google {
-  background-color: red;
+  background-color: #F74933;
+}
+#google:hover {
+  background-color: #FF7566;
+  color: white;
 }
 .center {
   text-align: center;
