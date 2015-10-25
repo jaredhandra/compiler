@@ -2,17 +2,30 @@ Template.register.events({
    'submit #register-form' : function(e, t) {
      e.preventDefault();
      var email = t.find('#account-email').value
-       , password = t.find('#account-password').value
-       , username = t.find('#account-username').value;
+       , password = t.find('#account-password').value.trim()
+       , username = t.find('#account-username').value.trim();
        //todo add validation
      Accounts.createUser({username: username,  password : password, email: email}, function(err){
          if (err) {
-           window.alert("Account Creation Failed");
+           window.alert(err.reason);
          } else {
            document.getElementById("login-form").reset();
+           $('#signUp').modal('hide');
          }
        });
 
      return false;
+   }
+ });
+
+Template.register.events({
+   "click #github": function(e,t){
+    Meteor.loginWithGithub({
+    requestPermissions: ['user', 'public_repo']
+}, function (err) {
+      if (err)
+        Session.set('errorMessage', err.reason || 'Unknown error');
+});
+     $('#signUp').modal('hide');
    }
  });

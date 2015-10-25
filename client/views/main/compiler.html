@@ -62,7 +62,7 @@
     </li> -->
     <div class="dropdown">
   <button class="btn btn-default btn-xs-small dropdown-toggle navbar-btn navbar-buttons" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    {{currentUser.username}} <span class="caret"></span>
+    {{> loggedUser}} <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
     <li><a href="#">Account Settings</a></li>
@@ -80,3 +80,8 @@
     <i class="fa fa-search"></i>
   </div>
 </template>
+
+<template name="loggedUser">
+    {{user}}
+</template>
+
