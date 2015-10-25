@@ -24,12 +24,10 @@ Template.register.events({
              }
            });
        } else {
-         document.getElementById('error').className += 'alert alert-danger';
-         document.getElementById('error').innerHTML = 'Enter a valid password!';
+         $(".error").addClass('alert alert-danger').append('Enter a valid password!');
        }
      } else {
-       document.getElementById('error').className += 'alert alert-danger';
-       document.getElementById('error').innerHTML = 'Enter a valid username!';
+       $(".error").addClass('alert alert-danger').append('Enter a valid username!');
      }
      return false;
    }

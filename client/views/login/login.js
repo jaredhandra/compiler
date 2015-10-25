@@ -8,7 +8,12 @@
         Meteor.loginWithPassword(username, password, function(err){
         if (err){
           //todo change to message on login page rather than alert
-          window.alert(err.reason);
+          //window.alert(err.reason);
+          var errorString = String(err.reason);
+          document.getElementById('error').className += 'alert alert-danger';
+          document.getElementById('error').innerHTML = 'errorString';
+          $(".error").addClass('alert alert-danger').append(errorString);
+          //console.log(errorString);
         }
         else{
           document.getElementById("login-form").reset();
