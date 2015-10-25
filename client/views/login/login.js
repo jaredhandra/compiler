@@ -7,13 +7,12 @@
         //todo trim and add validation
         Meteor.loginWithPassword(username, password, function(err){
         if (err){
-          //todo change to message on login page rather than alert
-          //window.alert(err.reason);
           var errorString = String(err.reason);
-          document.getElementById('error').className += 'alert alert-danger';
-          document.getElementById('error').innerHTML = 'errorString';
           $(".error").addClass('alert alert-danger').append(errorString);
-          //console.log(errorString);
+          $('#signIn').on('hidden.bs.modal', function () {
+             document.getElementById("login-form").reset();
+             $(".error").removeClass('alert alert-danger').empty();
+           });
         }
         else{
           document.getElementById("login-form").reset();

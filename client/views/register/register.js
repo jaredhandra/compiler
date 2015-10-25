@@ -25,9 +25,17 @@ Template.register.events({
            });
        } else {
          $(".error").addClass('alert alert-danger').append('Enter a valid password!');
+         $('#signUp').on('hidden.bs.modal', function () {
+            document.getElementById("register-form").reset();
+            $(".error").removeClass('alert alert-danger').empty();
+          });
        }
      } else {
        $(".error").addClass('alert alert-danger').append('Enter a valid username!');
+       $('#signUp').on('hidden.bs.modal', function () {
+          document.getElementById("register-form").reset();
+          $(".error").removeClass('alert alert-danger').empty();
+        });
      }
      return false;
    }
