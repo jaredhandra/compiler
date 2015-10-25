@@ -31,3 +31,15 @@
       });
     }
   });
+
+Template.login.events({
+   "click #github": function(e,t){
+    Meteor.loginWithGithub({
+    requestPermissions: ['user', 'public_repo']
+}, function (err) {
+      if (err)
+        Session.set('errorMessage', err.reason || 'Unknown error');
+});
+      $('#signIn').modal('hide');
+   }
+ });

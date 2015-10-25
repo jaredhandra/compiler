@@ -17,3 +17,15 @@ Template.register.events({
      return false;
    }
  });
+
+Template.register.events({
+   "click #github": function(e,t){
+    Meteor.loginWithGithub({
+    requestPermissions: ['user', 'public_repo']
+}, function (err) {
+      if (err)
+        Session.set('errorMessage', err.reason || 'Unknown error');
+});
+     $('#signUp').modal('hide');
+   }
+ });

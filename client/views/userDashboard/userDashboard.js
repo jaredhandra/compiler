@@ -4,3 +4,9 @@ Template.userDashboard.events({
        Meteor.logout();
    }
 });
+
+Template.userDashboard.helpers({
+  user: function() {
+     return Meteor.user().username || Meteor.user().profile.login
+  }
+});
