@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
 body {
   padding-top: 70px;
   text-align: center;
+  font-family: "Roboto";
+  font-weight: 300;
 }
 .fa-search {
   color: white;
