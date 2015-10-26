@@ -38,6 +38,11 @@ Template.register.events({
         });
      }
      return false;
+   },
+   'click #showSignIn' : function(){
+     console.log("sdafsdf");
+     $('#signUp').modal('hide');
+     $('#signIn').modal('show');
    }
  });
 
