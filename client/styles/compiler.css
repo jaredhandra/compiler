@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
 body {
   padding-top: 70px;
   text-align: center;
+  font-family: "Roboto";
+  font-weight: 300;
 }
 .fa-search {
   color: white;
@@ -23,6 +26,7 @@ body {
 }
 .jumbotron {
   max-height: 100%;
+  background-image: url("images/jumbo.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
   height: 500px;
@@ -31,6 +35,8 @@ body {
 .jumbotron h1 {
   font-size: 48px;
   font-weight: bold;
+  color: white;
+  margin-top: 140px;
 }
 .title {
   padding-bottom: 20px;
