@@ -20,6 +20,10 @@
         }
       });
          return false;
+      },
+      'click #showSignUp' : function(){
+        $('#signIn').modal('hide');
+        $('#signUp').modal('show');
       }
   });
   Template.user_loggedin.events({
