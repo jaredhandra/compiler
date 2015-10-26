@@ -37,6 +37,7 @@ body {
   font-weight: bold;
   color: white;
   margin-top: 140px;
+  text-shadow: black 0.01em 0.01em 0.01em;
 }
 .title {
   padding-bottom: 20px;
