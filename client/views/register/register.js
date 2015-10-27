@@ -57,3 +57,15 @@ Template.register.events({
      $('#signUp').modal('hide');
    }
  });
+
+Template.register.events({
+   "click #google": function(e,t){
+    Meteor.loginWithGoogle({
+    requestPermissions: ['profile', 'email']
+}, function (err) {
+      if (err)
+        Session.set('errorMessage', err.reason || 'Unknown error');
+});
+     $('#signUp').modal('hide');
+   }
+ });
