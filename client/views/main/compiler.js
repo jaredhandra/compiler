@@ -14,11 +14,13 @@ Template.body.events({
 	'submit .new-question': function(event) {
 		var title = event.target.title.value;
 		var questionText = event.target.questionText.value;
+		var user = Meteor.user();
 
 		Questions.insert({
 			title : title,
 			questionText : questionText,
-			createdAt : new Date()
+			createdAt : new Date(),
+			user : user
 		});
 
 		event.target.title.value ="";
