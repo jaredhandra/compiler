@@ -102,3 +102,34 @@ body {
   background-color: rgba(0, 0, 0, 0.09);
   box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.09) inset;
 }
+
+.card, .dialog {
+    position: relative;
+    display: inline-block;
+    width: 300px;
+    height: 240px;
+    vertical-align: top;
+    background-color: #5677fc;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
+    color: white;
+    }
+    
+    .dialog {
+      box-sizing: border-box;
+      padding: 16px;
+      margin:10px;
+    }
+    
+    .dialog > .content {
+      height: 170px;
+      font-size: 0.9em;
+    }
+    
+    .dialog > .content > .title {
+      font-size: 1.3em;
+    }
+    
+    .dialog > .button {
+      width: 90px;
+      float: right;
+    }

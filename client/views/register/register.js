@@ -17,21 +17,21 @@ Template.register.events({
        if (user.password.length >=6){
          Accounts.createUser(user, function(err){
              if (err) {
-               window.alert(err.reason);
+               (".error").addClass('alert alert-danger').html(err);
              } else {
                document.getElementById("register-form").reset();
                $('#signUp').modal('hide');
              }
            });
        } else {
-         $(".error").addClass('alert alert-danger').append('Enter a valid password!');
+         $(".error").addClass('alert alert-danger').html('Password must be greater than 5 characters.');
          $('#signUp').on('hidden.bs.modal', function () {
             document.getElementById("register-form").reset();
             $(".error").removeClass('alert alert-danger').empty();
           });
        }
      } else {
-       $(".error").addClass('alert alert-danger').append('Enter a valid username!');
+       $(".error").addClass('alert alert-danger').html('Username must be greater than 4 characters.');
        $('#signUp').on('hidden.bs.modal', function () {
           document.getElementById("register-form").reset();
           $(".error").removeClass('alert alert-danger').empty();
@@ -50,6 +50,18 @@ Template.register.events({
    "click #github": function(e,t){
     Meteor.loginWithGithub({
     requestPermissions: ['user', 'public_repo']
+}, function (err) {
+      if (err)
+        Session.set('errorMessage', err.reason || 'Unknown error');
+});
+     $('#signUp').modal('hide');
+   }
+ });
+
+Template.register.events({
+   "click #google": function(e,t){
+    Meteor.loginWithGoogle({
+    requestPermissions: ['profile', 'email']
 }, function (err) {
       if (err)
         Session.set('errorMessage', err.reason || 'Unknown error');
