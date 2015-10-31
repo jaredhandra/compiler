@@ -63,6 +63,7 @@
 <!-- Template for Logged In Nav -->
 <template name="user_loggedin">
   <div class="dropdown">
+  {{> avatar}}
     <button class="btn btn-default btn-xs-small dropdown-toggle navbar-btn navbar-buttons" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
       {{> loggedUser}} <span class="caret"></span>
     </button>
@@ -84,6 +85,10 @@
 
 <template name="loggedUser">
     {{user}}
+</template>
+
+<template name="avatar">
+ <img class= "img-rounded" style = "height:32px; margin-top: 4px;" src="{{avatarURL}}"/>
 </template>
 
 <template name="question">

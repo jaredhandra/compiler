@@ -35,3 +35,11 @@ Template.loggedUser.helpers({
      return Meteor.user().username || Meteor.user().profile.login || Meteor.user().profile.name
   }
 });
+
+Template.avatar.helpers({
+	avatarURL: function(){
+		if(Meteor.user().profile.avatar_url != null){
+			return  Meteor.user().profile.avatar_url;
+		}
+	}
+})
