@@ -29,14 +29,12 @@ Accounts.onCreateUser(function (options, user) {
             // check for email also in other services
             var existingGitHubUser = Meteor.users.findOne({'services.github.email': email});
             var existingGoogleUser = Meteor.users.findOne({'services.google.email': email});
-            var existingTwitterUser = Meteor.users.findOne({'services.twitter.email': email});
-            var existingFacebookUser = Meteor.users.findOne({'services.facebook.email': email});
-            var doesntExist = !existingGitHubUser && !existingGoogleUser && !existingTwitterUser && !existingFacebookUser;
+            var doesntExist = !existingGitHubUser && !existingGoogleUser;
             if (doesntExist) {
                 // return the user as it came, because there he doesn't exist in the DB yet
                 return user;
             } else {
-                existingUser = existingGitHubUser || existingGoogleUser || existingTwitterUser || existingFacebookUser;
+                existingUser = existingGitHubUser || existingGoogleUser
                 if (existingUser) {
                     if (user.emails) {
                         // user is signing in by email, we need to set it to the existing user
