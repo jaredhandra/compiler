@@ -5,7 +5,7 @@ body {
   font-family: "Roboto";
   font-weight: 300;
 }
-.fa-search {
+.navbar-right .fa-2x {
   color: white;
 }
 .navbar {
@@ -16,13 +16,31 @@ body {
   line-height: 19px;
   color: #333;
 }
-.navbar-right {
-  font-size: 22px;
-  padding-right: 14px;
-}
 .navbar-buttons {
   padding: 6px 10px;
   font-size: 14px;
+}
+.navbar-right .p {
+  padding-top: 10px;
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.6180em;
+}
+.navbar-brand {
+  margin-top: 13px;
+  margin-bottom: 13px;
+  margin-left: 15px;
+}
+.navbar-left {
+  margin-top: 13px;
+  margin-bottom: 13px;
+}
+.navbar-right {
+  margin-right: 15px;
+}
+.loggedout {
+  margin-top: 13px;
+  margin-bottom: 13px;
 }
 .jumbotron {
   max-height: 100%;
@@ -102,7 +120,9 @@ body {
   background-color: rgba(0, 0, 0, 0.09);
   box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.09) inset;
 }
-
+.controls {
+  padding-top: 20px;
+}
 .card, .dialog {
     position: relative;
     display: inline-block;

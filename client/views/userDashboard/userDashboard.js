@@ -4,14 +4,13 @@ Template.userDashboard.events({
        Meteor.logout();
    }
 });
-
 Template.userDashboard.helpers({
   user: function() {
      return Meteor.user().username || Meteor.user().profile.login || Meteor.user().profile.name
-  }
-});
-
-Template.userDashboard.helpers({
+  },
+	questions: function() {
+			return Questions.find();
+		},
 	avatarURL: function(){
 		if(Meteor.user().profile.avatar_url != null){
 			return  Meteor.user().profile.avatar_url;
@@ -19,5 +18,5 @@ Template.userDashboard.helpers({
 		if(Meteor.user().services.google.picture !=null){
 			return Meteor.user().services.google.picture;
 		}
-	}
-})
+	}  
+});

@@ -56,6 +56,9 @@
     <div class="row title">
       <div class="col-sm-12 col-md-12">
         <h2>Here are a few questions students are asking</h2>
+        {{#each questions}}
+            {{>  question}}
+        {{/each}}
       </div>
     </div>
   </div>

@@ -1,4 +1,20 @@
 <template name="userDashboard">
-<img class= "img-rounded" style = "height:32px; margin-top: 4px;" src="{{avatarURL}}"/>
-    <p>Logged in as {{user}} </p>
+    <img class= "img-rounded" style = "height:32px; margin-top: 4px;" src="{{currentUser.profile.avatar_url}}"/>
+    <div class="container">
+        <div class="controls">
+            <div class="btn-group pull-right">
+                <button type="button" class="btn btn-default" id="" data-toggle="modal" data-target="#newQuestion"><i class="fa fa-plus"></i> New Question</button>
+            </div>
+        </div>    
+        <h1>Open Questions</h1>
+        {{#each questions}}
+            {{>  question}}
+        {{/each}}
+    </div>
+    <!-- New Question Modal -->
+   <div class="modal fade" id="newQuestion" tabindex="-1" role="dialog" aria-labelledby="newQuestion">
+    <div class="modal-dialog">
+      {{> newQuestion}}
+    </div>
+   </div>
 </template>

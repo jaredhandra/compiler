@@ -1,15 +1,4 @@
 Questions = new Mongo.Collection('questions');
-
-Template.body.helpers({
-			questions: function() {
-			return Questions.find();
-		}
-		/*questions:[
-		{ title: "test title", questionText: "test question text"},
-		{ title: "test title", questionText: "test question text"},
-		{ title: "test title", questionText: "test question text"}
-		]*/
-	});
 Template.body.events({
 	'submit .new-question': function(event) {
 		var title = event.target.title.value;
@@ -25,7 +14,8 @@ Template.body.events({
 
 		event.target.title.value ="";
 		event.target.questionText.value="";
-
+		document.getElementById("new-question").reset();
+         $('#newQuestion').modal('hide');
 		return false;
 	}
 });

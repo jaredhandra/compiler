@@ -1,0 +1,22 @@
+<template name="newQuestion">
+	   <div class="modal-content">
+       <div class="modal-body">
+         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+         <h3 class="text-center">Submit a new question</h3>
+         <div class="row">
+           <div class="error">
+             <span class="sr-only">Error:</span>
+           </div>
+         </div>
+         <form class="form center-block new-question" id="new-question" action="">
+           <div class="form-group">
+             <input type="text" class="form-control input-lg" placeholder="Question Title" name="title" id="">
+           </div>
+           <textarea class="form-control" rows="3" name="questionText" placeholder="Question Text..."></textarea>
+           <div class="form-group">
+             <input type="submit" value="Submit" class="btn btn-primary btn-lg btn-block"/>
+           </div>
+         </form>
+       </div>
+   </div>
+</template>
