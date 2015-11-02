@@ -3,17 +3,18 @@
     <div class="container">
         <div class="controls">
             <div class="btn-group pull-right">
-                <button type="button" class="btn btn-default"><i class="fa fa-plus"></i> New Question</button>
+                <button type="button" class="btn btn-default" id="" data-toggle="modal" data-target="#newQuestion"><i class="fa fa-plus"></i> New Question</button>
             </div>
         </div>    
         <h1>Open Questions</h1>
-        <form class="new-question" action="">
-        <input type="text" name = "title" placeholder="Question Title">
-        <input type="text" name = "questionText" placeholder="Question Text..">
-        <input type="submit" value="Submit">
-        </form>
         {{#each questions}}
             {{>  question}}
         {{/each}}
     </div>
+    <!-- New Question Modal -->
+   <div class="modal fade" id="newQuestion" tabindex="-1" role="dialog" aria-labelledby="newQuestion">
+    <div class="modal-dialog">
+      {{> newQuestion}}
+    </div>
+   </div>
 </template>

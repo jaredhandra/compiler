@@ -14,7 +14,8 @@ Template.body.events({
 
 		event.target.title.value ="";
 		event.target.questionText.value="";
-
+		document.getElementById("new-question").reset();
+         $('#newQuestion').modal('hide');
 		return false;
 	}
 });
