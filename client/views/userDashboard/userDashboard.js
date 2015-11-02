@@ -4,9 +4,12 @@ Template.userDashboard.events({
        Meteor.logout();
    }
 });
-
 Template.userDashboard.helpers({
   user: function() {
      return Meteor.user().username || Meteor.user().profile.login || Meteor.user().profile.name
-  }
+  },
+  questions: function() {
+			return Questions.find();
+		}
+  
 });
