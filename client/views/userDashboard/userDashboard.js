@@ -18,5 +18,8 @@ Template.userDashboard.helpers({
 		if(Meteor.user().services.google.picture !=null){
 			return Meteor.user().services.google.picture;
 		}
+	},
+	tags: function() {
+		return Tags.find();
 	}  
 });

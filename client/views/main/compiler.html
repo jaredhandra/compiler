@@ -56,7 +56,11 @@
     </li>
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <i class="fa fa-user fa-2x"></i>
+        {{#if avatar}}
+          {{avatar}}
+        {{else}}
+          <i class="fa fa-user fa-2x"></i>
+        {{/if}}
         <span class="caret"></span><p>{{> loggedUser}}</p>
       </a>
       <!--<button class="btn btn-default btn-xs-small dropdown-toggle navbar-btn navbar-buttons" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
