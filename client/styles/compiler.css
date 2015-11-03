@@ -153,3 +153,29 @@ body {
       width: 90px;
       float: right;
     }
+#new-question .form-control{
+  background-color: rgba(0, 0, 0, 0.09);
+  box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.09) inset;
+}
+#new-question {
+  padding-top: 40px;
+}
+.submit {
+  padding-top: 20px;
+}
+.typeahead,
+.ttquery,
+.tt-dropdown-menu {
+  width: 422px;
+  margin-top: 3px;
+  padding: 8px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+          box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}

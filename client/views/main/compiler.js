@@ -1,4 +1,3 @@
-Questions = new Mongo.Collection('questions');
 Template.body.events({
 	'submit .new-question': function(event) {
 		var title = event.target.title.value;
