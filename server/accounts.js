@@ -4,6 +4,37 @@ Meteor.publish("userData", function () {
 });
 
 Accounts.onCreateUser(function (options, user) {
+        //Github oauth
+    if(user.services.github != null){
+    var accessToken = user.services.github.accessToken,
+        result,
+        profile;
+        result = Meteor.http.get("https://api.github.com/user", {
+        headers: {"User-Agent": "Meteor/1.0"},
+        params: {
+            access_token: accessToken
+  }
+});
+    if (result.error)
+        throw result.error;
+
+    profile = _.pick(result.data,
+        "login",
+        "name",
+        "avatar_url",
+        "url",
+        "company",
+        "blog",
+        "location",
+        "email",
+        "bio",
+        "html_url");
+
+    user.profile = profile;
+
+    return user;
+}
+    //End github oauth
     if (user.services) {
         if (options.profile) {
             user.profile = options.profile

@@ -56,11 +56,7 @@
     </li>
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        {{#if avatar}}
-          {{avatar}}
-        {{else}}
-          <i class="fa fa-user fa-2x"></i>
-        {{/if}}
+           {{> avatar}}
         <span class="caret"></span><p>{{> loggedUser}}</p>
       </a>
       <!--<button class="btn btn-default btn-xs-small dropdown-toggle navbar-btn navbar-buttons" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -92,5 +88,9 @@
 </template>
 
 <template name="avatar">
- <img class= "img-rounded" style = "height:32px; margin-top: 4px;" src="{{avatarURL}}"/>
+ {{#if avatarURL}}
+ <img class= "img-rounded" style = "height:32px; margin-top: -1px;" src="{{avatarURL}}"/>
+ {{else}}
+ <i class="fa fa-user fa-2x"></i>               
+ {{/if}}
 </template>
