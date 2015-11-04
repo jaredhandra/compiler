@@ -35,3 +35,19 @@ Template.avatar.helpers({
 		}
 	}
 })
+
+Router.route('/', function (){
+	this.render('main');
+});
+
+Router.route('/Dashboard', function(){
+	this.render('userDashboard');
+});
+
+Router.route('/question/:_id', function(){
+	this.render('post', {
+		data: function(){
+			return Questions.findOne({_id: this.params._id});
+		}
+	});
+});
