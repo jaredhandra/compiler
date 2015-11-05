@@ -40,47 +40,44 @@
 </body>
 <!-- Template for Logged In Nav -->
 <template name="user_loggedin">
-  <ul class="nav navbar-nav navbar-right">
-    <li>
-      <a href="javascript:void(0)" data-toggle="search">
-        <i class="fa fa-search fa-2x"></i>
-        <p>Search</p>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <i class="fa fa-bell fa-2x"></i>
-          <span class="label"></span>
-        <p>Notifications</p>
-      </a>
-    </li>
-    <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        {{#if avatar}}
-          {{avatar}}
-        {{else}}
-          <i class="fa fa-user fa-2x"></i>
-        {{/if}}
-        <span class="caret"></span><p>{{> loggedUser}}</p>
-      </a>
-      <!--<button class="btn btn-default btn-xs-small dropdown-toggle navbar-btn navbar-buttons" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        {{> loggedUser}} <span class="caret"></span>
-      </button>-->
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li><a href="#">Account Settings</a></li>
-        <li class="divider"></li>
-        <li><a id="logout" href="#">Logout</a></li>
-      </ul>
-    </li>
-  </ul>
+    <ul class="nav navbar-nav navbar-left">
+        <li><a href="#">Questions</a></li>
+        <li><a href="#">Find A Tutor</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="javascript:void(0)" data-toggle="search">
+                <i class="fa fa-search fa-2x"></i>
+                <p>Search</p>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-bell fa-2x"></i>
+                <span class="label"></span>
+                <p>Notifications</p>
+            </a>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                {{> avatar}}
+                <span class="caret"></span><p>{{> loggedUser}}</p>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#">Account Settings</a></li>
+                <li class="divider"></li>
+                <li><a id="logout" href="#">Logout</a></li>
+            </ul>
+        </li>
+    </ul>
 </template>
 <!-- Template for Logged Out Nav -->
 <template name="user_loggedout">
-   <ul class="nav navbar-nav navbar-left">
-    <li><a href="#">About Us</a></li>
-    <li><a href="#">How It Works</a></li>
-    <li><a href="#">Find a Tutor</a></li>
-  </ul>
+    <ul class="nav navbar-nav navbar-left">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">How It Works</a></li>
+        <li><a href="#">Find a Tutor</a></li>
+    </ul>
   <ul class="nav navbar-nav navbar-right loggedout">
     <button type="button" class="btn btn-default btn-xs-small navbar-btn navbar-buttons" id="" data-toggle="modal" data-target="#signUp">Sign Up</button>
     <button type="button" class="btn btn-default btn-xs-small navbar-btn navbar-buttons" id="" data-toggle="modal" data-target="#signIn"><i class="fa fa-sign-in"></i> Login</button>
@@ -92,5 +89,9 @@
 </template>
 
 <template name="avatar">
- <img class= "img-rounded" style = "height:32px; margin-top: 4px;" src="{{avatarURL}}"/>
+ {{#if avatarURL}}
+ <img class= "img-rounded" style = "height:32px; margin-top: -1px;" src="{{avatarURL}}"/>
+ {{else}}
+ <i class="fa fa-user fa-2x"></i>               
+ {{/if}}
 </template>
