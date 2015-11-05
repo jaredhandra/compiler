@@ -16,6 +16,9 @@ body {
   line-height: 19px;
   color: #333;
 }
+.navbar-brand {
+  font-size: 20px;
+}
 .navbar-buttons {
   padding: 6px 10px;
   font-size: 14px;
