@@ -16,6 +16,9 @@ body {
   line-height: 19px;
   color: #333;
 }
+.navbar-brand {
+  font-size: 20px;
+}
 .navbar-buttons {
   padding: 6px 10px;
   font-size: 14px;
@@ -179,7 +182,26 @@ body {
      -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
           box-shadow: 0 5px 10px rgba(0,0,0,.2);
 }
-
 .goToQuestion{
   color: #ccc;
+}
+.question-header {
+  text-align: left;
+  color: #999;
+  font-weight: 200;
+  font-size: 14px;
+}
+.question-cell {
+  text-align: left;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.question-title {
+  font-weight: 400;
+  font-size: 17px;
+  margin-top: 12px;
+}
+table tr {
+  height: 60px;
+  margin-top: 14px;
 }

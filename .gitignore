@@ -1,18 +1,17 @@
-
-.idea/.name
-
-.idea/compiler.iml
-
-.idea/encodings.xml
-
-.idea/jsLibraryMappings.xml
-
-.idea/libraries/meteor_packages_auto_import_browser.xml
-
-.idea/misc.xml
-
-.idea/modules.xml
+.idea/workspace.xml
 
 .idea/vcs.xml
 
-.idea/workspace.xml
+.idea/modules.xml
+
+.idea/misc.xml
+
+.idea/libraries/meteor_packages_auto_import_browser.xml
+
+.idea/jsLibraryMappings.xml
+
+.idea/encodings.xml
+
+.idea/compiler.iml
+
+.idea/.name
