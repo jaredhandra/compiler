@@ -35,13 +35,29 @@ Template.avatar.helpers({
 		}
 	}
 })
-
+var OnBeforeActions;
+OnBeforeActions = {
+	loginRequired: function(){
+		if(!Meteor.userId()){
+			this.render('main');
+		} else {
+			this.next();
+		}
+	}
+}
+Router.onBeforeAction(OnBeforeActions.loginRequired, {
+	only: ['dashboard']
+});
+Router.configure({
+	layoutTemplate: 'ApplicationLayout'
+});
 Router.route('/', function (){
 	this.render('main');
+	name: 'home'
 });
-
-Router.route('/Dashboard', function(){
+Router.route('/dashboard', function(){
 	this.render('userDashboard');
+	name:'userDashboard'
 });
 
 Router.route('/question/:_id', function(){
