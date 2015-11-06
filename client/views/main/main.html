@@ -1,0 +1,7 @@
+<template name="main">
+    {{#if currentUser}}
+        {{> userDashboard}}
+    {{else}}
+        {{> splashScreen}}
+    {{/if}}
+</template>

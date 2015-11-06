@@ -2,6 +2,12 @@ Template.userDashboard.events({
    'click .logout': function(event){
        event.preventDefault();
        Meteor.logout();
+   },
+   
+   'click .goToQuestion': function(event){
+	   event.preventDefault();
+	   window.location.href = '/question/' + this._id;
+	   
    }
 });
 Template.userDashboard.helpers({
