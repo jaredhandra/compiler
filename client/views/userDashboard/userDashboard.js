@@ -27,17 +27,22 @@ Template.userDashboard.helpers({
 	},
 	tags: function() {
 		return Tags.find();
+	}
+});
+Template.openQuestions.helpers({
+	questions: function() {
+		return Questions.find();
 	},
 	settings: function() {
 		return {
 			rowsPerPage: 10,
 			showNavigation: 'auto',
 			class: 'table table-hover',
-		 	fields: [
-			{key: 'title', label: 'Question', headerClass:'question-header', cellClass:'question-cell question-title'},
-			{key: 'user.profile.name', label: 'User', headerClass:'question-header', cellClass:'question-cell question-user'},
-			{key: 'createdAt', label: 'Date', headerClass:'question-header', cellClass:'question-cell question-date', fn: function(value){date = new Date(value); return date.toDateString();}}
-		]
+			fields: [
+				{key: 'title', label: 'Question', headerClass:'question-header', cellClass:'question-cell question-title'},
+				{key: 'user.profile.name', label: 'User', headerClass:'question-header', cellClass:'question-cell question-user'},
+				{key: 'createdAt', label: 'Date', headerClass:'question-header', cellClass:'question-cell question-date', fn: function(value){date = new Date(value); return date.toDateString();}}
+			]
 		}
 	}
-});
+})
