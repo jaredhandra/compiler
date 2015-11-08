@@ -31,6 +31,10 @@ Accounts.onCreateUser(function (options, user) {
         "html_url");
 
     user.profile = profile;
+    user.name = profile.name;
+    user.username = profile.login;
+    user.avatar = profile.avatar_url;
+    user.email = user.services.github.email;
 
     return user;
 }
@@ -62,7 +66,13 @@ Accounts.onCreateUser(function (options, user) {
             var existingGoogleUser = Meteor.users.findOne({'services.google.email': email});
             var doesntExist = !existingGitHubUser && !existingGoogleUser;
             if (doesntExist) {
-                // return the user as it came, because there he doesn't exist in the DB yet
+                // return the user as it came, because doesn't exist in the DB yet
+                if(user.services.google != null){
+                    user.name = user.services.google.name;
+                    user.username = user.services.google.name;
+                    user.avatar = user.services.google.picture;
+                    user.email = user.services.google.email;
+            }
                 return user;
             } else {
                 existingUser = existingGitHubUser || existingGoogleUser

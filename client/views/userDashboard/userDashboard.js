@@ -18,6 +18,9 @@ Template.userDashboard.helpers({
 			return Questions.find();
 		},
 	avatarURL: function(){
+		if(Meteor.user().avatar != null {
+			return Meteor.user().avatar;
+		}
 		if(Meteor.user().profile.avatar_url != null){
 			return  Meteor.user().profile.avatar_url;
 		}
@@ -35,7 +38,7 @@ Template.userDashboard.helpers({
 			class: 'table table-hover',
 		 	fields: [
 			{key: 'title', label: 'Question', headerClass:'question-header', cellClass:'question-cell question-title'},
-			{key: 'user.profile.name', label: 'User', headerClass:'question-header', cellClass:'question-cell question-user'},
+			{key: 'user.username', label: 'User', headerClass:'question-header', cellClass:'question-cell question-user'},
 			{key: 'createdAt', label: 'Date', headerClass:'question-header', cellClass:'question-cell question-date', fn: function(value){date = new Date(value); return date.toDateString();}}
 		]
 		}
