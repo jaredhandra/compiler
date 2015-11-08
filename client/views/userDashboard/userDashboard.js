@@ -18,7 +18,8 @@ Template.userDashboard.helpers({
 			return Questions.find();
 		},
 	avatarURL: function(){
-		if(Meteor.user().avatar != null {
+
+		if(Meteor.user().avatar != null){
 			return Meteor.user().avatar;
 		}
 		if(Meteor.user().profile.avatar_url != null){
