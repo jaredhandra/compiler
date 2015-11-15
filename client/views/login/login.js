@@ -51,6 +51,8 @@ Template.login.events({
         Session.set('errorMessage', err.reason || 'Unknown error');
 });
       $('#signIn').modal('hide');
+       Router.go('/dashboard');
+       console.log("went to dashboard");
    }
  });
 
@@ -63,5 +65,7 @@ Template.login.events({
         Session.set('errorMessage', err.reason || 'Unknown error');
 });
       $('#signIn').modal('hide');
+       Router.go('/dashboard');
+       console.log("went to dashboard");
    }
  });
