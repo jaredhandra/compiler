@@ -1,11 +1,19 @@
 <template name="post">
-    <div class="dialog">
-      <div class="content">
+    <div class="dialog row">
+      <div class="content col-md-12">
         <div class="title">{{title}}</div><br>
         <div>{{questionText}}</div><br>
       </div>
 	  <div>
 		  comments
 	  </div>
+    </div>
+    <div class="row">
+    <div class="col-md-12">
+    <div class="styled-input wide">
+      <textarea required></textarea>
+      <label>Comment</label>
+      <span></span> </div>
+    </div>
     </div>
 </template>
