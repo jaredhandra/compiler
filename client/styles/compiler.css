@@ -278,3 +278,9 @@ textarea {
   width: 100%;
   min-height: 15em;
 }
+.commentSubmit{
+  float:right;
+}
+.commentButton{
+  font-size:1em;
+}

@@ -12,13 +12,15 @@ Template.newQuestion.events({
     var questionText = event.target.questionText.value;
     var user = Meteor.user();
     var username = Meteor.user().username;
+    var comments = [];
 
     Questions.insert({
       title : title,
       questionText : questionText,
       createdAt : new Date(),
       username : username,
-      user : user
+      user : user,
+      comments : comments
     });
 
     event.target.title.value ="";

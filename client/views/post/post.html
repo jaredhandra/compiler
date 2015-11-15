@@ -8,12 +8,19 @@
 		  comments
 	  </div>
     </div>
+  
+<form class="form new-comment" id="new-comment" action="" required>
     <div class="row">
-    <div class="col-md-12">
-    <div class="styled-input wide">
-      <textarea required></textarea>
-      <label>Comment</label>
-      <span></span> </div>
+    	<div class="col-md-12">
+    		<div class="styled-input wide">
+     		 <textarea name="commentText" required></textarea>
+      		 <label>Comment</label>
+      		 <span></span> 
+      		</div>
+    	</div>
     </div>
-    </div>
+    <div class="form-group commentSubmit">
+        <input type="submit" value="Add Comment" class="btn btn-primary btn-lg btn-block" style="font-size: 1em;"/>
+     </div>
+</form>
 </template>
