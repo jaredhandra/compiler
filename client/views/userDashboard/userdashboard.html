@@ -1,21 +1,13 @@
 <template name="userDashboard">
-    <img class= "img-rounded" style = "height:32px; margin-top: 4px;" src="{{currentUser.profile.avatarURL}}"/>
-    <div class="container">
-        <div class="controls">
-            <div class="btn-group pull-right">
-                <button type="button" class="btn btn-default" id="" data-toggle="modal" data-target="#newQuestion"><i class="fa fa-plus"></i> New Question</button>
-            </div>
-        </div>    
-            <!--<h1>Open Questions</h1>-->
-            <!--{{#each questions}}-->
-                <!--{{>  question}}-->
-            <!--{{/each}}-->
-            {{> reactiveTable collection=questions settings=settings}}
+    <div class="container dashboard">
+        {{> yield}}
     </div>
-    <!-- New Question Modal -->
-   <div class="modal fade" id="newQuestion" tabindex="-1" role="dialog" aria-labelledby="newQuestion">
-    <div class="modal-dialog">
-      {{> newQuestion}}
+</template>
+<template name="openQuestions">
+    <div class="controls">
+        <div class="btn-group pull-right">
+            <a class="btn btn-default" href="{{pathFor route='newquestion'}}"><i class="fa fa-plus"></i> New Question</a>
+        </div>
     </div>
-   </div>
+    {{> reactiveTable collection=questions settings=settings}}
 </template>

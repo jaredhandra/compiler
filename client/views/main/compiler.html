@@ -5,7 +5,7 @@
         <li><a href="#">Questions</a></li>
         <li><a href="#">Find A Tutor</a></li>
     </ul>
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right" role="navigation">
         <li>
             <a href="javascript:void(0)" data-toggle="search">
                 <i class="fa fa-search fa-2x"></i>
@@ -25,9 +25,9 @@
                 <span class="caret"></span><p>{{> loggedUser}}</p>
             </a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a href="#">Account Settings</a></li>
+                <li><a href="#"><i class="fa fa-cog"></i> Account Settings</a></li>
                 <li class="divider"></li>
-                <li><a id="logout" href="#">Logout</a></li>
+                <li><a id="logout" href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
             </ul>
         </li>
     </ul>
