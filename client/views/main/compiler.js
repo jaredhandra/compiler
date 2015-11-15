@@ -7,7 +7,7 @@ Template.loggedUser.helpers({
 Template.avatar.helpers({
 	avatarURL: function(){
 		if(Meteor.user().avatar != null){
-			return Metoer.user().avatar;
+			return Meteor.user().avatar;
 		}
 		if(Meteor.user().profile.avatar_url != null){
 			return  Meteor.user().profile.avatar_url;

@@ -23,7 +23,9 @@ Template.post.helpers({
         return moment(date).fromNow();
     },
     askerAvatarURL: function () {
-        var asker = Questions.findOne(this.createdAt).user;
+        var askerUserId = Questions.findOne(this.createdAt).userId;
+        var asker = Meteor.users.findOne({'_id':askerUserId});
+        console.log(asker);
         if (asker.avatar != null) {
             return asker.avatar;
         }

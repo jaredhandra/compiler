@@ -10,16 +10,16 @@ Template.newQuestion.events({
   'submit .new-question': function(event) {
     var title = event.target.title.value;
     var questionText = event.target.questionText.value;
-    var user = Meteor.user();
+    var userId = Meteor.user()._id;
     var username = Meteor.user().username;
     var comments = [];
 
     Questions.insert({
+      userId : userId,
       title : title,
       questionText : questionText,
       createdAt : new Date(),
       username : username,
-      user : user,
       comments : comments
     });
 
