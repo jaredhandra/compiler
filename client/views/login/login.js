@@ -32,6 +32,8 @@
          if(err){
            //show err message
            console.log(err);
+           Router.go('/dashboard');
+           console.log("went to dashboard");
          } else {
            //show alert that says logged out
            console.log("Logged out");

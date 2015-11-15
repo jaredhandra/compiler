@@ -4,11 +4,10 @@ Template.userDashboard.events({
        Meteor.logout();
    },
    
-   'click .goToQuestion': function(event){
-	   event.preventDefault();
-	   window.location.href = '/question/' + this._id;
-	   
-   }
+   //'click .reactive-table tbody tr td': function(event){
+	//   event.preventDefault();
+	//   window.location.href = '/question/' + this._id;
+   //}
 });
 Template.userDashboard.helpers({
   	user: function() {
@@ -39,7 +38,7 @@ Template.openQuestions.helpers({
 			showNavigation: 'auto',
 			class: 'table table-hover',
 			fields: [
-				{key: 'title', label: 'Question', headerClass:'question-header', cellClass:'question-cell question-title'},
+				{key: '_id', label: 'Question', headerClass:'question-header', cellClass:'question-cell question-title', fn: function(_id){ title = Questions.find({'_id': _id}, {fields: {'title':1}}); console.log(title.toString()); return new Spacebars.SafeString('<a name="' + _id +'"href="question/' + _id + '">' + title + '</a>'); }},
 				{key: 'user.profile.name', label: 'User', headerClass:'question-header', cellClass:'question-cell question-user'},
 				{key: 'createdAt', label: 'Date', headerClass:'question-header', cellClass:'question-cell question-date', fn: function(value){date = new Date(value); return date.toDateString();}}
 			]

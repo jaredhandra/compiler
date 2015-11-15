@@ -20,7 +20,7 @@ OnBeforeActions = {
 		if(!Meteor.userId()){
 			this.render('main');
 		} else if(Meteor.loggingIn()) {
-
+			this.next();
 		}else {
 			this.next();
 		}
@@ -48,4 +48,4 @@ Router.route('/question/:_id', function(){
 });
 Router.route('/newquestion', function(){
 	this.render('newQuestion');
-})
+});
