@@ -1,286 +1,331 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
+
 body {
-  padding-top: 70px;
-  text-align: center;
-  font-family: "Roboto";
-  font-weight: 300;
+    padding-top: 70px;
+    text-align: center;
+    font-family: "Roboto";
+    font-weight: 300;
 }
+
 .navbar-right .fa-2x {
-  color: white;
-}
-.navbar {
-  padding-left: 14px;
-  padding-right: 14px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  line-height: 19px;
-  color: #333;
-}
-.navbar-brand {
-  font-size: 20px;
-}
-.navbar-buttons {
-  padding: 6px 10px;
-  font-size: 14px;
-}
-.navbar-right .p {
-  padding-top: 10px;
-  margin-top: 10px;
-  font-size: 14px;
-  line-height: 1.6180em;
-}
-.navbar-brand {
-  margin-top: 13px;
-  margin-bottom: 13px;
-  margin-left: 15px;
-}
-.navbar-left {
-  margin-top: 13px;
-  margin-bottom: 13px;
-}
-.navbar-right {
-  margin-right: 15px;
-}
-.loggedout {
-  margin-top: 13px;
-  margin-bottom: 13px;
-}
-.jumbotron {
-  max-height: 100%;
-  background-image: url("images/jumbo.jpg");
-	background-repeat: no-repeat;
-	background-size: cover;
-  height: 500px;
-  text-align: center;
-}
-.jumbotron h1 {
-  font-size: 48px;
-  font-weight: bold;
-  color: white;
-  margin-top: 140px;
-  text-shadow: black 0.01em 0.01em 0.01em;
-}
-.title {
-  padding-bottom: 20px;
-}
-.how {
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 20px;
-}
-.how h2 {
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-.how p {
-  text-align: justify;
-}
-.find {
-  padding-top: 70px;
-  padding-bottom: 70px;
-}
-.find p {
-  text-align: justify;
-}
-.circle {
-  background-color: #EEEEEE;
-  color: #FFFFFF;
-  border-radius: 100px;
-  display: inline-block;
-  margin: 0 17px;
-  padding: 15px;
-}
-#github {
-  background-color: #403A3A;
-}
-#github:hover {
-  background-color: #4D4D4d;
-  color: white;
-}
-#google {
-  background-color: #F74933;
-}
-#google:hover {
-  background-color: #FF7566;
-  color: white;
-}
-.center {
-  text-align: center;
-  padding-top: 20px;
-}
-.login-buttons {
-  padding-top: 20px;
-  padding-bottom: 40px;
-}
-.or {
-  padding-bottom: 40px;
-}
-#register-form .form-control{
-  background-color: rgba(0, 0, 0, 0.09);
-  box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.09) inset;
-}
-#login-form .form-control{
-  background-color: rgba(0, 0, 0, 0.09);
-  box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.09) inset;
-}
-.controls {
-  padding-top: 20px;
-}
-.card, .dialog {
-    position: relative;
-    display: inline-block;
-    width: 300px;
-    height: 240px;
-    vertical-align: top;
-    background-color: #5677fc;
-    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
     color: white;
-    }
-    
-    .dialog {
-      box-sizing: border-box;
-      padding: 16px;
-      margin:10px;
-    }
-    
-    .dialog > .content {
-      height: 170px;
-      font-size: 0.9em;
-    }
-    
-    .dialog > .content > .title {
-      font-size: 1.3em;
-    }
-    
-    .dialog > .button {
-      width: 90px;
-      float: right;
-    }
-#new-question .form-control{
-  background-color: rgba(0, 0, 0, 0.09);
-  box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.09) inset;
 }
+
+.navbar {
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 19px;
+    color: #333;
+}
+
+.navbar-brand {
+    font-size: 20px;
+}
+
+.navbar-buttons {
+    padding: 6px 10px;
+    font-size: 14px;
+}
+
+.navbar-right .p {
+    padding-top: 10px;
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.6180em;
+}
+
+.navbar-brand {
+    margin-top: 13px;
+    margin-bottom: 13px;
+    margin-left: 15px;
+}
+
+.navbar-left {
+    margin-top: 13px;
+    margin-bottom: 13px;
+}
+
+.navbar-right {
+    margin-right: 15px;
+}
+
+.loggedout {
+    margin-top: 13px;
+    margin-bottom: 13px;
+}
+
+.jumbotron {
+    max-height: 100%;
+    background-image: url("images/jumbo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    text-align: center;
+}
+
+.jumbotron h1 {
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+    margin-top: 140px;
+    text-shadow: black 0.01em 0.01em 0.01em;
+}
+
+.title {
+    padding-bottom: 20px;
+}
+
+.how {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+}
+
+.how h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.how p {
+    text-align: justify;
+}
+
+.find {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.find p {
+    text-align: justify;
+}
+
+.circle {
+    background-color: #EEEEEE;
+    color: #FFFFFF;
+    border-radius: 100px;
+    display: inline-block;
+    margin: 0 17px;
+    padding: 15px;
+}
+
+#github {
+    background-color: #403A3A;
+}
+
+#github:hover {
+    background-color: #4D4D4d;
+    color: white;
+}
+
+#google {
+    background-color: #F74933;
+}
+
+#google:hover {
+    background-color: #FF7566;
+    color: white;
+}
+
+.center {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.login-buttons {
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+.or {
+    padding-bottom: 40px;
+}
+
+#register-form .form-control {
+    background-color: rgba(0, 0, 0, 0.09);
+    box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.09) inset;
+}
+
+#login-form .form-control {
+    background-color: rgba(0, 0, 0, 0.09);
+    box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.09) inset;
+}
+
+.controls {
+    padding-top: 20px;
+}
+
+#new-question .form-control {
+    background-color: rgba(0, 0, 0, 0.09);
+    box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.09) inset;
+}
+
 #new-question {
-  padding-top: 40px;
+    padding-top: 40px;
 }
+
 .submit {
-  padding-top: 20px;
+    padding-top: 20px;
 }
+
 .typeahead,
 .ttquery,
 .tt-dropdown-menu {
-  width: 422px;
-  margin-top: 3px;
-  padding: 8px 0;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  -webkit-border-radius: 8px;
-     -moz-border-radius: 8px;
-          border-radius: 8px;
-  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-          box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    width: 422px;
+    margin-top: 3px;
+    padding: 8px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
 }
-.goToQuestion{
-  color: #ccc;
+
+.goToQuestion {
+    color: #ccc;
 }
+
+.question {
+    padding: 20px;
+}
+
+.question .title {
+    text-align: center;
+}
+
+.question-body {
+    text-align: left;
+}
+
+.question-body .username {
+    font-weight: 700;
+}
+
+.question-body .question-info {
+    color: #999;
+    font-size: 14px;
+}
+
 .question-header {
-  text-align: left;
-  color: #999;
-  font-weight: 200;
-  font-size: 14px;
+    text-align: left;
+    color: #999;
+    font-weight: 200;
+    font-size: 14px;
 }
+
+.question-body .question-text {
+    font-weight: 400;
+}
+
 .question-cell {
-  text-align: left;
-  padding-top: 12px;
-  padding-bottom: 12px;
+    text-align: left;
+    padding-top: 12px;
+    padding-bottom: 12px;
 }
+
 .question-title {
-  font-weight: 400;
-  font-size: 17px;
-  margin-top: 12px;
+    font-weight: 400;
+    font-size: 17px;
+    margin-top: 12px;
 }
+
+.question-top {
+    padding-bottom: 20px;
+}
+
 table tr {
-  height: 60px;
-  margin-top: 14px;
+    height: 60px;
+    margin-top: 14px;
 }
+
 .dashboard {
-  padding-top:40px;
+    padding-top: 40px;
 }
+
 /***Text Area Styles***/
 * {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid ~ label {
- font-size: 0.75em;
- color: #5677fc;
- top: -2.25rem;
- -webkit-transition: all 0.125s ease;
- transition: all 0.125s ease;
+    font-size: 0.75em;
+    color: #5677fc;
+    top: -2.25rem;
+    -webkit-transition: all 0.125s ease;
+    transition: all 0.125s ease;
 }
 
 .styled-input {
-  float: left;
-  width: 33.3333%;
-  margin: 2rem 0 1rem;
-  position: relative;
+    float: left;
+    width: 33.3333%;
+    margin: 2rem 0 1rem;
+    position: relative;
 }
 
 .styled-input label {
-  color: #5677fc;
-  padding: 1rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  -webkit-transition: all 0.25s ease;
-  transition: all 0.25s ease;
-  pointer-events: none;
+    color: #5677fc;
+    padding: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+    pointer-events: none;
 }
 
-.styled-input.wide { width: 100%; }
+.styled-input.wide {
+    width: 100%;
+}
 
 input,
 textarea {
-  padding: 1rem 1rem;
-  border: 0;
-  width: 100%;
-  background-color:#ECECEC;
+    padding: 1rem 1rem;
+    border: 0;
+    width: 100%;
+    background-color: #ECECEC;
 }
 
 input ~ span,
 textarea ~ span {
-  display: block;
-  width: 0;
-  height: 3px;
-  background: #5677fc;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  -webkit-transition: all 0.125s ease;
-  transition: all 0.125s ease;
+    display: block;
+    width: 0;
+    height: 3px;
+    background: #5677fc;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    -webkit-transition: all 0.125s ease;
+    transition: all 0.125s ease;
 }
 
 input:focus,
-textarea:focus { outline: 0; }
+textarea:focus {
+    outline: 0;
+}
 
 input:focus ~ span,
 textarea:focus ~ span {
-  width: 100%;
-  -webkit-transition: all 0.075s ease;
-  transition: all 0.075s ease;
+    width: 100%;
+    -webkit-transition: all 0.075s ease;
+    transition: all 0.075s ease;
 }
 
 textarea {
-  width: 100%;
-  min-height: 15em;
+    width: 100%;
+    min-height: 15em;
 }
-.commentSubmit{
-  float:right;
+
+.commentSubmit {
+    float: right;
 }
-.commentButton{
-  font-size:1em;
+
+.commentButton {
+    font-size: 1em;
 }
