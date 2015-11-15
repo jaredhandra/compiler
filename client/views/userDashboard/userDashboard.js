@@ -17,6 +17,10 @@ Template.userDashboard.helpers({
 			return Questions.find();
 		},
 	avatarURL: function(){
+
+		if(Meteor.user().avatar != null){
+			return Meteor.user().avatar;
+		}
 		if(Meteor.user().profile.avatar_url != null){
 			return  Meteor.user().profile.avatar_url;
 		}
@@ -26,6 +30,9 @@ Template.userDashboard.helpers({
 	},
 	tags: function() {
 		return Tags.find();
+	},
+	questionTitle: function(_id) {
+		return Questions.findOne({'_id': _id}, {'title':1});
 	}
 });
 Template.openQuestions.helpers({
@@ -38,7 +45,7 @@ Template.openQuestions.helpers({
 			showNavigation: 'auto',
 			class: 'table table-hover',
 			fields: [
-				{key: '_id', label: 'Question', headerClass:'question-header', cellClass:'question-cell question-title', fn: function(_id){ title = Questions.find({'_id': _id}, {fields: {'title':1}}); console.log(title.toString()); return new Spacebars.SafeString('<a name="' + _id +'"href="question/' + _id + '">' + title + '</a>'); }},
+				{key: '_id', label: 'Question', headerClass:'question-header', cellClass:'question-cell question-title',tmpl: Template.questionTitle},
 				{key: 'user.profile.name', label: 'User', headerClass:'question-header', cellClass:'question-cell question-user'},
 				{key: 'createdAt', label: 'Date', headerClass:'question-header', cellClass:'question-cell question-date', fn: function(value){date = new Date(value); return date.toDateString();}}
 			]
