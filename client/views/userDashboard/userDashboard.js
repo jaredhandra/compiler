@@ -43,7 +43,7 @@ Template.openQuestions.helpers({
 			class: 'table table-hover',
 			fields: [
 				{key: '_id', label: 'Question', headerClass:'question-header', cellClass:'question-cell question-title', fn: function(_id){ title = Questions.find({'_id': _id}, {'title':1}).toString(); console.log(Questions.find({'_id': _id}, {'title':1})); return new Spacebars.SafeString('<a name="' + _id +'"href="question/' + _id + '">' + title + '</a>'); }},
-				{key: 'user.profile.name', label: 'User', headerClass:'question-header', cellClass:'question-cell question-user'},
+				{key: 'username', label: 'User', headerClass:'question-header', cellClass:'question-cell question-user'},
 				{key: 'createdAt', label: 'Date', headerClass:'question-header', cellClass:'question-cell question-date', fn: function(value){date = new Date(value); return date.toDateString();}}
 			]
 		}
