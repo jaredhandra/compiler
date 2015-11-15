@@ -4,10 +4,9 @@
             <div class="col-md-12">
                 <div class="title">
                     <h1>{{title}}</h1>
-
                     <div class="tags"></div>
                 </div>
-                <div class="row">
+                <div class="row question-block">
                     <div class="col-md-1">
                         {{#if askerAvatarURL}}
                             <img class="img-rounded" style="height:45px; margin-top: -1px;" src="{{askerAvatarURL}}"/>
@@ -29,10 +28,26 @@
                     </div>
                 </div>
                 {{#each comments}}
+                    <hr>
                     <div class="row individual-comment">
-                        <p>{{user.username}}</p>
-
-                        <p>{{commentText}}</p>
+                        <div class="col-md-1">
+                            {{#if commenterAvatarURL}}
+                                <img class="img-rounded" style="height:45px; margin-top: -1px;" src="{{commenterAvatarURL}}"/>
+                            {{else}}
+                                <i class="fa fa-user fa-2x"></i>
+                            {{/if}}
+                        </div>
+                        <div class="col-md-11 container-fluid">
+                            <div class="row comment-top">
+                                <div class="username pull-left">
+                                    <a href="">{{user.username}}</a>
+                                </div>
+                                <div class="pull-right">
+                                    {{commentDate}}
+                                </div>
+                            </div>
+                            <div class="row comment-text">{{commentText}}</div>
+                        </div>
                     </div>
                 {{/each}}
                 <div class="row">

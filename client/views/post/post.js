@@ -7,7 +7,8 @@ Template.post.events({
         var newComment = {
             "user": user,
             "username": username,
-            "commentText": comment
+            "commentText": comment,
+            "createdAt": new Date()
         };
         Questions.update(
             {_id: questionId},
@@ -25,7 +26,6 @@ Template.post.helpers({
     askerAvatarURL: function () {
         var askerUserId = Questions.findOne(this.createdAt).userId;
         var asker = Meteor.users.findOne({'_id':askerUserId});
-        console.log(asker);
         if (asker.avatar != null) {
             return asker.avatar;
         }
@@ -35,6 +35,22 @@ Template.post.helpers({
         if (asker.services.google.picture != null) {
             return asker.services.google.picture;
         }
+    },
+    commenterAvatarURL: function(){
+        var commenter = this.user;
+        if (commenter.avatar != null) {
+            return commenter.avatar;
+        }
+        if (commenter.profile.avatar_url != null) {
+            return commenter.profile.avatar_url;
+        }
+        if (commenter.services.google.picture != null) {
+            return commenter.services.google.picture;
+        }
+    },
+    commentDate: function(){
+        var date = new Date(this.createdAt);
+        return moment(date).fromNow();
     }
 });
 //Couldn't get the question id from the dom
