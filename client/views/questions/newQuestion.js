@@ -11,43 +11,25 @@ Template.newQuestion.events({
     var title = event.target.title.value;
     var questionText = event.target.questionText.value;
     var user = Meteor.user();
+    var username = Meteor.user().username;
+    var comments = [];
 
     Questions.insert({
       title : title,
       questionText : questionText,
       createdAt : new Date(),
-      user : user
+      username : username,
+      user : user,
+      comments : comments
     });
 
     event.target.title.value ="";
     event.target.questionText.value="";
     document.getElementById("new-question").reset();
+    Router.go('/dashboard');
     return false;
   }
 });
 Template.newQuestion.rendered = function() {
 	Meteor.typeahead.inject($('.typeahead'));
 }
-
-Template.newQuestion.events({
-	'submit .new-question': function(event) {
-		var title = event.target.title.value;
-		var questionText = event.target.questionText.value;
-		var user = Meteor.user();
-		var username = Meteor.user().username;
-
-		Questions.insert({
-			title : title,
-			questionText : questionText,
-			createdAt : new Date(),
-			username : username,
-			user : user
-		});
-
-		event.target.title.value ="";
-		event.target.questionText.value="";
-		document.getElementById("new-question").reset();
-         $('#newQuestion').modal('hide');
-		return false;
-	}
-});
