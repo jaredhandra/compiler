@@ -399,5 +399,7 @@ textarea {
 }
 
 .twitter-typeahead {
-  width: 100%;
+}
+.tags {
+    text-align: left;
 }
