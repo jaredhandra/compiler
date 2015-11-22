@@ -12,9 +12,12 @@
         <div class="form-group">
             <textarea class="form-control" rows="5" name="questionText" placeholder="Question Text..." required></textarea>
         </div>
-        <div class="form-group">
-            <input class="form-control input-lg" name="tags" type="text" placeholder="Categories" required="You must select at least one category!" autocomplete="off" spellcheck="off" data-source="tags" />
-        </div>
+        <input 
+       class="form-control input-lg typeahead" name="tags" type="text"
+       placeholder="Categories"
+       required="You must select at least one category!"
+       autocomplete="off" spellcheck="off"
+       data-source="tags"/>
         <div class="form-group submit">
             <input type="submit" value="Submit" class="btn btn-primary btn-lg btn-block"/>
         </div>
