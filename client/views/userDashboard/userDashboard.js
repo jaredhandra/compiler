@@ -51,4 +51,10 @@ Template.openQuestions.helpers({
 			]
 		}
 	}
-})
+});
+Template.openQuestions.events({
+'click #newQuestionBtn': function(){
+  	 Session.set("tempPickedTags", []);
+  	}
+});
+
