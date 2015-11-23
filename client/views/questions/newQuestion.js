@@ -7,6 +7,9 @@
 //	Meteor.typeahead.inject($('.typeahead'));
 //}
 Template.newQuestion.events({
+  'keypress #tag': function(e) { 
+  	addTagOnEnter(e);
+},
   'submit .new-question': function(event) {
     var title = event.target.title.value;
     var questionText = event.target.questionText.value;
@@ -32,12 +35,7 @@ Template.newQuestion.events({
     return false;
   },
   'click #addTag': function(){
-  	tempPickedTags = Session.get("tempPickedTags");
-  	//TODO: need to add error checking to make sure the tag is in the collection..
-    var tagToAdd =  document.getElementById('tag').value;
-    tempPickedTags.push(tagToAdd);
-    Session.set("tempPickedTags", tempPickedTags);
-    document.getElementById('tag').value = "";
+  	addTag();
 },
 });
 Template.newQuestion.helpers({
@@ -54,3 +52,19 @@ Template.newQuestion.rendered = function() {
 Template.userPickedTags.tempPickedTags = function() {
   return Session.get("tempPickedTags");
 };
+
+function addTagOnEnter(tagName){
+	 if (tagName.keyCode == 13){
+	 addTag();
+	  return false;
+	 }
+}
+
+function addTag(){
+	tempPickedTags = Session.get("tempPickedTags");
+  	//TODO: need to add error checking to make sure the tag is in the collection..
+    var tagToAdd =  document.getElementById('tag').value;
+    tempPickedTags.push(tagToAdd);
+    Session.set("tempPickedTags", tempPickedTags);
+    document.getElementById('tag').value = "";
+}
