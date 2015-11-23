@@ -399,7 +399,15 @@ textarea {
 }
 
 .twitter-typeahead {
+  margin-bottom: 10px;
 }
 .tags {
     text-align: left;
+}
+li.userPickedTags {
+    list-style: none;
+    background: #5F88FF;
+    width: 100px;
+    color: white;
+    padding: 4px;
 }
