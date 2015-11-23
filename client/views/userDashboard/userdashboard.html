@@ -6,7 +6,7 @@
 <template name="openQuestions">
     <div class="controls">
         <div class="btn-group pull-right">
-            <a class="btn btn-default" href="{{pathFor route='newquestion'}}"><i class="fa fa-plus"></i> New Question</a>
+            <a class="btn btn-default" id="newQuestionBtn" href="{{pathFor route='newquestion'}}"><i class="fa fa-plus"></i> New Question</a>
         </div>
     </div>
     {{> reactiveTable collection=questions settings=settings}}

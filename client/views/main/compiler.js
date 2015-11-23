@@ -1,6 +1,13 @@
 Template.loggedUser.helpers({
   user: function() {
-     return Meteor.user().username || Meteor.user().profile.login || Meteor.user().profile.name
+  	//We might want to move this route to a different helper if this is going to be used in other places.
+  	if(Meteor.user()!=null){
+  		Router.go('/dashboard');
+    	return Meteor.user().username
+	}
+	else{
+		Router.go('/');
+	}
   }
 });
 
