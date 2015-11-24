@@ -37,6 +37,10 @@ Template.newQuestion.events({
   'click #addTag': function(){
   	addTag();
 },
+'click #tagRemove': function(event){
+  var tagName = convertObjectToString($(this));
+    removeTag(tagName);
+},
 });
 Template.newQuestion.helpers({
   tags: function() {
@@ -59,7 +63,13 @@ function addTagOnEnter(tagName){
 	  return false;
 	 }
 }
-
+function removeTag(tagToRemove){
+ var index = tempPickedTags.indexOf(tagToRemove);
+ if (index > -1) {
+    tempPickedTags.splice(index, 1);
+}
+ Session.set("tempPickedTags", tempPickedTags);
+}
 function addTag(){
 	tempPickedTags = Session.get("tempPickedTags");
   	//TODO: need to add error checking to make sure the tag is in the collection..
@@ -67,4 +77,17 @@ function addTag(){
     tempPickedTags.push(tagToAdd);
     Session.set("tempPickedTags", tempPickedTags);
     document.getElementById('tag').value = "";
+}
+
+function convertObjectToString(jqObject){
+  //temporary method I had to create to return the name of the tag from a jquery object...
+  var string="";
+  var objectCount = jqObject.length;
+  var count = 0;
+
+  while(count < objectCount){
+    string = string + jqObject[count];
+    count++;
+  }
+  return string;
 }

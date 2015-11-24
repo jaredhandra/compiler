@@ -425,3 +425,9 @@ li.userPickedTags {
     padding: 4px;
     margin: 3px;
 }
+
+.tagRemove{
+    color: #383737;
+    top:2px;
+    cursor:pointer;
+}

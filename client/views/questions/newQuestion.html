@@ -28,6 +28,6 @@
 
 <template name="userPickedTags">
     {{#each tempPickedTags}}
-      <li class="userPickedTags">{{this}}</li>
+      <li class="userPickedTags">{{this}} <span id="tagRemove" class="glyphicon glyphicon-remove tagRemove" aria-hidden="true"></span></li>
     {{/each}}
 </template>
