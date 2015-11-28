@@ -7,19 +7,21 @@
     </div>
     <form class="form new-question" id="new-question" action="" required>
         <div class="form-group">
-            <input type="text" class="form-control input-lg" placeholder="Question Title" name="title" id="" required>
+            <input type="text" class="form-control" placeholder="Question Title" name="title" id="" required>
         </div>
         <div class="form-group">
             <textarea class="form-control" rows="5" name="questionText" placeholder="Question Text..." required></textarea>
         </div>
-        <div class=tags>
-        <input 
-       class="form-control input-lg typeahead" name="tags" id="tag" type="text"
-       placeholder="Categories"
-       autocomplete="off" spellcheck="off"
-       data-source="tags"/> <button type="button" id="addTag" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Tag</button>
-       </div>
-        {{> userPickedTags}}
+        <div class="form-group">
+            <div class=tags>
+                <input
+                        class="form-control typeahead" name="tags" id="tag" type="text"
+                        placeholder="Categories"
+                        autocomplete="off" spellcheck="off"
+                        data-source="tags"/> <button type="button" id="addTag" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Tag</button>
+            </div>
+            {{> userPickedTags}}
+        </div>
         <div class="form-group submit">
             <input type="submit" value="Submit" class="btn btn-primary btn-lg btn-block"/>
         </div>
@@ -27,7 +29,9 @@
 </template>
 
 <template name="userPickedTags">
-    {{#each tempPickedTags}}
-      <li class="userPickedTags">{{this}} <span id="tagRemove" class="glyphicon glyphicon-remove tagRemove" aria-hidden="true"></span></li>
-    {{/each}}
+    <div class="row list-inline">
+        {{#each tempPickedTags}}
+            <li class="userPickedTags">{{this}} <span id="tagRemove" class="glyphicon glyphicon-remove tagRemove" aria-hidden="true"></span></li>
+        {{/each}}
+    </div>
 </template>

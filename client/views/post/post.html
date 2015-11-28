@@ -4,7 +4,11 @@
             <div class="col-md-12">
                 <div class="title">
                     <h1>{{title}}</h1>
-                    <div class="tags"></div>
+                    <div class="tags-question pull-right">
+                        {{#each tags}}
+                                <div class="btn btn-primary">{{this}}</div>
+                        {{/each}}
+                    </div>
                 </div>
                 <div class="row question-block">
                     <div class="col-md-1">

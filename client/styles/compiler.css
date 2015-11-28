@@ -22,6 +22,7 @@ body {
 
 .navbar-brand {
     font-size: 20px;
+    color: white;
 }
 
 .navbar-buttons {
@@ -425,9 +426,11 @@ li.userPickedTags {
     padding: 4px;
     margin: 3px;
 }
-
 .tagRemove{
     color: #383737;
     top:2px;
     cursor:pointer;
+}
+.tags-question {
+    padding-bottom: 10px;
 }
