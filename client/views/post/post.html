@@ -1,26 +1,79 @@
 <template name="post">
-    <div class="dialog row">
-      <div class="content col-md-12">
-        <div class="title">{{title}}</div><br>
-        <div>{{questionText}}</div><br>
-      </div>
-	  <div>
-		  comments
-	  </div>
+    <div class="container">
+        <div class="row question">
+            <div class="col-md-12">
+                <div class="title">
+                    <h1>{{title}}</h1>
+                    <div class="tags-question pull-right">
+                        {{#each tags}}
+                                <div class="btn btn-primary">{{this}}</div>
+                        {{/each}}
+                    </div>
+                </div>
+                <div class="row question-block">
+                    <div class="col-md-1">
+                        {{#if askerAvatarURL}}
+                            <img class="img-rounded" style="height:45px; margin-top: -1px;" src="{{askerAvatarURL}}"/>
+                        {{else}}
+                            <i class="fa fa-user fa-2x"></i>
+                        {{/if}}
+                    </div>
+                    <div class="col-md-11 question-body container-fluid">
+                        <div class="row question-top">
+                            <div class="username pull-left">
+                                <a href="">{{username}}</a>
+                            </div>
+                            <div class="question-info pull-right">
+                                <!--Tags go here -->
+                                {{questionDate}}
+                            </div>
+                        </div>
+                        <div class="row question-text">{{questionText}}</div>
+                    </div>
+                </div>
+                {{#each comments}}
+                    <hr>
+                    <div class="row individual-comment">
+                        <div class="col-md-1">
+                            {{#if commenterAvatarURL}}
+                                <img class="img-rounded" style="height:45px; margin-top: -1px;" src="{{commenterAvatarURL}}"/>
+                            {{else}}
+                                <i class="fa fa-user fa-2x"></i>
+                            {{/if}}
+                        </div>
+                        <div class="col-md-11 container-fluid">
+                            <div class="row comment-top">
+                                <div class="username pull-left">
+                                    <a href="">{{user.username}}</a>
+                                </div>
+                                <div class="pull-right">
+                                    {{commentDate}}
+                                </div>
+                            </div>
+                            <div class="row comment-text">{{commentText}}</div>
+                        </div>
+                    </div>
+                {{/each}}
+                <div class="row">
+                </div>
+                <div class="row add-reply">
+                    <form class="form new-comment" id="new-comment" action="" required>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="styled-input wide">
+                                    <textarea name="commentText" required></textarea>
+                                    <label>Comment</label>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group commentSubmit">
+                            <input type="submit" value="Add Comment" class="btn btn-primary btn-lg btn-block"
+                                   style="font-size: 1em;"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-  
-<form class="form new-comment" id="new-comment" action="" required>
-    <div class="row">
-    	<div class="col-md-12">
-    		<div class="styled-input wide">
-     		 <textarea name="commentText" required></textarea>
-      		 <label>Comment</label>
-      		 <span></span> 
-      		</div>
-    	</div>
-    </div>
-    <div class="form-group commentSubmit">
-        <input type="submit" value="Add Comment" class="btn btn-primary btn-lg btn-block" style="font-size: 1em;"/>
-     </div>
-</form>
 </template>
