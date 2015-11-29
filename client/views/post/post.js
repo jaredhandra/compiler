@@ -20,11 +20,11 @@ Template.post.events({
 });
 Template.post.helpers({
     questionDate: function () {
-        var date = new Date(Questions.findOne(this.createdAt).createdAt);
+        var date = new Date(Questions.findOne(this).createdAt);
         return moment(date).fromNow();
     },
     askerAvatarURL: function () {
-        var askerUserId = Questions.findOne(this.createdAt).userId;
+        var askerUserId = Questions.findOne(this).userId;
         var asker = Meteor.users.findOne({'_id':askerUserId});
         if (asker.avatar != null) {
             return asker.avatar;
