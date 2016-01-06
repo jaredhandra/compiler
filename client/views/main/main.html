@@ -1,6 +1,6 @@
 <template name="main">
     {{#if currentUser}}
-        {{> userDashboard}}
+        {{> yield}}
     {{else}}
         {{> splashScreen}}
     {{/if}}

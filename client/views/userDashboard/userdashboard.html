@@ -1,13 +1,63 @@
 <template name="userDashboard">
-    <div class="container dashboard">
-        {{> yield}}
+    <div class="wrapper dashboard">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row mtbox">
+                        <div class="col-md-3">
+                            <div class="box">
+                                <div class="row"><span class="fa fa-newspaper-o fa-4x"></span></div>
+                                <span class="dashnum"><h3>{{totalQuestions}}</h3></span>
+                                <p>Total Questions Open</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="box">
+                                <div class="row"><span class="fa fa-inbox fa-4x"></span></div>
+                                <span class="dashnum"><h3>{{userQuestions}}</h3></span>
+                                <p>Your Questions Open</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="box">
+                                <div class="row"><span class="fa fa-bullseye fa-4x"></span></div>
+                                <span class="dashnum"><h3>{{userQuestions}}</h3></span>
+                                <p>Total Answers Available</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="box">
+                                <div class="row"><span class="fa fa-users fa-4x"></span></div>
+                                <span class="dashnum"><h3>{{userQuestions}}</h3></span>
+                                <p>Tutors Available</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                {{> openQuestions}}
+              </div>
+            </div>
+        </div>
     </div>
 </template>
 <template name="openQuestions">
-    <div class="controls">
+    <!-- <div class="controls">
         <div class="btn-group pull-right">
             <a class="btn btn-default" id="newQuestionBtn" href="{{pathFor route='newquestion'}}"><i class="fa fa-plus"></i> New Question</a>
         </div>
+    </div> -->
+    <div class="question-container">
+      {{> reactiveTable collection=questions settings=settings}}
     </div>
-    {{> reactiveTable collection=questions settings=settings}}
+</template>
+<template name="tagCard">
+    <div class="col-md-4" id="tags">
+        <div class="tagCard">
+            <div class="tagTitle">{{name}}</div>
+            <div class="tagDescription">{{description}}</div>
+        </div>
+    </div>
 </template>

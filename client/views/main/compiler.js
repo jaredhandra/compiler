@@ -47,7 +47,7 @@ Router.route('/', function (){
 });
 Router.route('/dashboard', function(){
 	this.render('userDashboard');
-	this.render('openQuestions');
+	// this.render('openQuestions');
 });
 Router.route('/question/:_id', function(){
 	this.render('post', {
