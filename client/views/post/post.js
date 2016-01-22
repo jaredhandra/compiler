@@ -1,10 +1,12 @@
 Template.post.events({
     'submit .new-comment': function (event) {
+        var commentId = Random.id();
         var comment = event.target.commentText.value;
         var user = Meteor.user();
         var username = Meteor.user().username;
         var questionId = findQuestionIdFromUrl(window.location.pathname);
         var newComment = {
+            "commentId": commentId,
             "user": user,
             "username": username,
             "commentText": comment,

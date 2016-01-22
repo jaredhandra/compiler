@@ -3,6 +3,7 @@
         <div class="row question">
             <div class="col-md-12">
                 <div class="title">
+                  <input type="hidden" name="questionId" value="{{_id}}">
                     <h1>{{title}}</h1>
                     <div class="tags-question pull-right">
                         {{#each tags}}
@@ -34,6 +35,7 @@
                 {{#each comments}}
                     <hr>
                     <div class="row individual-comment">
+                      <input type="hidden" name="commentId" value="{{commentId}}">
                         <div class="col-md-1">
                             {{#if commenterAvatarURL}}
                                 <img class="img-rounded" style="height:45px; margin-top: -1px;" src="{{commenterAvatarURL}}"/>
