@@ -7,6 +7,7 @@ Template.post.events({
         var questionId = findQuestionIdFromUrl(window.location.pathname);
         var newComment = {
             "commentId": commentId,
+            "questionId": questionId,
             "user": user,
             "username": username,
             "commentText": comment,
@@ -18,7 +19,13 @@ Template.post.events({
         )
         document.getElementById("new-comment").reset();
         return false;
-    }
+    },
+      'click #chooseBestAnswer': function(e) {
+        Questions.update(
+            {_id: this.questionId},
+            {$set: {bestAnswer: this.commentId}}
+        )
+    },
 });
 Template.post.helpers({
     questionDate: function () {
@@ -53,6 +60,21 @@ Template.post.helpers({
     commentDate: function(){
         var date = new Date(this.createdAt);
         return moment(date).fromNow();
+    },
+    isCurrentUserAsker: function(){
+      var posterId = Questions.findOne(this.questionId).userId;
+      var currentUserId = Meteor.user()._id;
+      if(currentUserId === posterId){
+        return true;
+      }
+      return false;
+    },
+    isBestAnswer: function(){
+      var question = Questions.findOne(this.questionId);
+      if(question.bestAnswer === this.commentId){
+        return true;
+      }
+      return false;
     }
 });
 //Couldn't get the question id from the dom

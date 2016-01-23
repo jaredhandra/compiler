@@ -7,7 +7,7 @@
 //	Meteor.typeahead.inject($('.typeahead'));
 //}
 Template.newQuestion.events({
-  'keypress #tag': function(e) { 
+  'keypress #tag': function(e) {
   	addTagOnEnter(e);
 },
   'submit .new-question': function(event) {
@@ -17,6 +17,7 @@ Template.newQuestion.events({
     var username = Meteor.user().username;
     var comments = [];
     var tags = tempPickedTags;
+    var bestAnswer = "none";
 
     Questions.insert({
       userId : userId,
@@ -24,6 +25,7 @@ Template.newQuestion.events({
       questionText : questionText,
       createdAt : new Date(),
       username : username,
+      bestAnswer : bestAnswer,
       comments : comments,
       tags : tags
     });
