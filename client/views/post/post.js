@@ -43,16 +43,26 @@ Template.post.helpers({
         }
     },
     commenterAvatarURL: function(){
-        var commenter = this.user;
+        var question = Questions.findOne(this.questionId);
+        var commenter;
+        if(isBestAnswerFunc(question, this.commentId)){
+          var bestAnswerId = Questions.findOne(this.questionId).bestAnswer;
+          var comment = Comments.find({ commentId: bestAnswerId}).fetch();
+          commenter = comment[0].user;
+        }
+        else{
+          commenter = this.user;
+        }
         if (commenter.avatar != null) {
             return commenter.avatar;
         }
-        if (commenter.profile.avatar_url != null) {
+        if (commenter.profile != null && commenter.profile.avatar_url != null) {
             return commenter.profile.avatar_url;
         }
-        if (commenter.services.google.picture != null) {
+        if (commenter.services != null && commenter.services.google != null && commenter.services.google.picture != null) {
             return commenter.services.google.picture;
         }
+        return null;
     },
     commentDate: function(){
         var date = new Date(this.createdAt);
@@ -66,19 +76,25 @@ Template.post.helpers({
       }
       return false;
     },
-    isBestAnswer: function(){
-      var question = Questions.findOne(this.questionId);
-      if(question.bestAnswer === this.commentId){
-        return true;
-      }
-      return false;
-    },
     questionComments: function(){
-      return Comments.find({ questionId: this._id }).fetch();
+      var question = Questions.findOne(this._id);
+      var bestAnswerId = question.bestAnswer;
+      return Comments.find({ questionId: this._id, commentId: { $not: bestAnswerId }}).fetch();
+    },
+    bestAnswer: function(){
+      var question = Questions.findOne(this._id);
+      var bestAnswerId = question.bestAnswer;
+      return Comments.find({ commentId: bestAnswerId}).fetch();
     }
 });
 //Couldn't get the question id from the dom
 //For now pulling it from the url..
 function findQuestionIdFromUrl(pathname) {
     return pathname.substring(10, pathname.length);
+}
+function isBestAnswerFunc(question, commentId){
+  if(question.bestAnswer === commentId){
+    return true;
+  }
+  return false;
 }

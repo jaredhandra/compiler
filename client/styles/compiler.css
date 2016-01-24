@@ -435,10 +435,7 @@ li.userPickedTags {
     padding-bottom: 10px;
 }
 /*best answer*/
-.bestAnswerTitle {
-    text-align: center;
-    font-weight: bold;
-    color: #259b24;
-    border-bottom: 1px solid #259b24;
-    margin-bottom: 1%;
+.bestAnswer {
+  border: 1px solid green;
+padding: 3%;
 }
