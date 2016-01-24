@@ -1,22 +1,19 @@
 Template.post.events({
     'submit .new-comment': function (event) {
         var commentId = Random.id();
-        var comment = event.target.commentText.value;
+        var commentText = event.target.commentText.value;
         var user = Meteor.user();
         var username = Meteor.user().username;
         var questionId = findQuestionIdFromUrl(window.location.pathname);
-        var newComment = {
-            "commentId": commentId,
-            "questionId": questionId,
-            "user": user,
-            "username": username,
-            "commentText": comment,
-            "createdAt": new Date()
-        };
-        Questions.update(
-            {_id: questionId},
-            {$push: {comments: newComment}}
-        )
+
+        Comments.insert({
+          commentId : commentId,
+          questionId : questionId,
+          user : user,
+          createdAt : new Date(),
+          username : username,
+          commentText : commentText,
+        });
         document.getElementById("new-comment").reset();
         return false;
     },
@@ -75,6 +72,9 @@ Template.post.helpers({
         return true;
       }
       return false;
+    },
+    questionComments: function(){
+      return Comments.find({ questionId: this._id }).fetch();
     }
 });
 //Couldn't get the question id from the dom

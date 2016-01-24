@@ -15,7 +15,6 @@ Template.newQuestion.events({
     var questionText = event.target.questionText.value;
     var userId = Meteor.user()._id;
     var username = Meteor.user().username;
-    var comments = [];
     var tags = tempPickedTags;
     var bestAnswer = "none";
 
@@ -26,7 +25,6 @@ Template.newQuestion.events({
       createdAt : new Date(),
       username : username,
       bestAnswer : bestAnswer,
-      comments : comments,
       tags : tags
     });
 
