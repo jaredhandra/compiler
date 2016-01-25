@@ -534,3 +534,8 @@ li.userPickedTags {
   padding-top: 5px;
   padding-bottom: 5px;
 }
+/*best answer*/
+.bestAnswer {
+  border: 1px solid green;
+padding: 3%;
+}

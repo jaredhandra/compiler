@@ -9,6 +9,7 @@ Template.newQuestion.events({
     var username = Meteor.user().username;
     var comments = [];
     var tags = event.target.tagSelect.value;
+    var bestAnswer = "none";
 
     Questions.insert({
       userId : userId,
@@ -16,7 +17,7 @@ Template.newQuestion.events({
       questionText : questionText,
       createdAt : new Date(),
       username : username,
-      comments : comments,
+      bestAnswer : bestAnswer,
       tags : tags
     });
 
@@ -46,14 +47,13 @@ Template.newQuestion.rendered = function() {
   var converter = new Markdown.Converter();
   var editor = new Markdown.Editor(converter);
   editor.run();
-
   function formatTags(tag){
     if(!tag.id){ return tag.text; }
     var $tag = $('<div class="tagBlock">' + tag.text + '<br>' + '</div>');
     return $tag;
   }
-
   var options = { templateResult: formatTags, placeholder: "Select a category",
   allowClear: true}
   $(".select2").select2(options);
+  return string;
 }
