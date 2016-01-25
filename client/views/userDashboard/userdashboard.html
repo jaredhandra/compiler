@@ -1,5 +1,5 @@
 <template name="userDashboard">
-    <div class="wrapper dashboard">
+    <div class="wrapper bumper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
@@ -44,11 +44,11 @@
     </div>
 </template>
 <template name="openQuestions">
-    <!-- <div class="controls">
+    <div class="controls">
         <div class="btn-group pull-right">
-            <a class="btn btn-default" id="newQuestionBtn" href="{{pathFor route='newquestion'}}"><i class="fa fa-plus"></i> New Question</a>
+            <a class="btn btn-default inner-button" id="newQuestionBtn" href="{{pathFor route='newquestion'}}">New Question</a>
         </div>
-    </div> -->
+    </div>
     <div class="question-container">
       {{> reactiveTable collection=questions settings=settings}}
     </div>

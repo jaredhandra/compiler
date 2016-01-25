@@ -59,3 +59,8 @@ Router.route('/question/:_id', function(){
 Router.route('/newquestion', function(){
 	this.render('newQuestion');
 });
+Template.selector.helpers({
+  getTags: function () {
+    return Tags.find({});
+  },
+});

@@ -258,7 +258,7 @@ table tr {
     margin-top: 14px;
 }
 
-.dashboard {
+.bumper {
     padding-top: 40px;
 }
 .comment-top {
@@ -496,4 +496,41 @@ li.userPickedTags {
 .question-container {
   margin-top: 50px;
   margin-bottom: 50px;
+}
+.new-question-form {
+  background: white;
+  text-align: left;
+  height: 700px;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+.question-help {
+  background-color: white;
+  height: 700px;
+  text-align: left;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+.question-help h3 {
+  text-align: center;
+}
+.inner-button {
+  border-color: #336B87;
+}
+.inner-button:hover {
+  background: #90AFC5;
+  color: white;
+}
+.question-wrapper {
+  padding-top: 40px;
+}
+.wmd-preview {
+  padding: 10px;
+}
+.wmd-button-bar {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.tagBlock {
+  text-align: left;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }

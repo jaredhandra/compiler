@@ -1,6 +1,7 @@
 Template.questionUser.helpers({
-  userAvatar: function() {
-    var asker = Meteor.users.findOne({'_id':userId});
+  userAvatar: function(userId) {
+    // var asker = Meteor.users.findOne({'_id':userId});
+    var asker = Meteor.users.findOne();
     if (asker.avatar != null) {
         return asker.avatar;
     }
