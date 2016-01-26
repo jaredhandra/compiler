@@ -5,7 +5,7 @@ Template.post.events({
         var user = Meteor.user();
         var username = Meteor.user().username;
         var questionId = findQuestionIdFromUrl(window.location.pathname);
-
+        var usersVoted = [];
         Comments.insert({
           commentId : commentId,
           questionId : questionId,
@@ -13,9 +13,33 @@ Template.post.events({
           createdAt : new Date(),
           username : username,
           commentText : commentText,
+          reputation : 0,
+          usersVoted : usersVoted,
         });
         document.getElementById("new-comment").reset();
         return false;
+    },
+    'click #upVoteArrow': function(e) {
+      var comment = Comments.find({ commentId: this.commentId}).fetch();
+      var user = comment[0].user;
+      Meteor.call('commentUpvoted', user, comment[0], function(err,response) {
+			if(err) {
+				console.log('serverDataResponse', "Error:" + err.reason);
+				return;
+			}
+			console.log('serverDataResponse', response);
+		});
+    },
+    'click #downVoteArrow': function(e) {
+      var comment = Comments.find({ commentId: this.commentId}).fetch();
+      var user = comment[0].user;
+      Meteor.call('commentDownVoted', user, comment[0], function(err,response) {
+      if(err) {
+        console.log('serverDataResponse', "Error:" + err.reason);
+        return;
+      }
+      console.log('serverDataResponse', response);
+    });
     },
       'click #chooseBestAnswer': function(e) {
         Questions.update(

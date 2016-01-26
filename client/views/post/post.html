@@ -61,6 +61,10 @@
                     <div class="row individual-comment">
                       <input type="hidden" name="commentId" value="{{commentId}}">
                         <div class="col-md-1">
+                          <div class="voteArrows">
+                            <i class="fa fa-arrow-up" id="upVoteArrow"></i>
+                            <i class="fa fa-arrow-down" id="downVoteArrow"></i>
+                          </div>
                             {{#if commenterAvatarURL}}
                                 <img class="img-rounded" style="height:45px; margin-top: -1px;" src="{{commenterAvatarURL}}"/>
                             {{else}}

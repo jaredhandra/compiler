@@ -4,7 +4,12 @@ Meteor.publish("userData", function () {
 });
 
 Accounts.onCreateUser(function (options, user) {
-        //Github oauth
+        UserExtensions.insert({
+          userId : user._id,
+          reputation : 0,
+        });
+
+      //github
     if(user.services.github != null){
     var accessToken = user.services.github.accessToken,
         result,
