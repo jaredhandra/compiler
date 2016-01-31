@@ -1,20 +1,19 @@
 <template name="post">
-    <div class="container">
+  <div class="bumper">
+    <div class="container question-wrapper">
         <div class="row question">
             <div class="col-md-12">
                 <div class="title">
                   <input type="hidden" name="questionId" value="{{_id}}">
                     <h1>{{title}}</h1>
                     <div class="tags-question pull-right">
-                        {{#each tags}}
-                                <div class="btn btn-primary">{{this}}</div>
-                        {{/each}}
+                        <span class="btn">{{tags}}</span>
                     </div>
                 </div>
                 <div class="row question-block">
                     <div class="col-md-1">
                         {{#if askerAvatarURL}}
-                            <img class="img-rounded" style="height:45px; margin-top: -1px;" src="{{askerAvatarURL}}"/>
+                            <img class="img-rounded" style="height:45px; margin-top: 40px;" src="{{askerAvatarURL}}"/>
                         {{else}}
                             <i class="fa fa-user fa-4x"></i>
                         {{/if}}
@@ -25,7 +24,6 @@
                                 <a href="">{{username}}</a>
                             </div>
                             <div class="question-info pull-right">
-                                <!--Tags go here -->
                                 {{questionDate}}
                             </div>
                         </div>
@@ -107,4 +105,5 @@
             </div>
         </div>
     </div>
+  </div>
 </template>

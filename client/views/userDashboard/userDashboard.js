@@ -47,7 +47,7 @@ Template.openQuestions.helpers({
 	settings: function() {
 		return {
 			rowsPerPage: 10,
-			showNavigation: 'auto',
+			showNavigation: 'never',
 			class: 'table table-hover question-table',
 			fields: [
 				{key: '_id', label: 'Question', headerClass:'question-header', cellClass:'question-cell question-title',tmpl: Template.questionTitle},
