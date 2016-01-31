@@ -1,11 +1,3 @@
-//Template.newQuestion.helpers({
-//  tags: function() {
-//    return Tags.find().fetch().map(function(it){ return it.name; });
-//  }
-//});
-//Template.newQuestion.rendered = function() {
-//	Meteor.typeahead.inject($('.typeahead'));
-//}
 Template.newQuestion.events({
   'keypress #tag': function(e) {
   	addTagOnEnter(e);
@@ -15,7 +7,8 @@ Template.newQuestion.events({
     var questionText = event.target.questionText.value;
     var userId = Meteor.user()._id;
     var username = Meteor.user().username;
-    var tags = tempPickedTags;
+    var comments = [];
+    var tags = event.target.tagSelect.value;
     var bestAnswer = "none";
 
     Questions.insert({
@@ -33,61 +26,34 @@ Template.newQuestion.events({
     document.getElementById("new-question").reset();
     Router.go('/dashboard');
     return false;
-  },
-  'click #addTag': function(){
-  	addTag();
-},
-'click #tagRemove': function(event){
-  var tagName = convertObjectToString($(this));
-    removeTag(tagName);
-},
-});
-Template.newQuestion.helpers({
-  tags: function() {
-    return Tags.find().fetch().map(function(it){ return it.name; });
   }
 });
-Template.newQuestion.rendered = function() {
-	Meteor.typeahead.inject($('.typeahead'));
-}
+// Template.newQuestion.helpers({
+//   tags: function() {
+//     return Tags.find().fetch().map(function(it){ return it.name; });
+//   }
+// });
+// Template.newQuestion.rendered = function() {
+// 	Meteor.typeahead.inject($('.typeahead'));
+// }
 //Temporary session variable to store userpicked tags..
- Session.set("tempPickedTags", []);
+ // Session.set("tempPickedTags", []);
 
-Template.userPickedTags.tempPickedTags = function() {
-  return Session.get("tempPickedTags");
-};
+// Template.userPickedTags.helpers = function() {
+//   return Session.get("tempPickedTags");
+// };
 
-function addTagOnEnter(tagName){
-	 if (tagName.keyCode == 13){
-	 addTag();
-	  return false;
-	 }
-}
-function removeTag(tagToRemove){
- var index = tempPickedTags.indexOf(tagToRemove);
- if (index > -1) {
-    tempPickedTags.splice(index, 1);
-}
- Session.set("tempPickedTags", tempPickedTags);
-}
-function addTag(){
-	tempPickedTags = Session.get("tempPickedTags");
-  	//TODO: need to add error checking to make sure the tag is in the collection..
-    var tagToAdd =  document.getElementById('tag').value;
-    tempPickedTags.push(tagToAdd);
-    Session.set("tempPickedTags", tempPickedTags);
-    document.getElementById('tag').value = "";
-}
-
-function convertObjectToString(jqObject){
-  //temporary method I had to create to return the name of the tag from a jquery object...
-  var string="";
-  var objectCount = jqObject.length;
-  var count = 0;
-
-  while(count < objectCount){
-    string = string + jqObject[count];
-    count++;
+Template.newQuestion.rendered = function() {
+  var converter = new Markdown.Converter();
+  var editor = new Markdown.Editor(converter);
+  editor.run();
+  function formatTags(tag){
+    if(!tag.id){ return tag.text; }
+    var $tag = $('<div class="tagBlock">' + tag.text + '<br>' + '</div>');
+    return $tag;
   }
+  var options = { templateResult: formatTags, placeholder: "Select a category",
+  allowClear: true}
+  $(".select2").select2(options);
   return string;
 }

@@ -1,35 +1,44 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
 
 body {
     padding-top: 70px;
     text-align: center;
-    font-family: "Roboto";
+    font-family: "Open Sans", "Roboto", sans-serif;
     font-weight: 300;
+    background: #f1f2f7;
 }
-
 .navbar-right .fa-2x {
     color: white;
 }
-
 .navbar {
-    padding-left: 14px;
-    padding-right: 14px;
     padding-top: 10px;
-    padding-bottom: 10px;
     line-height: 19px;
-    color: #333;
 }
-
+#navbar {
+    background-color: #336B87;
+    border: none;
+}
 .navbar-brand {
     font-size: 20px;
     color: white;
 }
-
+.navbar-inverse .navbar-brand {
+  color: white;
+}
+.navbar-inverse .navbar-brand:hover {
+  color: #90AFC5;
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: white;
+}
+.navbar-inverse .navbar-nav > li > a:hover {
+  color: #90AFC5;
+}
 .navbar-buttons {
     padding: 6px 10px;
     font-size: 14px;
 }
-
 .navbar-right .p {
     padding-top: 10px;
     margin-top: 10px;
@@ -196,6 +205,7 @@ body {
     text-align: left;
     font-weight: 400;
     font-size: 14px;
+    background: white;
 }
 
 .question .title {
@@ -249,7 +259,7 @@ table tr {
     margin-top: 14px;
 }
 
-.dashboard {
+.bumper {
     padding-top: 40px;
 }
 .comment-top {
@@ -438,7 +448,98 @@ li.userPickedTags {
     cursor:pointer;
 }
 .tags-question {
-    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+.table-title {
+    padding-top: 10px;
+}
+.table-title a:hover {
+  text-decoration: none;
+}
+#title-text {
+  color: #2A3132;
+}
+.mtbox {
+    margin-top : 40px;
+}
+.box p {
+    padding-top: 20px;
+    font-weight: 500;
+}
+.box {
+    background: white;
+    text-align: center;
+    padding: 20px;
+    height: 200px;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+.dashnum {
+    font-weight: 800;
+}
+#tags {
+    margin-top: 40px;
+}
+.tagCard {
+    background: white;
+    text-align: left;
+    padding: 20px;
+    height: 200px;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+.tagTitle {
+    font-weight: 800;
+}
+.tagDescription {
+    padding: 5px;
+}
+.question-table {
+  background: white;
+  text-align: left;
+  padding: 20px;
+  height: 200px;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+.question-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.new-question-form {
+  background: white;
+  text-align: left;
+  height: 700px;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+.question-help {
+  background-color: white;
+  height: 700px;
+  text-align: left;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+.question-help h3 {
+  text-align: center;
+}
+.inner-button {
+  border-color: #336B87;
+}
+.inner-button:hover {
+  background: #90AFC5;
+  color: white;
+}
+.question-wrapper {
+  padding-top: 40px;
+}
+.wmd-preview {
+  padding: 10px;
+}
+.wmd-button-bar {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.tagBlock {
+  text-align: left;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 /*best answer*/
 .bestAnswer {
