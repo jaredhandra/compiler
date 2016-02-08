@@ -7,15 +7,15 @@
                   <input type="hidden" name="questionId" value="{{_id}}">
                     <h1>{{title}}</h1>
                     <div class="tags-question pull-right">
-                        <span class="btn">{{tags}}</span>
+                        <span class="label label-info">{{tags}}</span>
                     </div>
                 </div>
                 <div class="row question-block">
                     <div class="col-md-1">
                         {{#if askerAvatarURL}}
-                            <img class="img-rounded" style="height:45px; margin-top: 40px;" src="{{askerAvatarURL}}"/>
+                            <img class="img-rounded" style="height:45px; margin-top: 20px;" src="{{askerAvatarURL}}"/>
                         {{else}}
-                            <i class="fa fa-user fa-4x"></i>
+                            <i class="fa fa-user fa-4x" style="height:45px; margin-top: 20px;"></i>
                         {{/if}}
                     </div>
                     <div class="col-md-11 question-body container-fluid">
@@ -27,7 +27,12 @@
                                 {{questionDate}}
                             </div>
                         </div>
-                        <div class="row question-text">{{questionText}}</div>
+                        <div class="row question-text">
+                          <!-- <div id="wmd-preview" class="wmd-panel wmd-preview">
+                              {{{questionText}}}
+                          </div> -->
+                        </div>
+                        {{{questionText}}}
                     </div>
                 </div>
                 {{#each bestAnswer}}
@@ -35,13 +40,19 @@
                 <div class="row individual-comment bestAnswer">
                   <!-- <input type="hidden" name="commentId" value="{{commentId}}"> -->
                     <div class="col-md-1">
+                      <div class="voteArrows">
+                        <i class="fa fa-arrow-up" id="upVoteArrow"></i>
+                        <i class="fa fa-arrow-down" id="downVoteArrow"></i>
+                      </div>
+                    </div>
+                    <div class="col-md-1">
                       {{#if commenterAvatarURL}}
                           <img class="img-rounded" style="height:45px; margin-top: -1px;" src="{{commenterAvatarURL}}"/>
                       {{else}}
                           <i class="fa fa-user fa-2x"></i>
                       {{/if}}
                     </div>
-                    <div class="col-md-11 container-fluid">
+                    <div class="col-md-10 container-fluid">
                         <div class="row comment-top">
                             <div class="username pull-left">
                                 <a href="">{{user.username}}</a>
@@ -63,13 +74,15 @@
                             <i class="fa fa-arrow-up" id="upVoteArrow"></i>
                             <i class="fa fa-arrow-down" id="downVoteArrow"></i>
                           </div>
-                            {{#if commenterAvatarURL}}
-                                <img class="img-rounded" style="height:44px; margin-top: -1px;" src="{{commenterAvatarURL}}"/>
-                            {{else}}
-                                <i class="fa fa-user fa-4x"></i>
-                            {{/if}}
                         </div>
-                        <div class="col-md-11 container-fluid">
+                        <div class="col-md-1">
+                          {{#if commenterAvatarURL}}
+                              <img class="img-rounded" style="height:44px; margin-top: -1px;" src="{{commenterAvatarURL}}"/>
+                          {{else}}
+                              <i class="fa fa-user fa-4x"></i>
+                          {{/if}}
+                        </div>
+                        <div class="col-md-10 container-fluid">
                             <div class="row comment-top">
                                 <div class="username pull-left">
                                     <a href="">{{user.username}}</a>
@@ -82,21 +95,22 @@
                         </div>
                     </div>
                     {{#if isCurrentUserAsker}}
-                  <div class="pull-left">
-                    <button type="button" id="chooseBestAnswer" class="btn btn-primary">Choose Best Answer</button>
-                  </div>
+                      <div class="pull-left">
+                        <button type="button" id="chooseBestAnswer" class="btn btn-primary">Choose Best Answer</button>
+                      </div>
                     {{/if}}
                 {{/each}}
-                <div class="row">
-                </div>
                 <div class="row add-reply">
                     <form class="form new-comment" id="new-comment" action="" required>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="styled-input wide">
-                                    <textarea name="commentText" required></textarea>
-                                    <label>Comment</label>
-                                    <span></span>
+                                <div class="form-group">
+                                  <div class="wmd-panel">
+                                    <div id="wmd-button-bar"></div>
+                                    <textarea class="wmd-input" id="wmd-input" name="commentText"></textarea>
+                                  </div>
+                                  <div id="wmd-preview" class="wmd-panel wmd-preview">
+                                  </div>
                                 </div>
                             </div>
                         </div>

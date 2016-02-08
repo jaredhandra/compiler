@@ -206,6 +206,7 @@ body {
     font-weight: 400;
     font-size: 14px;
     background: white;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .question .title {
@@ -269,6 +270,9 @@ table tr {
     padding-bottom: 40px;
     word-wrap: break-word;
     text-align: left;
+}
+.individual-comment {
+  padding: 30px;
 }
 
 /***Text Area Styles***/
@@ -460,6 +464,9 @@ li.userPickedTags {
 #title-text {
   color: #2A3132;
 }
+#title-text:hover {
+  color: #90AFC5;
+}
 .mtbox {
     margin-top : 40px;
 }
@@ -507,12 +514,12 @@ li.userPickedTags {
 .new-question-form {
   background: white;
   text-align: left;
-  height: 700px;
+  height: 100%;
   box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
 }
 .question-help {
   background-color: white;
-  height: 700px;
+  height: 100%;
   text-align: left;
   box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
 }

@@ -1,3 +1,8 @@
+Template.post.rendered = function(){
+  var converter = new Markdown.Converter();
+  var editor = new Markdown.Editor(converter);
+  editor.run();
+}
 Template.post.events({
     'submit .new-comment': function (event) {
         var commentId = Random.id();
