@@ -71,6 +71,10 @@ Template.post.helpers({
             return asker.services.google.picture;
         }
     },
+    commentReputation: function(){
+      var comment = Comments.findOne({commentId:this.commentId});
+      return comment.reputation;
+    },
     commenterAvatarURL: function(){
         var question = Questions.findOne(this.questionId);
         var commenter;
