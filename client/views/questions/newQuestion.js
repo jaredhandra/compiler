@@ -11,6 +11,8 @@ Template.newQuestion.events({
     var username = Meteor.user().username;
     var comments = [];
     var tags = event.target.tagSelect.value;
+    var reputation = 0;
+    var usersVoted = [];
     var bestAnswer = "none";
 
     Questions.insert({
@@ -20,7 +22,9 @@ Template.newQuestion.events({
       createdAt : new Date(),
       username : username,
       bestAnswer : bestAnswer,
-      tags : tags
+      tags : tags,
+      reputation: reputation,
+      usersVoted : usersVoted
     });
 
     event.target.title.value ="";

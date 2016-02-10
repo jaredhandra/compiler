@@ -19,7 +19,7 @@ Template.post.events({
           username : username,
           commentText : commentText,
           reputation : 0,
-          usersVoted : usersVoted,
+          usersVoted : usersVoted
         });
         document.getElementById("new-comment").reset();
         return false;
@@ -45,6 +45,26 @@ Template.post.events({
       }
       console.log('serverDataResponse', response);
     });
+    },
+    'click #questionUpVoteArrow': function(e) {
+      var question = Questions.findOne(this);
+      Meteor.call('questionUpvoted', question, function(err,response) {
+			if(err) {
+				console.log('serverDataResponse', "Error:" + err.reason);
+				return;
+			}
+			console.log('serverDataResponse', response);
+		});
+    },
+    'click #questionDownVoteArrow': function(e) {
+      var question = Questions.findOne(this);
+      Meteor.call('questionDownvoted', question, function(err,response) {
+			if(err) {
+				console.log('serverDataResponse', "Error:" + err.reason);
+				return;
+			}
+			console.log('serverDataResponse', response);
+		});
     },
       'click #chooseBestAnswer': function(e) {
         Questions.update(
@@ -74,6 +94,10 @@ Template.post.helpers({
     commentReputation: function(){
       var comment = Comments.findOne({commentId:this.commentId});
       return comment.reputation;
+    },
+    questionReputation: function(){
+      var question = Questions.findOne(this);
+      return question.reputation;
     },
     commenterAvatarURL: function(){
         var question = Questions.findOne(this.questionId);

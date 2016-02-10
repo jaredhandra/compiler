@@ -11,6 +11,13 @@
                     </div>
                 </div>
                 <div class="row question-block">
+                  <div class="col-md-1">
+                    <div class="voteArrows">
+                      <i class="fa fa-arrow-up" id="questionUpVoteArrow"></i>
+                      <i class="fa fa-arrow-down" id="questionDownVoteArrow"></i>
+                    </div>
+                    <span class="commentRep">{{questionReputation}}</span>
+                  </div>
                     <div class="col-md-1">
                         {{#if askerAvatarURL}}
                             <img class="img-rounded" style="height:45px; margin-top: 20px;" src="{{askerAvatarURL}}"/>
@@ -18,7 +25,7 @@
                             <i class="fa fa-user fa-4x" style="height:45px; margin-top: 20px;"></i>
                         {{/if}}
                     </div>
-                    <div class="col-md-11 question-body container-fluid">
+                    <div class="col-md-10 question-body container-fluid">
                         <div class="row question-top">
                             <div class="username pull-left">
                                 <a href="">{{username}}</a>
