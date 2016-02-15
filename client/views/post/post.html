@@ -3,7 +3,7 @@
     <div class="container question-wrapper">
         <div class="row question">
             <div class="col-md-12">
-                <div class="title">
+                <div class="row title">
                   <input type="hidden" name="questionId" value="{{_id}}">
                     <h1>{{title}}</h1>
                     <div class="tags-question pull-right">
@@ -11,16 +11,17 @@
                     </div>
                 </div>
                 <div class="row question-block">
-                  <div class="col-md-1">
-                    <div class="voteArrows">
-                      <i class="fa fa-arrow-up" id="questionUpVoteArrow"></i>
-                      <i class="fa fa-arrow-down" id="questionDownVoteArrow"></i>
-                    </div>
-                    <span class="commentRep">{{questionReputation}}</span>
-                  </div>
                     <div class="col-md-1">
+                      <div class="row voteArrows">
+                        <i class="fa fa-caret-up fa-3x" id="questionUpVoteArrow"></i>
+                        <br>
+                        <span class="commentRep" style="margin-left: 7px; font-size: 20px;">{{questionReputation}}</span>
+                        <i class="fa fa-caret-down fa-3x" id="questionDownVoteArrow"></i>
+                      </div>
+                    </div>
+                    <div class="col-md-1 questionAvatar">
                         {{#if askerAvatarURL}}
-                            <img class="img-rounded" style="height:45px; margin-top: 20px;" src="{{askerAvatarURL}}"/>
+                            <img class="img-rounded" style="height:60px; margin-top: 30px;" src="{{askerAvatarURL}}"/>
                         {{else}}
                             <i class="fa fa-user fa-4x" style="height:45px; margin-top: 20px;"></i>
                         {{/if}}
@@ -35,102 +36,120 @@
                             </div>
                         </div>
                         <div class="row question-text">
-                          <!-- <div id="wmd-preview" class="wmd-panel wmd-preview">
-                              {{{questionText}}}
-                          </div> -->
+                          {{{questionText}}}
                         </div>
-                        {{{questionText}}}
                     </div>
                 </div>
-                {{#each bestAnswer}}
-                <hr>
-                <div class="row individual-comment bestAnswer">
-                  <!-- <input type="hidden" name="commentId" value="{{commentId}}"> -->
-                    <div class="col-md-1">
-                      <div class="voteArrows">
-                        <i class="fa fa-arrow-up" id="upVoteArrow"></i>
-                        <i class="fa fa-arrow-down" id="downVoteArrow"></i>
-                      </div>
-                      <span class="commentRep">{{commentReputation}}</span>
-                    </div>
-                    <div class="col-md-1">
-                      {{#if commenterAvatarURL}}
-                          <img class="img-rounded" style="height:45px; margin-top: -1px;" src="{{commenterAvatarURL}}"/>
-                      {{else}}
-                          <i class="fa fa-user fa-2x"></i>
-                      {{/if}}
-                    </div>
-                    <div class="col-md-10 container-fluid">
-                        <div class="row comment-top">
-                            <div class="username pull-left">
-                                <a href="">{{user.username}}</a>
-                            </div>
-                            <div class="pull-right">
-                                {{commentDate}}
-                            </div>
-                        </div>
-                        <div class="row comment-text">{{commentText}}</div>
-                    </div>
-                </div>
-                {{/each}}
-                {{#each questionComments}}
-                    <hr>
-                    <div class="row individual-comment">
-                      <input type="hidden" name="commentId" value="{{commentId}}">
-                        <div class="col-md-1">
-                          <div class="voteArrows">
-                            <i class="fa fa-arrow-up" id="upVoteArrow"></i>
-                            <i class="fa fa-arrow-down" id="downVoteArrow"></i>
-                          </div>
-                      <span class="commentRep">{{commentReputation}}</span>
-                        </div>
-                        <div class="col-md-1">
-                          {{#if commenterAvatarURL}}
-                              <img class="img-rounded" style="height:44px; margin-top: -1px;" src="{{commenterAvatarURL}}"/>
-                          {{else}}
-                              <i class="fa fa-user fa-4x"></i>
-                          {{/if}}
-                        </div>
-                        <div class="col-md-10 container-fluid">
-                            <div class="row comment-top">
-                                <div class="username pull-left">
-                                    <a href="">{{user.username}}</a>
-                                </div>
-                                <div class="pull-right">
-                                    {{commentDate}}
-                                </div>
-                            </div>
-                            <div class="row comment-text">{{commentText}}</div>
-                        </div>
-                    </div>
-                    {{#if isCurrentUserAsker}}
-                      <div class="pull-left">
-                        <button type="button" id="chooseBestAnswer" class="btn btn-primary">Choose Best Answer</button>
-                      </div>
-                    {{/if}}
-                {{/each}}
-                <div class="row add-reply">
-                    <form class="form new-comment" id="new-comment" action="" required>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                  <div class="wmd-panel">
-                                    <div id="wmd-button-bar"></div>
-                                    <textarea class="wmd-input" id="wmd-input" name="commentText"></textarea>
-                                  </div>
-                                  <div id="wmd-preview" class="wmd-panel wmd-preview">
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group commentSubmit">
-                            <input type="submit" value="Add Comment" class="btn btn-primary btn-lg btn-block"
-                                   style="font-size: 1em;"/>
-                        </div>
-                    </form>
+                <div class="row question-footer">
+                  <div class="pull-right">
+                    <a class="btn btn-default inner-button" id="answerQuestion" data-scroll href="#userComment">Respond</a>
+                  </div>
                 </div>
             </div>
         </div>
+        <br>
+        {{#each bestAnswer}}
+        <div class="row individual-comment bestAnswer">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-1">
+                <div class="row voteArrows">
+                  <i class="fa fa-caret-up fa-3x" id="upVoteArrow"></i>
+                  <br>
+                  <span class="commentRep" style="margin-left: 7px; font-size: 20px;">{{commentReputation}}</span>
+                  <i class="fa fa-caret-down fa-3x" id="downVoteArrow"></i>
+                </div>
+              </div>
+              <div class="col-md-1 questionAvatar">
+                {{#if commenterAvatarURL}}
+                    <img class="img-rounded" style="height:60px; margin-top: 30px;" src="{{commenterAvatarURL}}"/>
+                {{else}}
+                    <i class="fa fa-user fa-2x"></i>
+                {{/if}}
+              </div>
+              <div class="col-md-10 container-fluid">
+                  <div class="row comment-top">
+                      <div class="username pull-left">
+                          <a href="">{{user.username}}</a>
+                      </div>
+                      <div class="pull-right">
+                          {{commentDate}}
+                      </div>
+                  </div>
+                  <div class="row comment-text">{{{commentText}}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+        <br>
+        <div class="row userComment" id="userComment" style="display: none;">
+          <div class="col-md-12">
+            <div class="row add-reply">
+                <form class="form new-comment" id="new-comment" action="" required>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                              <div class="wmd-panel">
+                                <div id="wmd-button-bar"></div>
+                                <textarea class="wmd-input" id="wmd-input" name="commentText"></textarea>
+                              </div>
+                              <div id="wmd-preview" class="wmd-panel wmd-preview">
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group commentSubmit">
+                        <input type="submit" value="Add Comment" class="btn btn-default inner-button"
+                               style="font-size: 1em;"/>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+        <br>
+        {{#each questionComments}}
+        <br>
+        <div class="row commentSection">
+          <div class="col-md-12">
+            <div class="row">
+              <input type="hidden" name="commentId" value="{{commentId}}">
+                <div class="col-md-1">
+                  <div class="row voteArrows">
+                    <i class="fa fa-caret-up fa-3x" id="upVoteArrow"></i>
+                    <br>
+                    <span class="commentRep" style="margin-left: 7px; font-size: 20px;">{{commentReputation}}</span>
+                    <i class="fa fa-caret-down fa-3x" id="downVoteArrow"></i>
+                  </div>
+                </div>
+              <div class="col-md-1 questionAvatar">
+                {{#if commenterAvatarURL}}
+                    <img class="img-rounded" style="height:60px; margin-top: 30px;" src="{{commenterAvatarURL}}"/>
+                {{else}}
+                    <i class="fa fa-user fa-2x"></i>
+                {{/if}}
+              </div>
+              <div class="col-md-10 container-fluid">
+                <div class="row comment-top">
+                  <div class="username pull-left">
+                    <a href="">{{user.username}}</a>
+                  </div>
+                  <div class="pull-right">
+                    {{commentDate}}
+                  </div>
+                </div>
+                <div class="row comment-text">{{{commentText}}}</div>
+              </div>
+            </div>
+            {{#if isCurrentUserAsker}}
+              <div class="pull-right">
+                <!-- <button type="button" id="chooseBestAnswer" class="btn btn-primary">Choose Best Answer</button> -->
+                <button class="btn btn-default inner-button" id="chooseBestAnswer">Correct Answer</button>
+              </div>
+            {{/if}}
+            </div>
+          </div>
+        {{/each}}
     </div>
   </div>
 </template>

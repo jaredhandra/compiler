@@ -84,7 +84,6 @@ body {
 }
 
 .title {
-    padding-bottom: 20px;
 }
 
 .how {
@@ -211,7 +210,6 @@ body {
 
 .question .title {
     text-align: center;
-    margin-bottom: 20px;
 }
 
 .question-body {
@@ -251,6 +249,7 @@ body {
 }
 .question-top {
     padding-bottom: 20px;
+    padding-top: 25px;
 }
 .question-block {
     padding-bottom: 60px;
@@ -265,15 +264,14 @@ table tr {
 }
 .comment-top {
     padding-bottom: 20px;
+    padding-top: 25px;
 }
 .comment-text{
     padding-bottom: 40px;
     word-wrap: break-word;
     text-align: left;
 }
-.individual-comment {
-  padding: 30px;
-}
+
 
 /***Text Area Styles***/
 * {
@@ -556,6 +554,57 @@ li.userPickedTags {
 }
 /*best answer*/
 .bestAnswer {
-  border: 1px solid green;
-padding: 3%;
+  border: 2px solid #42bd41;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+.box #active {
+  background-color: #90AFC5;
+}
+.voteArrows {
+  padding-left: 30px;
+}
+.questionAvatar {
+  padding-left: 0px;
+}
+.fa-caret-up {
+  color: #E0E0E0;
+}
+.fa-caret-up:hover {
+  color: #42bd41;
+}
+.upvoteClicked {
+  color: #42bd41;
+}
+.fa-caret-down {
+  color: #E0E0E0;
+}
+.fa-caret-down:hover {
+  color: #e84e40;
+}
+.downvoteClicked {
+  color: #e84e40;
+}
+.commentSection {
+  padding-top: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  text-align: left;
+  font-weight: 400;
+  font-size: 14px;
+  background: white;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+.userComment {
+  padding-top: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  text-align: left;
+  font-weight: 400;
+  font-size: 14px;
+  background: white;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
 }

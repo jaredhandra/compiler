@@ -2,11 +2,18 @@ Template.post.rendered = function(){
   var converter = new Markdown.Converter();
   var editor = new Markdown.Editor(converter);
   editor.run();
+  smoothScroll.init({
+    speed: 400
+  });
 }
 Template.post.events({
+    'click #answerQuestion': function () {
+      $("#userComment").toggle();
+    },
     'submit .new-comment': function (event) {
         var commentId = Random.id();
-        var commentText = event.target.commentText.value;
+        var converter1 = new Markdown.Converter();
+        var commentText = converter1.makeHtml(event.target.commentText.value);
         var user = Meteor.user();
         var username = Meteor.user().username;
         var questionId = findQuestionIdFromUrl(window.location.pathname);
@@ -22,6 +29,7 @@ Template.post.events({
           usersVoted : usersVoted
         });
         document.getElementById("new-comment").reset();
+        $("#userComment").toggle();
         return false;
     },
     'click #upVoteArrow': function(e) {
@@ -32,6 +40,8 @@ Template.post.events({
 				console.log('serverDataResponse', "Error:" + err.reason);
 				return;
 			}
+      $("#upVoteArrow").addClass("upvoteClicked");
+      $("#downVoteArrow").removeClass("downvoteClicked");
 			console.log('serverDataResponse', response);
 		});
     },
@@ -43,6 +53,8 @@ Template.post.events({
         console.log('serverDataResponse', "Error:" + err.reason);
         return;
       }
+      $("#upVoteArrow").removeClass("upvoteClicked");
+      $("#downVoteArrow").addClass("downvoteClicked");
       console.log('serverDataResponse', response);
     });
     },
@@ -54,6 +66,8 @@ Template.post.events({
 				return;
 			}
 			console.log('serverDataResponse', response);
+      $("#questionUpVoteArrow").addClass("upvoteClicked");
+      $("#questionDownVoteArrow").removeClass("downvoteClicked");
 		});
     },
     'click #questionDownVoteArrow': function(e) {
@@ -64,6 +78,8 @@ Template.post.events({
 				return;
 			}
 			console.log('serverDataResponse', response);
+      $("#questionUpVoteArrow").removeClass("upvoteClicked");
+      $("#questionDownVoteArrow").addClass("downvoteClicked");
 		});
     },
       'click #chooseBestAnswer': function(e) {
