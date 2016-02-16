@@ -5,8 +5,7 @@ Template.newQuestion.events({
   'submit .new-question': function(event) {
     var title = event.target.title.value;
     // var questionText = event.target.questionText.value;
-    var converter1 = new Markdown.Converter();
-    var questionText = converter1.makeHtml(event.target.questionText.value);
+    var questionText = event.target.questionText.value;
     var userId = Meteor.user()._id;
     var username = Meteor.user().username;
     var comments = [];

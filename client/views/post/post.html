@@ -36,7 +36,7 @@
                             </div>
                         </div>
                         <div class="row question-text" id="questionTextSection">
-                          {{{questionText}}}
+                          {{{questionTextHtml}}}
                         </div>
                           {{#if isCurrentUserAsker}}
                         <form class="editQuestionSection" id="editQuestionSection" action="" style="display:none;">
@@ -93,7 +93,7 @@
                           {{commentDate}}
                       </div>
                   </div>
-                  <div class="row comment-text">{{{commentText}}}</div>
+                  <div class="row comment-text">{{{commentTextHtml}}}</div>
               </div>
             </div>
           </div>
@@ -155,7 +155,7 @@
                     {{commentDate}}
                   </div>
                 </div>
-                <div class="row comment-text">{{{commentText}}}</div>
+                <div class="row comment-text">{{{commentTextHtml}}}</div>
               </div>
             </div>
             {{#if isCurrentUserAsker}}

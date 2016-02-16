@@ -11,9 +11,8 @@ Template.post.events({
       $("#userComment").toggle();
     },
     'submit .editQuestionSection': function(event){
-      var converter1 = new Markdown.Converter();
       var question = Questions.findOne(this);
-      var editText = converter1.makeHtml(event.target.editText.value);
+      var editText = (event.target.editText.value);
       Questions.update(this._id, {
         $set: {questionText: editText}
       });
@@ -24,8 +23,7 @@ Template.post.events({
     },
     'submit .new-comment': function(event){
         var commentId = Random.id();
-        var converter1 = new Markdown.Converter();
-        var commentText = converter1.makeHtml(event.target.commentText.value);
+        var commentText = (event.target.commentText.value);
         var user = Meteor.user();
         var username = Meteor.user().username;
         var questionId = findQuestionIdFromUrl(window.location.pathname);
@@ -187,6 +185,20 @@ Template.post.helpers({
     fetchQuestionText: function(){
       var question = Questions.findOne(this._id);
       return question.questionText;
+    },
+    questionTextHtml: function(){
+      var converter1 = new Markdown.Converter();
+      var question = Questions.findOne(this._id);
+      var htmlText = converter1.makeHtml(question.questionText);
+
+      return htmlText;
+    },
+    commentTextHtml: function(){
+      var comment = Comments.findOne({commentId:this.commentId});
+      var converter1 = new Markdown.Converter();
+      var commentHtml = converter1.makeHtml(comment.commentText);
+
+      return commentHtml;
     }
 });
 //Couldn't get the question id from the dom
