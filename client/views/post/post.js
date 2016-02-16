@@ -10,7 +10,19 @@ Template.post.events({
     'click #answerQuestion': function () {
       $("#userComment").toggle();
     },
-    'submit .new-comment': function (event) {
+    'submit .editQuestionSection': function(event){
+      var converter1 = new Markdown.Converter();
+      var question = Questions.findOne(this);
+      var editText = converter1.makeHtml(event.target.editText.value);
+      Questions.update(this._id, {
+        $set: {questionText: editText}
+      });
+      document.getElementById('questionTextSection').style.display = 'block';
+      document.getElementById('editQuestion').style.display = 'block';
+      document.getElementById('editQuestionSection').style.display = 'none';
+      return false;
+    },
+    'submit .new-comment': function(event){
         var commentId = Random.id();
         var converter1 = new Markdown.Converter();
         var commentText = converter1.makeHtml(event.target.commentText.value);
@@ -31,6 +43,12 @@ Template.post.events({
         document.getElementById("new-comment").reset();
         $("#userComment").toggle();
         return false;
+    },
+    'click #editQuestion': function(){
+      document.getElementById('questionTextSection').style.display = 'none';
+      document.getElementById('editQuestion').style.display = 'none';
+      document.getElementById('editQuestionSection').style.display = 'block';
+
     },
     'click #upVoteArrow': function(e) {
       var comment = Comments.find({ commentId: this.commentId}).fetch();
@@ -142,7 +160,7 @@ Template.post.helpers({
         return moment(date).fromNow();
     },
     isCurrentUserAsker: function(){
-      var posterId = Questions.findOne(this.questionId).userId;
+      var posterId = Questions.findOne(this._id).userId;
       var currentUserId = Meteor.user()._id;
       if(currentUserId === posterId){
         return true;
@@ -158,6 +176,17 @@ Template.post.helpers({
       var question = Questions.findOne(this._id);
       var bestAnswerId = question.bestAnswer;
       return Comments.find({ commentId: bestAnswerId}).fetch();
+    },
+    isCurrentUserPoster: function(){
+      var comment = Comments.findOne({commentId:this.commentId});
+      if(comment.user._id === Meteor.user()._id){
+        return true;
+      }
+      return false;
+    },
+    fetchQuestionText: function(){
+      var question = Questions.findOne(this._id);
+      return question.questionText;
     }
 });
 //Couldn't get the question id from the dom
