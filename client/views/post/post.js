@@ -27,9 +27,9 @@ Template.post.events({
       Comments.update(comment._id, {
         $set: {commentText: editText}
       });
-      document.getElementById('commentText').style.display = 'block';
-      document.getElementById('editComment').style.display = 'block';
-      document.getElementById('editCommentSection').style.display = 'none';
+      document.getElementById('commentText-'+this.commentId).style.display = 'block';
+      document.getElementById('editButton-'+this.commentId).style.display = 'block';
+      document.getElementById('editCommentDiv-'+this.commentId).style.display = 'none';
       return false;
     },
     'submit .new-comment': function(event){
@@ -58,10 +58,10 @@ Template.post.events({
       document.getElementById('editQuestion').style.display = 'none';
       document.getElementById('editQuestionSection').style.display = 'block';
     },
-    'click #editComment': function(){
-      document.getElementById('commentText').style.display = 'none';
-      document.getElementById('editComment').style.display = 'none';
-      document.getElementById('editCommentSection').style.display = 'block';
+    'click #editComment': function(event){
+      document.getElementById('commentText-'+this.commentId).style.display = 'none';
+      document.getElementById('editButton-'+this.commentId).style.display = 'none';
+      document.getElementById('editCommentDiv-'+this.commentId).style.display = 'block';
     },
     'click #upVoteArrow': function(e) {
       var comment = Comments.find({ commentId: this.commentId}).fetch();
@@ -173,7 +173,7 @@ Template.post.helpers({
         return moment(date).fromNow();
     },
     isCurrentUserAsker: function(){
-      var question =  Questions.findOne(this._id);
+      var question =  Questions.findOne(this.questionId);
         if(question != null && question.userId != null){
           var posterId = question.userId;
           var currentUserId = Meteor.user()._id;
