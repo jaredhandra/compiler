@@ -226,8 +226,7 @@ Template.post.helpers({
       return commentHtml;
     }
 });
-//Couldn't get the question id from the dom
-//For now pulling it from the url..
+
 function findQuestionIdFromUrl(pathname) {
     return pathname.substring(10, pathname.length);
 }
