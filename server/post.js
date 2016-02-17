@@ -103,7 +103,7 @@ Meteor.startup(function () {
 			{$set: {reputation: reputation}}
 		)
 		Questions.update(
-			{_id: comment._id},
+			{_id: question._id},
 			{$set: {
 							reputation: questionReputation,
 							usersVoted: usersVotedT

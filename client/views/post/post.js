@@ -21,6 +21,17 @@ Template.post.events({
       document.getElementById('editQuestionSection').style.display = 'none';
       return false;
     },
+    'submit .editCommentSection': function(event){
+      var comment = Comments.findOne(this);
+      var editText = (event.target.editText.value);
+      Comments.update(comment._id, {
+        $set: {commentText: editText}
+      });
+      document.getElementById('commentText').style.display = 'block';
+      document.getElementById('editComment').style.display = 'block';
+      document.getElementById('editCommentSection').style.display = 'none';
+      return false;
+    },
     'submit .new-comment': function(event){
         var commentId = Random.id();
         var commentText = (event.target.commentText.value);
@@ -46,7 +57,11 @@ Template.post.events({
       document.getElementById('questionTextSection').style.display = 'none';
       document.getElementById('editQuestion').style.display = 'none';
       document.getElementById('editQuestionSection').style.display = 'block';
-
+    },
+    'click #editComment': function(){
+      document.getElementById('commentText').style.display = 'none';
+      document.getElementById('editComment').style.display = 'none';
+      document.getElementById('editCommentSection').style.display = 'block';
     },
     'click #upVoteArrow': function(e) {
       var comment = Comments.find({ commentId: this.commentId}).fetch();
@@ -158,10 +173,13 @@ Template.post.helpers({
         return moment(date).fromNow();
     },
     isCurrentUserAsker: function(){
-      var posterId = Questions.findOne(this._id).userId;
-      var currentUserId = Meteor.user()._id;
-      if(currentUserId === posterId){
-        return true;
+      var question =  Questions.findOne(this._id);
+        if(question != null && question.userId != null){
+          var posterId = question.userId;
+          var currentUserId = Meteor.user()._id;
+          if(currentUserId === posterId){
+            return true;
+        }
       }
       return false;
     },
@@ -173,7 +191,9 @@ Template.post.helpers({
     bestAnswer: function(){
       var question = Questions.findOne(this._id);
       var bestAnswerId = question.bestAnswer;
-      return Comments.find({ commentId: bestAnswerId}).fetch();
+      if(bestAnswerId != null){
+        return Comments.find({ commentId: bestAnswerId}).fetch();
+      }
     },
     isCurrentUserPoster: function(){
       var comment = Comments.findOne({commentId:this.commentId});
@@ -182,6 +202,10 @@ Template.post.helpers({
       }
       return false;
     },
+    fetchCommentText: function(){
+      var comment = Comments.findOne({commentId:this.commentId});
+      return comment.commentText;
+    },
     fetchQuestionText: function(){
       var question = Questions.findOne(this._id);
       return question.questionText;
@@ -189,9 +213,10 @@ Template.post.helpers({
     questionTextHtml: function(){
       var converter1 = new Markdown.Converter();
       var question = Questions.findOne(this._id);
-      var htmlText = converter1.makeHtml(question.questionText);
-
-      return htmlText;
+      if(question != null && question.questionText != null){
+        var htmlText = converter1.makeHtml(question.questionText);
+        return htmlText;
+      }
     },
     commentTextHtml: function(){
       var comment = Comments.findOne({commentId:this.commentId});

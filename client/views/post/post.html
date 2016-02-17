@@ -93,8 +93,25 @@
                           {{commentDate}}
                       </div>
                   </div>
-                  <div class="row comment-text">{{{commentTextHtml}}}</div>
+                  <div class="row comment-text" id="commentText">{{{commentTextHtml}}}</div>
+                  {{#if isCurrentUserPoster}}
+                <form class="editCommentSection" id="editCommentSection" action="" style="display:none;">
+                  <div class="wmd-panel">
+                    <div id="wmd-button-bar"></div>
+                    <textarea class="wmd-input" value="{{fetchCommentText}}" id="wmd-input" name="editText"></textarea>
+                  </div>
+                  <div id="wmd-preview" class="wmd-panel wmd-preview">
+                  </div>
+                  <input type="submit" value="Save" class="btn btn-default inner-button"
+                         style="font-size: 1em;"/>
+                  </form>
+                  {{/if}}
               </div>
+              {{#if isCurrentUserPoster}}
+              <div class="pull-left">
+              <a class="btn btn-default inner-button" id="editComment">Edit</a>
+              </div>
+              {{/if}}
             </div>
           </div>
         </div>
@@ -155,8 +172,25 @@
                     {{commentDate}}
                   </div>
                 </div>
-                <div class="row comment-text">{{{commentTextHtml}}}</div>
+                <div class="row comment-text" id="commentText">{{{commentTextHtml}}}</div>
+                {{#if isCurrentUserPoster}}
+              <form class="editCommentSection" id="editCommentSection" action="" style="display:none;">
+                <div class="wmd-panel">
+                  <div id="wmd-button-bar"></div>
+                  <textarea class="wmd-input" value="{{fetchCommentText}}" id="wmd-input" name="editText"></textarea>
+                </div>
+                <div id="wmd-preview" class="wmd-panel wmd-preview">
+                </div>
+                <input type="submit" value="Save" class="btn btn-default inner-button"
+                       style="font-size: 1em;"/>
+                </form>
+                {{/if}}
               </div>
+              {{#if isCurrentUserPoster}}
+              <div class="pull-left">
+              <a class="btn btn-default inner-button" id="editComment">Edit</a>
+              </div>
+              {{/if}}
             </div>
             {{#if isCurrentUserAsker}}
               <div class="pull-right">
