@@ -173,7 +173,7 @@ Template.post.helpers({
         return moment(date).fromNow();
     },
     isCurrentUserAsker: function(){
-      var question =  Questions.findOne(this.questionId);
+      var question =  Questions.findOne(this.questionId) || Questions.findOne(this._id);
         if(question != null && question.userId != null){
           var posterId = question.userId;
           var currentUserId = Meteor.user()._id;
