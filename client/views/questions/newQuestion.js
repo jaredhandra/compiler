@@ -60,5 +60,5 @@ Template.newQuestion.rendered = function() {
   var options = { templateResult: formatTags, placeholder: "Select a category",
   allowClear: true}
   $(".select2").select2(options);
-  return string;
+  return "";
 }

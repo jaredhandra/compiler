@@ -16,12 +16,13 @@ Template.avatar.helpers({
 		if(Meteor.user().avatar != null){
 			return Meteor.user().avatar;
 		}
-		if(Meteor.user().profile.avatar_url != null){
+		if(Meteor.user().profile != null && Meteor.user().profile.avatar_url != null){
 			return  Meteor.user().profile.avatar_url;
 		}
-		if(Meteor.user().services.google.picture !=null){
+		if(Meteor.user().services != null && Meteor.user.google != null && Meteor.user().services.google.picture !=null){
 			return Meteor.user().services.google.picture;
 		}
+    return "";
 	}
 })
 var OnBeforeActions;
