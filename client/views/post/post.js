@@ -9,6 +9,13 @@ Template.post.rendered = function(){
 Template.post.events({
     'click #answerQuestion': function () {
       $("#userComment").toggle();
+      var buttonRow = document.getElementById('wmd-button-row-answer');
+      if(buttonRow == null){
+          var converter = new Markdown.Converter();
+          var options = {};
+          var answerEditor = new Markdown.Editor(converter, "-answer", options);
+          answerEditor.run();
+        }
     },
     'submit .editQuestionSection': function(event){
       var question = Questions.findOne(this);
@@ -62,6 +69,14 @@ Template.post.events({
       document.getElementById('commentText-'+this.commentId).style.display = 'none';
       document.getElementById('editButton-'+this.commentId).style.display = 'none';
       document.getElementById('editCommentDiv-'+this.commentId).style.display = 'block';
+
+      var buttonRow = document.getElementById('wmd-button-row-'+this.commentId);
+      if(buttonRow == null){
+          var converter = new Markdown.Converter();
+          var options = {};
+          var commentEditor = new Markdown.Editor(converter, "-"+this.commentId, options);
+          commentEditor.run();
+        }
     },
     'click #upVoteArrow': function(e) {
       var comment = Comments.find({ commentId: this.commentId}).fetch();

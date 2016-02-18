@@ -98,10 +98,10 @@
               <div id="editCommentDiv-{{commentId}}" style="display:none;">
                 <form class="editCommentSection" id="editCommentSection" action="">
                   <div class="wmd-panel">
-                    <div id="wmd-button-bar"></div>
-                    <textarea class="wmd-input" value="{{fetchCommentText}}" id="wmd-input" name="editText"></textarea>
+                    <div id="wmd-button-bar-{{commentId}}"></div>
+                    <textarea class="wmd-input" value="{{fetchCommentText}}" id="wmd-input-{{commentId}}" name="editText"></textarea>
                   </div>
-                  <div id="wmd-preview" class="wmd-panel wmd-preview">
+                  <div id="wmd-preview-{{commentId}}" class="wmd-panel wmd-preview">
                   </div>
                   <input type="submit" value="Save" class="btn btn-default inner-button"
                          style="font-size: 1em;"/>
@@ -127,10 +127,10 @@
                         <div class="col-md-12">
                             <div class="form-group">
                               <div class="wmd-panel">
-                                <div id="wmd-button-bar"></div>
-                                <textarea class="wmd-input" id="wmd-input" name="commentText"></textarea>
+                                <div id="wmd-button-bar-answer"></div>
+                                <textarea class="wmd-input" id="wmd-input-answer" name="commentText"></textarea>
                               </div>
-                              <div id="wmd-preview" class="wmd-panel wmd-preview">
+                              <div id="wmd-preview-answer" class="wmd-panel wmd-preview">
                               </div>
                             </div>
                         </div>
@@ -179,10 +179,10 @@
             <div id="editCommentDiv-{{commentId}}" style="display:none;">
               <form class="editCommentSection" id="editCommentSection" action="">
                 <div class="wmd-panel">
-                  <div id="wmd-button-bar"></div>
-                  <textarea class="wmd-input" value="{{fetchCommentText}}" id="wmd-input" name="editText"></textarea>
+                  <div id="wmd-button-bar-{{commentId}}"></div>
+                  <textarea class="wmd-input" value="{{fetchCommentText}}" id="wmd-input-{{commentId}}" name="editText"></textarea>
                 </div>
-                <div id="wmd-preview" class="wmd-panel wmd-preview">
+                <div id="wmd-preview-{{commentId}}" class="wmd-panel wmd-preview">
                 </div>
                 <input type="submit" value="Save" class="btn btn-default inner-button"
                        style="font-size: 1em;"/>
