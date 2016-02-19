@@ -1,5 +1,8 @@
 Meteor.startup(function () {
 	Meteor.methods({
+		findUserVoteServer: function (array, value) {
+			return findUserVote(array, value);
+		},
 		questionUpvoted: function (question) {
 			var usersVotedT = question.usersVoted;
 			var user = Meteor.users.findOne({_id:question.userId})

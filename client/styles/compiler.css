@@ -586,6 +586,12 @@ li.userPickedTags {
 .downvoteClicked {
   color: #e84e40;
 }
+.fa-caret-up{
+  cursor: pointer;
+}
+.fa-caret-down{
+  cursor: pointer;
+}
 .commentSection {
   padding-top: 50px;
   padding-left: 20px;

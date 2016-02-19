@@ -11,14 +11,22 @@
                     </div>
                 </div>
                 <div class="row question-block">
-                    <div class="col-md-1">
-                      <div class="row voteArrows">
-                        <i class="fa fa-caret-up fa-3x" id="questionUpVoteArrow"></i>
-                        <br>
-                        <span class="commentRep" style="margin-left: 7px; font-size: 20px;">{{questionReputation}}</span>
-                        <i class="fa fa-caret-down fa-3x" id="questionDownVoteArrow"></i>
-                      </div>
+                  <div class="col-md-1">
+                    <div class="row voteArrows">
+                      {{#if isCurrentUserQuestionVoteUp}}
+                      <i class="fa fa-caret-up fa-3x upvoteClicked" id="questionUpVoteArrow"></i>
+                      {{else}}
+                      <i class="fa fa-caret-up fa-3x" id="questionUpVoteArrow"></i>
+                      {{/if}}
+                      <br>
+                      <span class="commentRep" style="margin-left: 7px; font-size: 20px;">{{questionReputation}}</span>
+                      {{#if isCurrentUserQuestionVoteDown}}
+                      <i class="fa fa-caret-down fa-3x downvoteClicked" id="questionDownVoteArrow"></i>
+                      {{else}}
+                      <i class="fa fa-caret-down fa-3x" id="questionDownVoteArrow"></i>
+                      {{/if}}
                     </div>
+                  </div>
                     <div class="col-md-1 questionAvatar">
                         {{#if askerAvatarURL}}
                             <img class="img-rounded" style="height:60px; margin-top: 30px;" src="{{askerAvatarURL}}"/>
@@ -71,10 +79,18 @@
             <div class="row">
               <div class="col-md-1">
                 <div class="row voteArrows">
-                  <i class="fa fa-caret-up fa-3x" id="upVoteArrow"></i>
+                    {{#if isCurrentUserVoteUp}}
+                  <i class="fa fa-caret-up fa-3x upvoteClicked" id="upVoteArrow"></i>
+                    {{else}}
+                    <i class="fa fa-caret-up fa-3x" id="upVoteArrow"></i>
+                    {{/if}}
                   <br>
-                  <span class="commentRep" style="margin-left: 7px; font-size: 20px;">{{commentReputation}}</span>
+                  <span class="commentRep" style="margin-left: 7px; font-size: 20px;">{{reputation}}</span>
+                  {{#if isCurrentUserVoteDown}}
+                  <i class="fa fa-caret-down fa-3x downvoteClicked" id="downVoteArrow"></i>
+                  {{else}}
                   <i class="fa fa-caret-down fa-3x" id="downVoteArrow"></i>
+                  {{/if}}
                 </div>
               </div>
               <div class="col-md-1 questionAvatar">
@@ -152,10 +168,18 @@
               <input type="hidden" name="commentId" value="{{commentId}}">
                 <div class="col-md-1">
                   <div class="row voteArrows">
-                    <i class="fa fa-caret-up fa-3x" id="upVoteArrow"></i>
+                      {{#if isCurrentUserVoteUp}}
+                    <i class="fa fa-caret-up fa-3x upvoteClicked" id="upVoteArrow"></i>
+                      {{else}}
+                      <i class="fa fa-caret-up fa-3x" id="upVoteArrow"></i>
+                      {{/if}}
                     <br>
-                    <span class="commentRep" style="margin-left: 7px; font-size: 20px;">{{commentReputation}}</span>
+                    <span class="commentRep" style="margin-left: 7px; font-size: 20px;">{{reputation}}</span>
+                    {{#if isCurrentUserVoteDown}}
+                    <i class="fa fa-caret-down fa-3x downvoteClicked" id="downVoteArrow"></i>
+                    {{else}}
                     <i class="fa fa-caret-down fa-3x" id="downVoteArrow"></i>
+                    {{/if}}
                   </div>
                 </div>
               <div class="col-md-1 questionAvatar">
