@@ -21,10 +21,13 @@
                     </div>
                     <div class="col-md-1 questionAvatar">
                         {{#if askerAvatarURL}}
-                            <img class="img-rounded" style="height:60px; margin-top: 30px;" src="{{askerAvatarURL}}"/>
+                            <img class="img-rounded" style="height:60px; margin-top: 30px;" src="{{askerAvatarURL}}" data-toggle="popover-content" data-placement="left"/>
                         {{else}}
-                            <i class="fa fa-user fa-4x" style="height:45px; margin-top: 20px;"></i>
+                            <i class="fa fa-user fa-4x" style="height:45px; margin-top: 20px;" data-toggle="popover-content" data-placement="left"></i>
                         {{/if}}
+                        <div id="popover-content" class="hide">
+                        {{> userCard}}
+                        </div>
                     </div>
                     <div class="col-md-10 question-body container-fluid">
                         <div class="row question-top">
@@ -79,9 +82,15 @@
               </div>
               <div class="col-md-1 questionAvatar">
                 {{#if commenterAvatarURL}}
-                    <img class="img-rounded" style="height:60px; margin-top: 30px;" src="{{commenterAvatarURL}}"/>
+                    <img class="img-rounded" style="height:60px; margin-top: 30px;" src="{{commenterAvatarURL}}" data-toggle="popover-content" data-placement="left"/>
+                    <div id="popover-content" class="hide">
+                    {{> userCard}}
+                    </div>
                 {{else}}
-                    <i class="fa fa-user fa-2x"></i>
+                    <i class="fa fa-user fa-2x" data-toggle="popover-content" data-placement="left"></i>
+                    <div id="popover-content" class="hide">
+                    {{> userCard}}
+                    </div>
                 {{/if}}
               </div>
               <div class="col-md-10 container-fluid">
@@ -160,9 +169,15 @@
                 </div>
               <div class="col-md-1 questionAvatar">
                 {{#if commenterAvatarURL}}
-                    <img class="img-rounded" style="height:60px; margin-top: 30px;" src="{{commenterAvatarURL}}"/>
+                    <img class="img-rounded" style="height:60px; margin-top: 30px;" src="{{commenterAvatarURL}}" data-toggle="popover-content" data-placement="left"/>
+                    <div id="popover-content" class="hide">
+                    {{> userCard}}
+                    </div>
                 {{else}}
-                    <i class="fa fa-user fa-2x"></i>
+                    <i class="fa fa-user fa-2x" data-toggle="popover-content" data-placement="left"></i>
+                    <div id="popover-content" class="hide">
+                    {{> userCard}}
+                    </div>
                 {{/if}}
               </div>
               <div class="col-md-10 container-fluid">

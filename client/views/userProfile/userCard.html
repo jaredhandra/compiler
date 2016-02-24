@@ -1,0 +1,41 @@
+<template name="userCard">
+<div class="container-fluid">
+    <div class="row center-block">
+      <div class="avatarSection">
+        <div class="col-md-12">
+          <img class="img-rounded userProfile center-block" style="height:100px; width:100px; margin-top: -1px;" src="{{userAvatar}}">
+        </div>
+      </div>
+    </div>
+  <div class="row">
+    <div class="info">
+      <div class="title center">
+        <h4>{{username}}</h4>
+      </div>
+    </div>
+  </div>
+  <div class="row center">
+    {{#if emailAccount}}
+    <div class="col-md-4">
+      <a class="btn btn-email btn-sm cardCircle" id="email" href="{{emailAccount}}" target="_blank">
+        <i class="fa fa-envelope-o fa-fw fa-lg"></i>
+      </a>
+    </div>
+    {{/if}}
+    {{#if googleAccount}}
+    <div class="col-md-4">
+      <a class="btn btn-google btn-sm cardCircle" id="google" href="{{googleAccount}}" target="_blank">
+        <i class="fa fa-google fa-fw fa-lg"></i>
+      </a>
+    </div>
+    {{/if}}
+    {{#if githubAccount}}
+    <div class="col-md-4">
+      <a class="btn btn-github btn-sm cardCircle" id="github" href="{{githubAccount}}" target="_blank">
+        <i class="fa fa-github fa-fw fa-lg"></i>
+      </a>
+    </div>
+    {{/if}}
+  </div>
+</div>
+</template>

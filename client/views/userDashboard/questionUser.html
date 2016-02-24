@@ -1,9 +1,12 @@
 <template name="questionUser">
   <div class="username">
     {{#if userAvatar}}
-      <img class="img-rounded" style="height:45px; margin-top: -1px;" src="{{userAvatar}}"/>
+      <img class="img-rounded userProfile" style="height:45px; margin-top: -1px;" src="{{userAvatar}}" data-toggle="popover-content" data-placement="right"/>
     {{else}}
       <i class="fa fa-user fa-1x"></i>
     {{/if}}
+    <div id="popover-content" class="hide">
+    {{> userCard}}
+    </div>
   </div>
 </template>
