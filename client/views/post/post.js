@@ -146,10 +146,13 @@ Template.post.helpers({
         if (asker.avatar != null) {
             return asker.avatar;
         }
-        if (asker.profile != null && asker.profile.avatar_url != null) {
+        else if (asker.profile != null && asker.profile.avatar_url != null) {
             return asker.profile.avatar_url;
         }
-        if (asker.service != null && asker.services.google != null && asker.services.google.picture != null) {
+        else if (asker.service != null && asker.services.google != null && asker.services.google.picture != null) {
+            return asker.services.google.picture;
+        }
+        else if(asker.services.google.picture != null){
             return asker.services.google.picture;
         }
     },
