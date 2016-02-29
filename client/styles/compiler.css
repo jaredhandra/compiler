@@ -639,3 +639,6 @@ li.userPickedTags {
   margin: 0 1px;
   padding: 15px;
 }
+.popCard {
+  padding-top: 30px;
+}

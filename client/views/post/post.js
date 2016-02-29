@@ -136,6 +136,17 @@ Template.post.events({
     },
 });
 Template.post.helpers({
+    profile: function(){
+      var question = Questions.findOne(this._id);
+      var asker = Meteor.users.findOne(question.userId);
+      return asker;
+    },
+    userid: function(){
+      return this._id;
+    },
+    profileExtension: function(){
+      return Meteor.userExtensions.findOne(this._id);
+    },
     questionDate: function () {
         var date = new Date(Questions.findOne(this).createdAt);
         return moment(date).fromNow();

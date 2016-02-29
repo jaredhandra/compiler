@@ -1,16 +1,16 @@
 <template name="questionUser">
   <div class="username">
     <!-- {{#if userAvatar}}
-      <img class="img-rounded userProfile" style="height:45px; margin-top: -1px;" src="{{userAvatar}}" data-toggle="popover-content" data-placement="right"/>
+      <img class="img-circle userProfile" style="height:45px; margin-top: -1px;" src="{{userAvatar}}" data-toggle="popover-content" data-placement="right"/>
     {{else}}
       <i class="fa fa-user fa-1x"></i>
     {{/if}} -->
     {{#with profile}}
-      <img class="img-rounded userProfile" style="height:45px; margin-top: -1px;" src="{{userAvatar}}" data-html="true" data-toggle="popover" data-placement="right" data-trigger="hover" data-content='<div class="container-fluid">
+      <img class="img-circle userProfile" style="height:45px; margin-top: -1px;" src="{{userAvatar}}" data-html="true" data-toggle="popover" data-placement="right" data-trigger="hover" data-content='<div class="container-fluid">
           <div class="row center-block">
             <div class="avatarSection">
               <div class="col-md-12">
-                <img class="img-rounded userProfile center-block" style="height:100px; width:100px; margin-top: -1px;" src="{{userAvatar}}">
+                <img class="img-circle userProfile center-block" style="height:100px; width:100px; margin-top: -1px;" src="{{userAvatar}}">
               </div>
             </div>
           </div>
