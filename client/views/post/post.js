@@ -145,7 +145,9 @@ Template.post.helpers({
       return this._id;
     },
     profileExtension: function(){
-      return Meteor.userExtensions.findOne(this._id);
+      var askerUserId = Questions.findOne(this).userId;
+      var extension = UserExtensions.findOne({'userId':askerUserId});
+      return extension;
     },
     questionDate: function () {
         var date = new Date(Questions.findOne(this).createdAt);

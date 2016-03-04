@@ -42,7 +42,6 @@ Template.questionUser.helpers({
       } else if(this.profile.email != null){
         return true;
       } else if(this.services.google.family_name != null){
-        console.log(this.services.google.family_name);
         return true;
       } else {
         return false;
