@@ -500,6 +500,27 @@ li.userPickedTags {
     height: 200px;
     box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
 }
+.active-box {
+    background: #90AFC5;
+    color: white !important;
+    text-align: center;
+    padding: 20px;
+    height: 200px;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+a:hover .box{
+  text-decoration: none;
+  background: #90AFC5;
+  color: white;
+}
+a:hover {
+  text-decoration: none;
+}
+a .box {
+  text-decoration: none;
+  color: black;
+}
 .dashnum {
     font-weight: 800;
 }

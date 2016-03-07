@@ -3,6 +3,18 @@ Template.userDashboard.events({
        event.preventDefault();
        Meteor.logout();
    },
+   'click #total-questions': function(event){
+      $('.active-box').not(this).removeClass('active-box');
+      $('#total-questions').addClass('active-box');
+   },
+   'click #user-questions': function(event){
+     $('.active-box').not(this).removeClass('active-box');
+     $('#user-questions').addClass('active-box');
+   },
+   'click #another': function(event){
+     $('.active-box').not(this).removeClass('active-box');
+     $('#another').addClass('active-box');
+   },
   //  'mouseover .username': function(event, template){
   //    setTimeout(function(){
   //     console.log('mouse over username');
