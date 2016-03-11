@@ -60,6 +60,9 @@ Router.route('/question/:_id', function(){
 Router.route('/newquestion', function(){
 	this.render('newQuestion');
 });
+Router.route('/editprofile', function(){
+  this.render('editProfile');
+});
 Template.selector.helpers({
   getTags: function () {
     return Tags.find({});
