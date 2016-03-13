@@ -68,3 +68,8 @@ Template.selector.helpers({
     return Tags.find({});
   },
 });
+Template.languageSelector.helpers({
+  getTags: function () {
+    return Tags.find({});
+  },
+});

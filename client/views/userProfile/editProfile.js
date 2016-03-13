@@ -17,13 +17,16 @@ Template.editProfile.helpers({
 Template.editProfile.events({
   'submit #edit-profile': function(event){
     // Get user object
+    var userProfile = UserExtensions.findOne(Meteor.user);
+    console.log(userProfile);
     // Get values from form
+    var languages = [$(".selectLanguages").val()];
+    var availability = [$(".selectDays").val()];
     // Add them to the UserExtensions collection
+    UserExtensions.update({_id:userProfile._id}, {$set:{languages:languages, availability: availability}});
     // Reroute back to the dashboard
-    var languages: [];
-    var availability: [];
-
-
+    Router.go('/dashboard');
+    return false;
   }
 })
 Template.editProfile.rendered = function(){
@@ -35,5 +38,10 @@ Template.editProfile.rendered = function(){
   var options = { templateResult: formatTags, placeholder: "Select a category",
   allowClear: true, multiple: true}
   $(".select2").select2(options);
+  return "";
+
+  var options2 = {placeholder: "Select days",
+  allowClear: true, multiple: true}
+  $(".select2 .selectDays").select2(options2);
   return "";
 };
