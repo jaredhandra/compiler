@@ -40,14 +40,18 @@
                                 <h3>{{username}}</h3>
                                 <h4 style="padding-top:20px;">Reputation: <b>{{profileExtension.reputation}}</b></h4>
                                 <h4>Skills:
-                                  <span class="label label-info">Java</span>
-                                  <span class="label label-info">JavaScript</span>
-                                  <span class="label label-info">C#</span>
-                                  <span class="label label-info">HTML</span>
+                                  {{#each profileExtension.languages}}
+                                    <span class="label label-info">{{.}}</span>
+                                  {{/each}}
                                 </h4>
+                                {{#if profileExtension.availability}}
                                 <hr>
-                                <h4>Availability</h4>
-
+                                <h4>This user is availble on
+                                  {{#each profileExtension.availability}}
+                                    <span class="label label-primary">{{.}}</span>
+                                  {{/each}}
+                                </h4>
+                                {{/if}}
                               </center>
                               </div>
                             </div>
@@ -125,13 +129,20 @@
                               <i class="fa fa-user fa-2x" data-toggle="modal" data-target="#{{userid}}"></i>
                           {{/if}}
                           <h3>{{username}}</h3>
-                          <h4 style="padding-top:20px;">Reputation: <b>{{profileExtension.reputation}}</b></h4>
+                          <h4 style="padding-top:20px;">Reputation: <b>{{commenterProfileExtension.reputation}}</b></h4>
                           <h4>Skills:
-                            <span class="label label-info">Java</span>
-                            <span class="label label-info">JavaScript</span>
-                            <span class="label label-info">C#</span>
-                            <span class="label label-info">HTML</span>
+                            {{#each commenterProfileExtension.languages}}
+                              <span class="label label-info">{{.}}</span>
+                            {{/each}}
                           </h4>
+                          <hr>
+                          {{#if commenterProfileExtension.availability}}
+                          <h4>This user is availble on
+                            {{#each commenterProfileExtension.availability}}
+                              <span class="label label-primary">{{.}}</span>
+                            {{/each}}
+                          </h4>
+                          {{/if}}
                         </center>
                         </div>
                       </div>
@@ -232,13 +243,22 @@
                               <i class="fa fa-user fa-2x" data-toggle="modal" data-target="#{{userid}}"></i>
                           {{/if}}
                           <h3>{{username}}</h3>
-                          <h4 style="padding-top:20px;">Reputation: <b>{{profileExtension.reputation}}</b></h4>
+                          <h4 style="padding-top:20px;">Reputation: <b>{{commenterProfileExtension.reputation}}</b></h4>
                           <h4>Skills:
-                            <span class="label label-info">Java</span>
-                            <span class="label label-info">JavaScript</span>
-                            <span class="label label-info">C#</span>
-                            <span class="label label-info">HTML</span>
+                            {{#if commenterProfileExtension.languages}}
+                              {{#each commenterProfileExtension.languages}}
+                                <span class="label label-info">{{.}}</span>
+                              {{/each}}
+                            {{/if}}
                           </h4>
+                          {{#if commenterProfileExtension.availability}}
+                          <hr>
+                          <h4>This user is availble on
+                              {{#each commenterProfileExtension.availability}}
+                                <span class="label label-primary">{{.}}</span>
+                              {{/each}}
+                          </h4>
+                          {{/if}}
                         </center>
                         </div>
                       </div>

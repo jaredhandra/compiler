@@ -20,8 +20,8 @@ Template.editProfile.events({
     var userProfile = UserExtensions.findOne(Meteor.user);
     console.log(userProfile);
     // Get values from form
-    var languages = [$(".selectLanguages").val()];
-    var availability = [$(".selectDays").val()];
+    var languages = $(".selectLanguages").val();
+    var availability = $(".selectDays").val();
     // Add them to the UserExtensions collection
     UserExtensions.update({_id:userProfile._id}, {$set:{languages:languages, availability: availability}});
     // Reroute back to the dashboard

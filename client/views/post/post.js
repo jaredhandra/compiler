@@ -145,9 +145,15 @@ Template.post.helpers({
       return this._id;
     },
     profileExtension: function(){
-      var askerUserId = Questions.findOne(this).userId;
-      var extension = UserExtensions.findOne({'userId':askerUserId});
+      var user = Questions.findOne(this);
+      var extension = UserExtensions.findOne({'userId':user.userId});
       return extension;
+    },
+    commenterProfileExtension: function(){
+      var comment = Comments.findOne(this);
+      var user = Meteor.users.findOne({'username':comment.username});
+      var commenterExtension = UserExtensions.findOne({'userId':user._id});
+      return commenterExtension;
     },
     questionDate: function () {
         var date = new Date(Questions.findOne(this).createdAt);

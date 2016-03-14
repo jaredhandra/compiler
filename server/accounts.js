@@ -1,6 +1,6 @@
 Meteor.publish("userData", function () {
   return Meteor.users.find({_id: this.userId},
-                           {fields: {'services': 1}});
+                           {fields: {'services': 1, 'username':1, '_id':1}});
 });
 
 Accounts.onCreateUser(function (options, user) {
