@@ -1,0 +1,72 @@
+<template name="editProfile">
+  <div class="bumper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 question">
+          <div class="row title">
+            <h1>Edit Profile</h1>
+          </div>
+          <div class="row edit">
+            <div class="col-md-4 profileImg">
+              <img class="img-circle center-block" style="height:200px; width:200px; margin-top: -1px;" src="{{avatarURL}}">
+              <!-- <br>
+              <p class="help-block">
+                Change your profile picture
+              </p>
+              <input type="file" class="form-control"> -->
+            </div>
+            <div class="col-md-8">
+              <form class="form-horizontal" role="form" id="edit-profile">
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <h3>Languages</h3>
+                  </div><br>
+                  <div class="col-md-12">
+                    <p class="help-block">
+                      Select all the languages that you are a professional in.
+                    </p>
+                    {{> languageSelector}}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <h3>Availability</h3>
+                  </div><br>
+                  <div class="col-md-12">
+                    <p class="help-block">
+                      If you want to help others, enter your availability below.
+                    </p>
+                    {{> daySelector}}
+                  </div>
+                </div>
+                <div class="form-group submit">
+                  <div class="btn-group col-md-4">
+                    <input type="submit" value="Save Changes" class="btn btn-default inner-button"/>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<template name="languageSelector">
+  <select name="languageSelect" class="select2 selectLanguages col-md-12" role="option" required>
+    {{#each getTags}}
+      <option value="{{name}}">{{name}}</option>
+    {{/each}}
+  </select>
+</template>
+<template name="daySelector">
+  <select name="daySelect" class="select2 selectDays col-md-12" role="option" required>
+    <option value="Sunday">Sunday</option>
+    <option value="Monday">Monday</option>
+    <option value="Tuesday">Tuesday</option>
+    <option value="Wednesday">Wednesday</option>
+    <option value="Thursday">Thursday</option>
+    <option value="Friday">Friday</option>
+    <option value="Saturday">Saturday</option>
+  </select>
+</template>

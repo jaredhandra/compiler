@@ -128,6 +128,25 @@ Template.post.events({
     },
 });
 Template.post.helpers({
+    profile: function(){
+      var question = Questions.findOne(this._id);
+      var asker = Meteor.users.findOne(question.userId);
+      return asker;
+    },
+    userid: function(){
+      return this._id;
+    },
+    profileExtension: function(){
+      var user = Questions.findOne(this);
+      var extension = UserExtensions.findOne({'userId':user.userId});
+      return extension;
+    },
+    commenterProfileExtension: function(){
+      var comment = Comments.findOne(this);
+      var user = Meteor.users.findOne({'username':comment.username});
+      var commenterExtension = UserExtensions.findOne({'userId':user._id});
+      return commenterExtension;
+    },
     questionDate: function () {
         var date = new Date(Questions.findOne(this).createdAt);
         if(date != null){
@@ -140,10 +159,13 @@ Template.post.helpers({
         if (asker.avatar != null) {
             return asker.avatar;
         }
-        if (asker.profile != null && asker.profile.avatar_url != null) {
+        else if (asker.profile != null && asker.profile.avatar_url != null) {
             return asker.profile.avatar_url;
         }
-        if (asker.service != null && asker.services.google != null && asker.services.google.picture != null) {
+        else if (asker.service != null && asker.services.google != null && asker.services.google.picture != null) {
+            return asker.services.google.picture;
+        }
+        else if(asker.services.google.picture != null){
             return asker.services.google.picture;
         }
     },
