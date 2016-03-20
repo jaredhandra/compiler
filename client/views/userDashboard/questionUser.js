@@ -1,15 +1,28 @@
 Template.questionUser.helpers({
-  userAvatar: function(userId) {
-    var asker = Meteor.users.findOne();
-    if (asker.avatar != null) {
-        return asker.avatar;
+  profile: function(){
+    var question = Questions.findOne(this._id);
+    var asker = Meteor.users.findOne(question.userId);
+    return asker;
+  },
+  username: function(){
+    return this.username;
+  },
+  userAvatar: function() {
+    // var question = Questions.findOne(this._id);
+    // var asker = Meteor.users.findOne(question.userId);
+    if (this.avatar != null) {
+      return this.avatar;
+    } else if (this.profile != null && this.profile.avatar_url != null) {
+      return this.profile.avatar_url;
+    } else if (this.services != null && this.services.google != null && this.services.google.picture != null) {
+        return this.services.google.picture;
+    } else {
+      return null;
+  },
+  githubAccount: function(userId){
+    if (this.services.github != null){
+      return this.profile.html_url;
     }
-    if (asker.profile.avatar_url != null) {
-        return asker.profile.avatar_url;
-    }
-    if (asker.services.google.picture != null) {
-        return asker.services.google.picture;
-      }
   },
   emailAccount: function(userId){
     if(this.emails != null){

@@ -118,6 +118,14 @@ body {
     margin: 0 17px;
     padding: 15px;
 }
+.smallCicle {
+    background-color: #EEEEEE;
+    color: #FFFFFF;
+    border-radius: 100px;
+    display: inline-block;
+    margin: 0 17px;
+    padding: 15px;
+}
 
 #github {
     background-color: #403A3A;
@@ -135,6 +143,13 @@ body {
 #google:hover {
     background-color: #FF7566;
     color: white;
+}
+#email {
+  background-color: #f39c12;
+}
+#email:hover {
+  background-color: #e67e22;
+  color: white;
 }
 
 .center {
@@ -485,6 +500,27 @@ li.userPickedTags {
     height: 200px;
     box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
 }
+.active-box {
+    background: #90AFC5;
+    color: white !important;
+    text-align: center;
+    padding: 20px;
+    height: 200px;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+a:hover .box{
+  text-decoration: none;
+  background: #90AFC5;
+  color: white;
+}
+a:hover {
+  text-decoration: none;
+}
+a .box {
+  text-decoration: none;
+  color: black;
+}
 .dashnum {
     font-weight: 800;
 }
@@ -613,4 +649,31 @@ li.userPickedTags {
   font-size: 14px;
   background: white;
   box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+.tableTag {
+  padding-top: 10px;
+}
+.avatarSection {
+  padding-top: 20px;
+  padding-bottom: 100px;
+}
+
+.cardCircle {
+  background-color: #EEEEEE;
+  color: #FFFFFF;
+  border-radius: 100px;
+  display: inline-block;
+  margin: 0 1px;
+  padding: 15px;
+}
+.popCard {
+  padding-top: 30px;
+}
+.edit {
+  padding-top: 30px;
+  padding-bottom: 20px;
+
+}
+.profileImg {
+  padding-top: 40px;
 }

@@ -19,7 +19,7 @@ Template.avatar.helpers({
 		if(Meteor.user().profile != null && Meteor.user().profile.avatar_url != null){
 			return  Meteor.user().profile.avatar_url;
 		}
-		if(Meteor.user().services != null && Meteor.user.google != null && Meteor.user().services.google.picture !=null){
+		if(Meteor.user().services != null && Meteor.user().services.google != null && Meteor.user().services.google.picture !=null){
 			return Meteor.user().services.google.picture;
 		}
     return "";
@@ -60,7 +60,15 @@ Router.route('/question/:_id', function(){
 Router.route('/newquestion', function(){
 	this.render('newQuestion');
 });
+Router.route('/editprofile', function(){
+  this.render('editProfile');
+});
 Template.selector.helpers({
+  getTags: function () {
+    return Tags.find({});
+  },
+});
+Template.languageSelector.helpers({
   getTags: function () {
     return Tags.find({});
   },

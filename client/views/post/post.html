@@ -32,10 +32,43 @@
                   </div>
                     <div class="col-md-1 questionAvatar">
                         {{#if askerAvatarURL}}
-                            <img class="img-rounded" style="height:60px; margin-top: 30px;" src="{{askerAvatarURL}}"/>
+                            <img class="img-circle" style="height:60px; margin-top: 30px;" src="{{askerAvatarURL}}" data-toggle="modal" data-target="#{{userid}}"/>
                         {{else}}
-                            <i class="fa fa-user fa-4x" style="height:45px; margin-top: 20px;"></i>
+                            <i class="fa fa-user fa-4x" style="height:45px; margin-top: 20px;" data-toggle="popover-content" data-placement="left" ></i>
                         {{/if}}
+                      <div class="modal fade" tabindex="-1" role="dialog" id="{{userid}}">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                              <div class="popCard">
+                              <center>
+                                {{#if askerAvatarURL}}
+                                    <img class="img-circle" style="height:110px;" src="{{askerAvatarURL}}" data-trigger="hover" data-toggle="modal" data-target="#{{userid}}"/>
+                                {{else}}
+                                    <i class="fa fa-user fa-2x" data-toggle="modal" data-target="#{{userid}}"></i>
+                                {{/if}}
+                                <h3>{{username}}</h3>
+                                <h4 style="padding-top:20px;">Reputation: <b>{{profileExtension.reputation}}</b></h4>
+                                <h4>Skills:
+                                  {{#each profileExtension.languages}}
+                                    <span class="label label-info">{{.}}</span>
+                                  {{/each}}
+                                </h4>
+                                {{#if profileExtension.availability}}
+                                <hr>
+                                <h4>This user is availble on
+                                  {{#each profileExtension.availability}}
+                                    <span class="label label-primary">{{.}}</span>
+                                  {{/each}}
+                                </h4>
+                                {{/if}}
+                              </center>
+                              </div>
+                            </div>
+                          </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                      </div><!-- /.modal -->
                     </div>
                     <div class="col-md-10 question-body container-fluid">
                         <div class="row question-top">
@@ -98,10 +131,43 @@
               </div>
               <div class="col-md-1 questionAvatar">
                 {{#if commenterAvatarURL}}
-                    <img class="img-rounded" style="height:60px; margin-top: 30px;" src="{{commenterAvatarURL}}"/>
+                    <img class="img-circle" style="height:60px; margin-top: 30px;" src="{{commenterAvatarURL}}" data-toggle="modal" data-target="#{{userid}}"/>
                 {{else}}
-                    <i class="fa fa-user fa-2x"></i>
+                    <i class="fa fa-user fa-4x" style="height:45px; margin-top: 20px;"></i>
                 {{/if}}
+                <div class="modal fade" tabindex="-1" role="dialog" id="{{userid}}">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <div class="popCard">
+                        <center>
+                          {{#if commenterAvatarURL}}
+                              <img class="img-circle" style="height:110px;" src="{{commenterAvatarURL}}" data-trigger="hover" data-toggle="modal" data-target="#{{userid}}"/>
+                          {{else}}
+                              <i class="fa fa-user fa-2x" data-toggle="modal" data-target="#{{userid}}"></i>
+                          {{/if}}
+                          <h3>{{username}}</h3>
+                          <h4 style="padding-top:20px;">Reputation: <b>{{commenterProfileExtension.reputation}}</b></h4>
+                          <h4>Skills:
+                            {{#each commenterProfileExtension.languages}}
+                              <span class="label label-info">{{.}}</span>
+                            {{/each}}
+                          </h4>
+                          <hr>
+                          {{#if commenterProfileExtension.availability}}
+                          <h4>This user is availble on
+                            {{#each commenterProfileExtension.availability}}
+                              <span class="label label-primary">{{.}}</span>
+                            {{/each}}
+                          </h4>
+                          {{/if}}
+                        </center>
+                        </div>
+                      </div>
+                    </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
               </div>
               <div class="col-md-10 container-fluid">
                   <div class="row comment-top">
@@ -187,10 +253,45 @@
                 </div>
               <div class="col-md-1 questionAvatar">
                 {{#if commenterAvatarURL}}
-                    <img class="img-rounded" style="height:60px; margin-top: 30px;" src="{{commenterAvatarURL}}"/>
+                    <img class="img-circle" style="height:60px; margin-top: 30px;" src="{{commenterAvatarURL}}" data-toggle="modal" data-target="#{{userid}}"/>
                 {{else}}
-                    <i class="fa fa-user fa-2x"></i>
+                    <i class="fa fa-user fa-2x" data-toggle="modal" data-target="#{{userid}}"></i>
                 {{/if}}
+                <div class="modal fade" tabindex="-1" role="dialog" id="{{userid}}">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <div class="popCard">
+                        <center>
+                          {{#if commenterAvatarURL}}
+                              <img class="img-circle" style="height:110px;" src="{{commenterAvatarURL}}" data-trigger="hover" data-toggle="modal" data-target="#{{userid}}"/>
+                          {{else}}
+                              <i class="fa fa-user fa-2x" data-toggle="modal" data-target="#{{userid}}"></i>
+                          {{/if}}
+                          <h3>{{username}}</h3>
+                          <h4 style="padding-top:20px;">Reputation: <b>{{commenterProfileExtension.reputation}}</b></h4>
+                          <h4>Skills:
+                            {{#if commenterProfileExtension.languages}}
+                              {{#each commenterProfileExtension.languages}}
+                                <span class="label label-info">{{.}}</span>
+                              {{/each}}
+                            {{/if}}
+                          </h4>
+                          {{#if commenterProfileExtension.availability}}
+                          <hr>
+                          <h4>This user is availble on
+                              {{#each commenterProfileExtension.availability}}
+                                <span class="label label-primary">{{.}}</span>
+                              {{/each}}
+                          </h4>
+                          {{/if}}
+                        </center>
+                        </div>
+                      </div>
+                    </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
               </div>
               <div class="col-md-10 container-fluid">
                 <div class="row comment-top">
