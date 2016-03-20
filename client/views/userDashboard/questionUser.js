@@ -1,6 +1,5 @@
 Template.questionUser.helpers({
   userAvatar: function(userId) {
-    // var asker = Meteor.users.findOne({'_id':userId});
     var asker = Meteor.users.findOne();
     if (asker.avatar != null) {
         return asker.avatar;
@@ -10,6 +9,7 @@ Template.questionUser.helpers({
     }
     if (asker.services.google.picture != null) {
         return asker.services.google.picture;
+      }
   },
   emailAccount: function(userId){
     if(this.emails != null){
