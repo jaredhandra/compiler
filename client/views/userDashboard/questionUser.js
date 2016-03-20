@@ -18,6 +18,7 @@ Template.questionUser.helpers({
         return this.services.google.picture;
     } else {
       return null;
+    }
   },
   githubAccount: function(userId){
     if (this.services.github != null){
