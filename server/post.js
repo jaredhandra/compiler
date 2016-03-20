@@ -117,6 +117,19 @@ Meteor.startup(function () {
 		)
 			return "User Action Removed"
 		},
+		fetchEmail: function (userId) {
+			  var user = Meteor.users.findOne(userId);
+				if(user.emails != null){
+					return user.emails[0].address;
+			};
+			if (user.email != null){
+      return user.email;
+    } else if(user.profile != null && user.profile.email != null){
+      return user.profile.email;
+    } else if(user.services.google.family_name != null){
+      return user.services.google.family_name;
+    }
+		},
 	  commentUpvoted: function (user, comment) {
       var usersVotedT = comment.usersVoted;
       var reputation = findUserReputation(user);

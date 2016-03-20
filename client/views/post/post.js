@@ -110,6 +110,32 @@ Template.post.events({
 			console.log('serverDataResponse', response);
 		});
     },
+    'click #findAnExpert': function(e) {
+      var question = Questions.findOne(this);
+      var questionCategory = question.tags;
+      var listOfUserExtWithTagListed = UserExtensions.find({"languages":questionCategory}).fetch();
+      var listOfUserIDsPossibleExperts = [];
+
+      listOfUserExtWithTagListed.forEach( function (userExtObj)
+      {
+        listOfUserIDsPossibleExperts.push(userExtObj.userId);
+      });
+      var expertID = listOfUserIDsPossibleExperts[Math.floor(Math.random() * listOfUserIDsPossibleExperts.length)]
+      var expertExt = UserExtensions.findOne({'userId':expertID});
+      if(expertExt != null){
+        var expertRep = expertExt.reputation;
+        var expertUser = Meteor.users.findOne(expertID);
+        Meteor.call('fetchEmail', expertID, function(err,response) {
+  			if(err) {
+  				console.log('serverDataResponse', "Error:" + err.reason);
+  				return;
+  			}
+  			console.log('serverDataResponse', response);
+        console.log('test');
+        });
+      }
+        $('#findAnExpertModal').modal('show');
+    },
     'click #questionDownVoteArrow': function(e) {
       var question = Questions.findOne(this);
       Meteor.call('questionDownvoted', question, function(err,response) {
@@ -171,11 +197,17 @@ Template.post.helpers({
     },
     commentReputation: function(){
       var comment = Comments.findOne({commentId:this.commentId});
-      return comment.reputation;
+      if(comment.reputation != null){
+        return comment.reputation;
+      }
+      return "";
     },
     questionReputation: function(){
       var question = Questions.findOne(this);
-      return question.reputation;
+      if(question.reputation !== null){
+        return question.reputation;
+      }
+      return "";
     },
     commenterAvatarURL: function(){
         var question = Questions.findOne(this.questionId);
@@ -291,14 +323,16 @@ Template.post.helpers({
     isCurrentUserQuestionVoteUp: function(){
       var user = Meteor.user();
       var question = Questions.findOne({_id:this._id});
-      var usersVoted = question.usersVoted;
+      if(question !=null && question.usersVoted !=null){
+        var usersVoted = question.usersVoted;
 
-      if(user != null && question != null && usersVoted != null && usersVoted.length > 0){
-          vote = findUserVote(usersVoted,user._id)
-          if(vote[1].vote === "+"){
-            return true;
-          }
-      }
+        if(user != null && question != null && usersVoted != null && usersVoted.length > 0){
+            vote = findUserVote(usersVoted,user._id)
+            if(vote[1].vote === "+"){
+              return true;
+            }
+        }
+    }
       return false;
     },
     isCurrentUserQuestionVoteDown: function(){
