@@ -17,7 +17,7 @@ Template.editProfile.helpers({
 Template.editProfile.events({
   'submit #edit-profile': function(event){
     // Get user object
-    var userProfile = UserExtensions.findOne({'userId':user.userId});
+    var userProfile = UserExtensions.findOne({'userId':Meteor.user()._id});
     console.log(userProfile);
     // Get values from form
     var languages = $(".selectLanguages").val();
