@@ -40,10 +40,10 @@ Accounts.onCreateUser(function (options, user) {
     user.username = profile.login;
     user.avatar = profile.avatar_url;
     user.email = user.services.github.email;
-    if(email != null){
+    if(user.email != null){
     UserExtensions.update(
       {userId: user._id},
-      {$set: {email: email}}
+      {$set: {email: user.email}}
     )
   }
     return user;
@@ -58,6 +58,10 @@ Accounts.onCreateUser(function (options, user) {
         if (!email) {
             if (user.emails) {
                 email = user.emails.address;
+                UserExtensions.update(
+                  {userId: user._id},
+                  {$set: {email: user.emails[0].address}}
+                )
             }
         }
         if (!email) {
@@ -82,6 +86,10 @@ Accounts.onCreateUser(function (options, user) {
                     user.username = user.services.google.name;
                     user.avatar = user.services.google.picture;
                     user.email = user.services.google.email;
+                    UserExtensions.update(
+                      {userId: user._id},
+                      {$set: {email: email}}
+                    )
             }
                 return user;
             } else {

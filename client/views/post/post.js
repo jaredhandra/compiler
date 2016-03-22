@@ -139,6 +139,7 @@ Template.post.events({
       expertUser.reputation = expertRep;
       expertUser.availability = expertExt.availability;
       expertUser.avatar = findUserAvatar(expertUser);
+      expertUser.email = expertExt.email;
       Session.set("expert", expertUser);
     }
       $('#findAnExpertModal').modal('show');
@@ -369,10 +370,7 @@ function findUserAvatar(user){
   else if (user.profile != null && user.profile.avatar_url != null) {
       return user.profile.avatar_url;
   }
-  else if (user.service != null && user.services.google != null && user.services.google.picture != null) {
-      return user.services.google.picture;
-  }
-  else if(user.services.google.picture != null){
+  else if(user.services != null && user.services.google != null && user.services.google.picture != null){
       return user.services.google.picture;
   }
   return "";

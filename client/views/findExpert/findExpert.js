@@ -13,6 +13,9 @@ Template.findAnExpert.helpers({
   },
   expertEmail: function(){
     var expertUser = Session.get("expert");
+    if(expertUser != null && expertUser.email != null){
+      return expertUser.email;
+      }
     if(expertUser != null && expertUser.services != null && expertUser.services.google != null && expertUser.services.google.email != null){
       return expertUser.services.google.email;
     }
