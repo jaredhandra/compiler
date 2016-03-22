@@ -118,7 +118,9 @@ Template.post.events({
 
       listOfUserExtWithTagListed.forEach( function (userExtObj)
       {
-        listOfUserIDsPossibleExperts.push(userExtObj.userId);
+        if(userExtObj.userId != Meteor.user()._id){
+          listOfUserIDsPossibleExperts.push(userExtObj.userId);
+        }
       });
       var expertID = listOfUserIDsPossibleExperts[Math.floor(Math.random() * listOfUserIDsPossibleExperts.length)]
       var expertExt = UserExtensions.findOne({'userId':expertID});
@@ -126,15 +128,20 @@ Template.post.events({
         var expertRep = expertExt.reputation;
         var expertUser = Meteor.users.findOne(expertID);
         Meteor.call('fetchEmail', expertID, function(err,response) {
-  			if(err) {
-  				console.log('serverDataResponse', "Error:" + err.reason);
-  				return;
-  			}
-  		    expertUser.email = response;
+        if(err) {
+          console.log('serverDataResponse', "Error:" + err.reason);
+          return;
+        }
+          expertUser.email = response;
         });
       }
+      if(expertUser != null){
+      expertUser.reputation = expertRep;
+      expertUser.availability = expertExt.availability;
       expertUser.avatar = findUserAvatar(expertUser);
-        $('#findAnExpertModal').modal('show');
+      Session.set("expert", expertUser);
+    }
+      $('#findAnExpertModal').modal('show');
     },
     'click #questionDownVoteArrow': function(e) {
       var question = Questions.findOne(this);
@@ -164,8 +171,11 @@ Template.post.helpers({
     },
     profileExtension: function(){
       var user = Questions.findOne(this);
+      if(user.userId != null){
       var extension = UserExtensions.findOne({'userId':user.userId});
       return extension;
+      }
+      return ""
     },
     commenterProfileExtension: function(){
       var comment = Comments.findOne(this);
