@@ -86,8 +86,6 @@ Template.post.events({
 				console.log('serverDataResponse', "Error:" + err.reason);
 				return;
 			}
-      $("#upVoteArrow").addClass("upvoteClicked");
-      $("#downVoteArrow").removeClass("downvoteClicked");
 			console.log('serverDataResponse', response);
 		});
     },
@@ -99,8 +97,6 @@ Template.post.events({
         console.log('serverDataResponse', "Error:" + err.reason);
         return;
       }
-      $("#upVoteArrow").removeClass("upvoteClicked");
-      $("#downVoteArrow").addClass("downvoteClicked");
       console.log('serverDataResponse', response);
     });
     },
@@ -112,9 +108,40 @@ Template.post.events({
 				return;
 			}
 			console.log('serverDataResponse', response);
-      $("#questionUpVoteArrow").addClass("upvoteClicked");
-      $("#questionDownVoteArrow").removeClass("downvoteClicked");
 		});
+    },
+    'click #findAnExpert': function(e) {
+      var question = Questions.findOne(this);
+      var questionCategory = question.tags;
+      var listOfUserExtWithTagListed = UserExtensions.find({"languages":questionCategory}).fetch();
+      var listOfUserIDsPossibleExperts = [];
+
+      listOfUserExtWithTagListed.forEach( function (userExtObj)
+      {
+        if(userExtObj.userId != Meteor.user()._id){
+          listOfUserIDsPossibleExperts.push(userExtObj.userId);
+        }
+      });
+      var expertID = listOfUserIDsPossibleExperts[Math.floor(Math.random() * listOfUserIDsPossibleExperts.length)]
+      var expertExt = UserExtensions.findOne({'userId':expertID});
+      if(expertExt != null){
+        var expertRep = expertExt.reputation;
+        var expertUser = Meteor.users.findOne(expertID);
+        Meteor.call('fetchEmail', expertID, function(err,response) {
+        if(err) {
+          console.log('serverDataResponse', "Error:" + err.reason);
+          return;
+        }
+          expertUser.email = response;
+        });
+      }
+      if(expertUser != null){
+      expertUser.reputation = expertRep;
+      expertUser.availability = expertExt.availability;
+      expertUser.avatar = findUserAvatar(expertUser);
+      Session.set("expert", expertUser);
+    }
+      $('#findAnExpertModal').modal('show');
     },
     'click #questionDownVoteArrow': function(e) {
       var question = Questions.findOne(this);
@@ -124,8 +151,6 @@ Template.post.events({
 				return;
 			}
 			console.log('serverDataResponse', response);
-      $("#questionUpVoteArrow").removeClass("upvoteClicked");
-      $("#questionDownVoteArrow").addClass("downvoteClicked");
 		});
     },
       'click #chooseBestAnswer': function(e) {
@@ -146,8 +171,11 @@ Template.post.helpers({
     },
     profileExtension: function(){
       var user = Questions.findOne(this);
+      if(user.userId != null){
       var extension = UserExtensions.findOne({'userId':user.userId});
       return extension;
+      }
+      return ""
     },
     commenterProfileExtension: function(){
       var comment = Comments.findOne(this);
@@ -157,31 +185,28 @@ Template.post.helpers({
     },
     questionDate: function () {
         var date = new Date(Questions.findOne(this).createdAt);
-        return moment(date).fromNow();
+        if(date != null){
+          return moment(date).fromNow();
+      }
     },
     askerAvatarURL: function () {
         var askerUserId = Questions.findOne(this).userId;
         var asker = Meteor.users.findOne({'_id':askerUserId});
-        if (asker.avatar != null) {
-            return asker.avatar;
-        }
-        else if (asker.profile != null && asker.profile.avatar_url != null) {
-            return asker.profile.avatar_url;
-        }
-        else if (asker.service != null && asker.services.google != null && asker.services.google.picture != null) {
-            return asker.services.google.picture;
-        }
-        else if(asker.services.google.picture != null){
-            return asker.services.google.picture;
-        }
+        return findUserAvatar(asker);
     },
     commentReputation: function(){
       var comment = Comments.findOne({commentId:this.commentId});
-      return comment.reputation;
+      if(comment.reputation != null){
+        return comment.reputation;
+      }
+      return "";
     },
     questionReputation: function(){
       var question = Questions.findOne(this);
-      return question.reputation;
+      if(question != null && question.reputation !== null){
+        return question.reputation;
+      }
+      return "";
     },
     commenterAvatarURL: function(){
         var question = Questions.findOne(this.questionId);
@@ -194,16 +219,7 @@ Template.post.helpers({
         else{
           commenter = this.user;
         }
-        if (commenter.avatar != null) {
-            return commenter.avatar;
-        }
-        if (commenter.profile != null && commenter.profile.avatar_url != null) {
-            return commenter.profile.avatar_url;
-        }
-        if (commenter.services != null && commenter.services.google != null && commenter.services.google.picture != null) {
-            return commenter.services.google.picture;
-        }
-        return null;
+        return findUserAvatar(commenter);
     },
     commentDate: function(){
         var date = new Date(this.createdAt);
@@ -222,15 +238,21 @@ Template.post.helpers({
     },
     questionComments: function(){
       var question = Questions.findOne(this._id);
-      var bestAnswerId = question.bestAnswer;
-      return Comments.find({ questionId: this._id, commentId: { $not: bestAnswerId }}).fetch();
+      if(question != null && question.bestAnswer != null){
+        var bestAnswerId = question.bestAnswer;
+        return Comments.find({ questionId: this._id, commentId: { $not: bestAnswerId }}).fetch();
+      }
+      return "";
     },
     bestAnswer: function(){
       var question = Questions.findOne(this._id);
-      var bestAnswerId = question.bestAnswer;
-      if(bestAnswerId != null){
-        return Comments.find({ commentId: bestAnswerId}).fetch();
+      if(question != null && question.bestAnswer != null){
+        var bestAnswerId = question.bestAnswer;
+        if(bestAnswerId != null){
+          return Comments.find({ commentId: bestAnswerId}).fetch();
+        }
       }
+      return "";
     },
     isCurrentUserPoster: function(){
       var comment = Comments.findOne({commentId:this.commentId});
@@ -261,8 +283,64 @@ Template.post.helpers({
       var commentHtml = converter1.makeHtml(comment.commentText);
 
       return commentHtml;
+    },
+    isCurrentUserVoteUp: function(){
+      var user = Meteor.user();
+      var comment = Comments.findOne({commentId:this.commentId});
+      var usersVoted = comment.usersVoted;
+
+      if(user != null && comment != null && usersVoted != null && usersVoted.length > 0){
+        vote = findUserVote(usersVoted,user._id)
+        if(vote[1].vote === "+"){
+          return true;
+        }
+      }
+      return false;
+    },
+    isCurrentUserVoteDown: function(){
+      var user = Meteor.user();
+      var comment = Comments.findOne({commentId:this.commentId});
+      var usersVoted = comment.usersVoted;
+
+      if(user != null && comment != null && usersVoted != null && usersVoted.length > 0){
+        vote = findUserVote(usersVoted,user._id)
+        if(vote[1].vote === "-"){
+          return true;
+        }
+      }
+      return false;
+    },
+    isCurrentUserQuestionVoteUp: function(){
+      var user = Meteor.user();
+      var question = Questions.findOne({_id:this._id});
+      if(question !=null && question.usersVoted !=null){
+        var usersVoted = question.usersVoted;
+
+        if(user != null && question != null && usersVoted != null && usersVoted.length > 0){
+            vote = findUserVote(usersVoted,user._id)
+            if(vote[1].vote === "+"){
+              return true;
+            }
+        }
     }
-});
+      return false;
+    },
+    isCurrentUserQuestionVoteDown: function(){
+      var user = Meteor.user();
+      var question = Questions.findOne({_id:this._id});
+      if(question!= null && question.usersVoted != null){
+        var usersVoted = question.usersVoted;
+
+        if(user != null && question != null && usersVoted != null && usersVoted.length > 0){
+            vote = findUserVote(usersVoted,user._id)
+            if(vote[1].vote === "-"){
+              return true;
+            }
+        }
+      }
+      return false;
+    }
+  });
 
 function findQuestionIdFromUrl(pathname) {
     return pathname.substring(10, pathname.length);
@@ -272,4 +350,30 @@ function isBestAnswerFunc(question, commentId){
     return true;
   }
   return false;
+}
+
+function findUserVote(array, value) {
+	for (var i = 0, l = array.length; i < l; i++) {
+    var obj = array[i];
+    if(obj[0].userId === value){
+			return obj;
+		}
+	}
+	return false;
+}
+
+function findUserAvatar(user){
+  if (user.avatar != null) {
+      return user.avatar;
+  }
+  else if (user.profile != null && user.profile.avatar_url != null) {
+      return user.profile.avatar_url;
+  }
+  else if (user.service != null && user.services.google != null && user.services.google.picture != null) {
+      return user.services.google.picture;
+  }
+  else if(user.services.google.picture != null){
+      return user.services.google.picture;
+  }
+  return "";
 }

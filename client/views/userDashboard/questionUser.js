@@ -26,12 +26,15 @@ Template.questionUser.helpers({
     }
   },
   emailAccount: function(userId){
+    if(this.emails != null){
+      return this.emails[0].address;
+  }
     if (this.email != null){
       return this.email;
-    } else if(this.profile.email != null){
+    } else if(this.profile != null && this.profile.email != null){
       return this.profile.email;
-    } else if(this.services.google.family_name != null){
-      return this.services.google.family_name;
+    } else if(this.services != null && this.services.google != null && this.services.google.email != null){
+      return this.services.google.email;
     }
   },
   both: function(){

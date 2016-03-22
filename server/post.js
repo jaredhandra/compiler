@@ -1,14 +1,18 @@
 Meteor.startup(function () {
 	Meteor.methods({
+		findUserVoteServer: function (array, value) {
+			return findUserVote(array, value);
+		},
 		questionUpvoted: function (question) {
 			var usersVotedT = question.usersVoted;
-			var user = Meteor.users.findOne({_id:question.userId})
+			var user = Meteor.users.findOne({_id:question.userId});
+			var currentUser = Meteor.user();
 			var reputation = findUserReputation(user);
 			var questionReputation = question.reputation;
-			var userVote = findUserVote(usersVotedT, user._id);
+			var userVote = findUserVote(usersVotedT, currentUser._id);
 			if(userVote === false){
 				usersVotedT.push([
-					{"userId":user._id},
+					{"userId":currentUser._id},
 					{"vote":"+"}
 				]);
 				reputation += 1;
@@ -28,7 +32,7 @@ Meteor.startup(function () {
 				return "User Upvoted";
 		}
 		//user has already voted and removed vote
-		usersVotedT = removeUserVote(usersVotedT, user._id);
+		usersVotedT = removeUserVote(usersVotedT, currentUser._id);
 		if(userVote[1].vote === "+"){
 			reputation -= 1;
 			questionReputation -= 1
@@ -38,7 +42,7 @@ Meteor.startup(function () {
 			reputation +=2;
 			questionReputation += 2
 			usersVotedT.push([
-				{"userId":user._id},
+				{"userId":currentUser._id},
 				{"vote":"+"}
 			]);
 		}
@@ -60,11 +64,12 @@ Meteor.startup(function () {
 			var usersVotedT = question.usersVoted;
 			var user = Meteor.users.findOne({_id:question.userId})
 			var reputation = findUserReputation(user);
+			var currentUser = Meteor.user();
 			var questionReputation = question.reputation;
-			var userVote = findUserVote(usersVotedT, user._id);
+			var userVote = findUserVote(usersVotedT, currentUser._id);
 			if(userVote === false){
 				usersVotedT.push([
-					{"userId":user._id},
+					{"userId":currentUser._id},
 					{"vote":"-"}
 				]);
 				reputation -= 1;
@@ -84,7 +89,7 @@ Meteor.startup(function () {
 				return "User Downvoted";
 		}
 		//user has already voted
-		usersVotedT = removeUserVote(usersVotedT, user._id);
+		usersVotedT = removeUserVote(usersVotedT, currentUser._id);
 		if(userVote[1].vote != "+"){
 			reputation += 1;
 			questionReputation += 1
@@ -94,7 +99,7 @@ Meteor.startup(function () {
 			reputation -=2;
 			questionReputation -= 2
 			usersVotedT.push([
-				{"userId":user._id},
+				{"userId":currentUser._id},
 				{"vote":"-"}
 			]);
 		}
@@ -112,14 +117,28 @@ Meteor.startup(function () {
 		)
 			return "User Action Removed"
 		},
+		fetchEmail: function (userId) {
+			  var user = Meteor.users.findOne(userId);
+				if(user.emails != null){
+					return user.emails[0].address;
+			};
+			if (user.email != null){
+      return user.email;
+    } else if(user.profile != null && user.profile.email != null){
+      return user.profile.email;
+    } else if(user.services.google.family_name != null){
+      return user.services.google.family_name;
+    }
+		},
 	  commentUpvoted: function (user, comment) {
       var usersVotedT = comment.usersVoted;
       var reputation = findUserReputation(user);
       var commentReputation = comment.reputation;
-			var userVote = findUserVote(usersVotedT, user._id);
+			var currentUser = Meteor.user();
+			var userVote = findUserVote(usersVotedT, currentUser._id);
       if(userVote === false){
         usersVotedT.push([
-					{"userId":user._id},
+					{"userId":currentUser._id},
 					{"vote":"+"}
 				]);
         reputation += 1;
@@ -139,7 +158,7 @@ Meteor.startup(function () {
         return "User Upvoted";
     }
     //user has already voted and removed vote
-		usersVotedT = removeUserVote(usersVotedT, user._id);
+		usersVotedT = removeUserVote(usersVotedT, currentUser._id);
 		if(userVote[1].vote === "+"){
     	reputation -= 1;
     	commentReputation -= 1
@@ -149,7 +168,7 @@ Meteor.startup(function () {
 			reputation +=2;
 			commentReputation += 2
 			usersVotedT.push([
-				{"userId":user._id},
+				{"userId":currentUser._id},
 				{"vote":"+"}
 			]);
 		}
@@ -172,10 +191,11 @@ Meteor.startup(function () {
 			var usersVotedT = comment.usersVoted;
 			var reputation = findUserReputation(user);
 			var commentReputation = comment.reputation;
-			var userVote = findUserVote(usersVotedT, user._id);
+			var currentUser = Meteor.user();
+			var userVote = findUserVote(usersVotedT, currentUser._id);
       if(userVote === false){
 				usersVotedT.push([
-					{"userId":user._id},
+					{"userId":currentUser._id},
 					{"vote":"-"}
 				]);
         reputation -= 1;
@@ -195,7 +215,7 @@ Meteor.startup(function () {
         return "User Downvoted";
     }
     //user has already voted
-		usersVotedT = removeUserVote(usersVotedT, user._id);
+		usersVotedT = removeUserVote(usersVotedT, currentUser._id);
 		if(userVote[1].vote != "+"){
     	reputation += 1;
     	commentReputation += 1
@@ -205,7 +225,7 @@ Meteor.startup(function () {
 			reputation -=2;
 			commentReputation -= 2
 			usersVotedT.push([
-				{"userId":user._id},
+				{"userId":currentUser._id},
 				{"vote":"-"}
 			]);
 		}
