@@ -6,10 +6,10 @@ Template.editProfile.helpers({
 		if(Meteor.user().avatar != null){
 			return Meteor.user().avatar;
 		}
-		if(Meteor.user().profile.avatar_url != null){
+		if(Meteor.user() != null && Meteor.user().profile != null && Meteor.user().profile.avatar_url != null){
 			return  Meteor.user().profile.avatar_url;
 		}
-		if(Meteor.user().services.google.picture !=null){
+		if(Meteor.user() != null && Meteor.user().services != null && Meteor.user().services.google.picture != null && Meteor.user().services.google.picture !=null){
 			return Meteor.user().services.google.picture;
 		}
 	},
@@ -17,7 +17,7 @@ Template.editProfile.helpers({
 Template.editProfile.events({
   'submit #edit-profile': function(event){
     // Get user object
-    var userProfile = UserExtensions.findOne(Meteor.user);
+    var userProfile = UserExtensions.findOne({'userId':Meteor.user()._id});
     console.log(userProfile);
     // Get values from form
     var languages = $(".selectLanguages").val();
