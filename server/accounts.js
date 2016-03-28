@@ -40,7 +40,12 @@ Accounts.onCreateUser(function (options, user) {
     user.username = profile.login;
     user.avatar = profile.avatar_url;
     user.email = user.services.github.email;
-
+    if(email != null){
+    UserExtensions.update(
+      {userId: user._id},
+      {$set: {email: email}}
+    )
+  }
     return user;
 }
     //End github oauth
