@@ -8,9 +8,9 @@
                 <span class="icon-bar"></span>
             </button>
             {{#if currentUser}}
-                <a class="navbar-brand navbar-brand-logo" rel="home" href="{{pathFor route='dashboard'}}">Compiler</a>
+                <a href="{{pathFor route='dashboard'}}"><img class="navbar-brand navbar-brand-logo" src="images/logo.png" href="{{pathFor route='dashboard'}}"/></a>
             {{else}}
-                <a class="navbar-brand navbar-brand-logo" rel="home" href="/">Compiler</a>
+                <img class="navbar-brand navbar-brand-logo" src="images/logo.png" href="/"/>
             {{/if}}
         </div>
         <div class="collapse navbar-collapse">
