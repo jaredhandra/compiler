@@ -6,26 +6,25 @@ Template.userDashboard.events({
    'click #total-questions': function(event){
       $('.active-box').not(this).removeClass('active-box');
       $('#total-questions').addClass('active-box');
+      ReactiveTable.clearFilters(["user-open-questions"]);
    },
    'click #user-questions': function(event, template){
      $('.active-box').not(this).removeClass('active-box');
      $('#user-questions').addClass('active-box');
-
+     var currentUser = Meteor.user().username;
+     template.filter.set(currentUser);
    },
-   'click #another': function(event){
+   'click #hot': function(event){
      $('.active-box').not(this).removeClass('active-box');
-     $('#another').addClass('active-box');
+     $('#hot').addClass('active-box');
+     template.filter.set({"$gt": 5});
    },
-  //  'mouseover .username': function(event, template){
-  //    setTimeout(function(){
-  //     console.log('mouse over username');
-  //     return Template.userProfile;
-  //    }, 2000);
-  //  }
-   //'click .reactive-table tbody tr td': function(event){
-	//   event.preventDefault();
-	//   window.location.href = '/question/' + this._id;
-   //}
+   'click #new': function(event){
+     $('.active-box').not(this).removeClass('active-box');
+     $('#new').addClass('active-box');
+     ReactiveTable.clearFilters(["user-open-questions", "top"]);
+     template.newFilter.set();
+   }
 });
 Template.userDashboard.helpers({
   	user: function() {
@@ -71,11 +70,11 @@ Template.openQuestions.helpers({
 				{key: '_id', label: 'Question', headerClass:'question-header', cellClass:'question-cell question-title',tmpl: Template.questionTitle},
 				{key: 'tags', label: 'Tag', headerClass:'question-header', cellClass:'question-cell question-user', tmpl: Template.questionTag},
 				{key: 'userId', label: 'User', headerClass:'question-header', cellClass:'question-cell question-user', tmpl: Template.questionUser},
-        {key: 'reputation', label: 'Reputation', headerClass:'question-header', cellClass:'question-cell question-user'},
+        {key: 'reputation', label: 'Reputation', headerClass:'question-header', cellClass:'question-cell question-user', sortDirection: 'descending', sortOrder: 1},
 				// {key: 'comments', label: 'Replies', headerClass:'question-header', cellClass:'question-cell question-user', fn: function(value){return value.length;}},
 				{key: 'createdAt', label: 'Date', headerClass:'question-header', cellClass:'question-cell question-date', fn: function(value){date = new moment(value); return date.fromNow();}}
 			],
-      filters: ['userFilter']
+      filters: ['user-open-questions', 'new', 'top']
 		}
 	}
 });
@@ -96,4 +95,9 @@ Template.userDashboard.rendered = function(){
       return $("#popover-content").html();
     }
   });
+}
+Template.userDashboard.created = function(){
+  this.filter = new ReactiveTable.Filter('user-open-questions', ['username']);
+  this.newFilter = new ReactiveTable.Filter('new', ['createdAt']);
+  this.hotFilter = new ReactiveTable.Filter('top', ['reputation']);
 }
