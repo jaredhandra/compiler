@@ -16,10 +16,11 @@ body {
     line-height: 19px;
 }
 #navbar {
-    background-color: #336B87;
+    background-color: #008251;
     border: none;
 }
 .navbar-brand {
+    height: 75px !important;
     font-size: 20px;
     color: white;
 }
@@ -27,13 +28,13 @@ body {
   color: white;
 }
 .navbar-inverse .navbar-brand:hover {
-  color: #90AFC5;
+  color: #009E62;
 }
 .navbar-inverse .navbar-nav > li > a {
   color: white;
 }
 .navbar-inverse .navbar-nav > li > a:hover {
-  color: #90AFC5;
+  color: #009E62;
 }
 .navbar-buttons {
     padding: 6px 10px;
@@ -297,7 +298,7 @@ table tr {
 
 input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid ~ label {
     font-size: 0.75em;
-    color: #5677fc;
+    color: #006740;
     top: -2.25rem;
     -webkit-transition: all 0.125s ease;
     transition: all 0.125s ease;
@@ -311,7 +312,7 @@ input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid
 }
 
 .styled-input label {
-    color: #5677fc;
+    color: #006740;
     padding: 1rem;
     position: absolute;
     top: 0;
@@ -338,7 +339,7 @@ textarea ~ span {
     display: block;
     width: 0;
     height: 3px;
-    background: #5677fc;
+    background: #006740;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -403,7 +404,7 @@ span.commentRep {
 }
 
 .typeahead:focus {
-  border: 2px solid #0097cf;
+  border: 2px solid #00CC7F;
 }
 
 .tt-query {
@@ -436,13 +437,13 @@ span.commentRep {
     font-size: 18px;
     line-height: 24px;
     color: white;
-    background-color: #39638E;
+    background-color: #008251;
     cursor:pointer;
 }
 
 .tt-suggestion.tt-cursor {
   color: #fff;
-  background-color: #0097cf;
+  background-color: #00CC7F;
 }
 
 .tt-suggestion p {
@@ -459,7 +460,7 @@ span.commentRep {
 }
 li.userPickedTags {
     list-style: none;
-    background: #5F88FF;
+    background: #009E62;
     width: 100px;
     color: white;
     padding: 4px;
@@ -484,7 +485,7 @@ li.userPickedTags {
   color: #2A3132;
 }
 #title-text:hover {
-  color: #90AFC5;
+  color: #009E62;
 }
 .mtbox {
     margin-top : 40px;
@@ -501,7 +502,7 @@ li.userPickedTags {
     box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
 }
 .active-box {
-    background: #90AFC5;
+    background: #009E62;
     color: white !important;
     text-align: center;
     padding: 20px;
@@ -511,7 +512,7 @@ li.userPickedTags {
 }
 a:hover .box{
   text-decoration: none;
-  background: #90AFC5;
+  background: #009E62;
   color: white;
 }
 a:hover {
@@ -567,10 +568,10 @@ a .box {
   text-align: center;
 }
 .inner-button {
-  border-color: #336B87;
+  border-color: #008251;
 }
 .inner-button:hover {
-  background: #90AFC5;
+  background: #009E62;
   color: white;
 }
 .question-wrapper {
@@ -596,7 +597,7 @@ a .box {
   box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
 }
 .box #active {
-  background-color: #90AFC5;
+  background-color: #009E62;
 }
 .voteArrows {
   padding-left: 30px;

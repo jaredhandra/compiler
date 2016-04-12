@@ -19,32 +19,32 @@ Tags.attachSchema(new SimpleSchema({
 if (Meteor.isServer) {
 	if (Tags.find({}).count() === 0){
 		Tags.insert({
-			'name':'HTML',
-			'description':'Descriping HTML'
+			'name':'IT',
+			'description':'Descriping IT'
 		});
 		Tags.insert({
-			'name':'CSS',
-			'description':'Descriping CSS'
+			'name':'AR',
+			'description':'Descriping AR'
 		});
 		Tags.insert({
-			'name':'C#',
-			'description':'Descriping C#'
+			'name':'AP',
+			'description':'Descriping AP'
 		});
 		Tags.insert({
-			'name':'Java',
-			'description':'Descriping Java'
+			'name':'Payroll',
+			'description':'Descriping Payroll'
 		});
 		Tags.insert({
-			'name':'Python',
-			'description':'Descriping Python'
+			'name':'Sales',
+			'description':'Descriping Sales'
 		});
 		Tags.insert({
-			'name':'Javascript',
-			'description':'Descriping Javascript'
+			'name':'Marketing',
+			'description':'Descriping Marketing'
 		});
 		Tags.insert({
-			'name':'JQuery',
-			'description':'Descriping JQuery'
+			'name':'Admin',
+			'description':'Descriping Admin'
 		});
 	}
 	Meteor.publish('tags', function(){
