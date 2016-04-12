@@ -513,6 +513,10 @@ a:hover .box{
   text-decoration: none;
   background: #90AFC5;
   color: white;
+  cursor: pointer;
+}
+.active-box:hover{
+  cursor: default !important;
 }
 a:hover {
   text-decoration: none;
